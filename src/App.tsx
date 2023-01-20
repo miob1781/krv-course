@@ -1,11 +1,22 @@
-import { useState } from 'react'
+import { Routes, Route } from "react-router-dom"
+import NavBar from './components/NavBar'
 import './style/App.css'
+import Account from "./views/Account"
+import Welcome from "./views/Welcome"
+import DummyComponent from "./components/sections/DummyComponent"
 
 function App() {
+    const path = "/link"
+    const element = <DummyComponent />
 
     return (
         <div className="App">
-            <h1>Study Kant's <em>Critique of Pure Reason</em>!</h1>
+            <NavBar />
+            <Routes>
+                <Route path="/" element={<Welcome />} />
+                <Route path="/account" element={<Account />} />
+                <Route path={path} element={element} />
+            </Routes>
         </div>
     )
 }
