@@ -6,16 +6,13 @@ import Welcome from "./views/Welcome"
 import DummyComponent from "./components/sections/DummyComponent"
 
 function App() {
-    const path = "/link"
-    const element = <DummyComponent />
-
     return (
         <div className="App">
             <NavBar />
             <Routes>
                 <Route path="/" element={<Welcome />} />
                 <Route path="/account" element={<Account />} />
-                <Route path={path} element={element} />
+                <Route path="/path" element={<DummyComponent />} />
             </Routes>
         </div>
     )

@@ -1,4 +1,7 @@
-.ToCListEl {
-    background-color: beige;
-    list-style: none;
+.ToCListCont {
+    text-align: justify;
+}
+
+.ToCTitle {
+    margin-left: 20px;
 }
