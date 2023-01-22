@@ -3,7 +3,7 @@ import NavBar from './components/NavBar'
 import './style/App.css'
 import Account from "./views/Account"
 import Welcome from "./views/Welcome"
-import DummyComponent from "./components/sections/DummyComponent"
+import Section_1 from "./components/sections/Section-1"
 
 function App() {
     return (
@@ -12,7 +12,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Welcome />} />
                 <Route path="/account" element={<Account />} />
-                <Route path="/path" element={<DummyComponent />} />
+                <Route path="/section-1" element={<Section_1 />} />
             </Routes>
         </div>
     )
