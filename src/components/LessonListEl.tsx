@@ -24,7 +24,5 @@ export default function ListEl({ children }: PropsWithChildren) {
     const SnippetPlusIcon: ReactElement = <span>{generateSnippet()} {icon}</span>
     const content: ReactNode = expand ? children : SnippetPlusIcon
 
-    return (
-        <li>{content}</li>
-    )
+    return <li>{content}</li>
 }

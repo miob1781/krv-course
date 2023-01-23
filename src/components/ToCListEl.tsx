@@ -5,7 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import "../style/ToCListEl.css"
 
-type propsType = { children?: ReactNode, path: string, sectionTitle: string, numberOfSection?: number, description?: string }
+interface propsType {
+    children?: ReactNode,
+    path: string,
+    sectionTitle: string,
+    numberOfSection?: number,
+    description?: string
+}
 
 export default function ToCListEl({children, path, sectionTitle, numberOfSection, description}: propsType) {
     const [expand, setExpand] = useState(false)
