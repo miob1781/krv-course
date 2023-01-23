@@ -9,6 +9,7 @@ export default function Welcome() {
         return sectionData.map((section: SectionData, index: number) => {
             return (
                 <ToCListEl
+                    key={section.path}
                     path={section.path}
                     sectionTitle={section.title}
                     description={section.description}
@@ -22,6 +23,7 @@ export default function Welcome() {
         return data.map((section: SectionData) => {
             return (
                 <ToCListEl
+                    key={section.path}
                     path={section.path}
                     sectionTitle={section.title}
                 />
@@ -34,9 +36,9 @@ export default function Welcome() {
             <h1>Lies die <em>Kritik der reinen Vernunft</em>!</h1>
             <p>Studiere Immanuel Kants berühmtestes Werk in deiner eigenen Geschwindigkeit.</p>
             <h2>Inhalt</h2>
-            <ul className="ToC">
+            <div className="ToC">
                 {renderToCEntries()}
-            </ul>
+            </div>
         </div>
     )
 }

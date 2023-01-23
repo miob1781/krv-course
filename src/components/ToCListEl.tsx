@@ -24,13 +24,13 @@ export default function ToCListEl({children, path, sectionTitle, numberOfSection
 
 
     return (
-        <li className="ToCListCont">
+        <div className="ToCListCont">
             <div>
                 {description && icon}
                 <Link to={path} className="ToCTitle">{numberOfSection && `${numberOfSection}. `}{sectionTitle}</Link>
             </div>
             <p style={{marginLeft: "33px"}}>{expand && description}</p>
             <div style={{marginLeft: "60px"}}>{expand && children}</div>
-        </li>
+        </div>
     )
 }
