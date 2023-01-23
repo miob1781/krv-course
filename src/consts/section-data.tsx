@@ -4,7 +4,13 @@ export const sectionData: SectionData[] = [
     {
         title: "Einleitung",
         path: "/section-1",
-        description: "In der Einleitung beschäftigt sich Kant mit dem Projekt einer Kritik der reinen Vernunft und unterscheidet zwischen analytischen und synthetischen Urteilen sowie zwischen Urteilen a priori und a posteriori."
+        description: "In der Einleitung beschäftigt sich Kant mit dem Projekt einer Kritik der reinen Vernunft und unterscheidet zwischen analytischen und synthetischen Urteilen sowie zwischen Urteilen a priori und a posteriori.",
+        subSections: [
+            {
+                title: "part 1-1",
+                path: "/path-1-1",
+            }
+        ]
     },
     {
         title: "Transzendentale Ästhetik",

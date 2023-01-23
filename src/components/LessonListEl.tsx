@@ -1,28 +1,22 @@
 import { PropsWithChildren, ReactElement, ReactNode, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import "../style/LessonListEl.css"
 
-export default function ListEl({ children }: PropsWithChildren) {
-    const [expand, setExpand] = useState(false)
+interface propsType {
+    pageNumber?: string,
+    isQuestion?: boolean
+}
 
-    function generateSnippet(): string | undefined {
-        if (typeof children !== "string") return
+export default function ListEl({ children, pageNumber, isQuestion = false }: PropsWithChildren<propsType>) {
+    const textContainerClass: string = isQuestion ? "lesson-list-text-cont lesson-question" : "lesson-list-text-cont"
 
-        const separatorRegex: RegExp = / |,|\.|;|:|\?|!/
-        const snippetLength: number = 5
-
-        const splittedSentence: string[] = children.split(" ")
-        const beginning: string = splittedSentence.slice(0, snippetLength).join(" ")
-        const shouldDelete: boolean = separatorRegex.test(beginning[beginning.length - 1])
-        const snippet = shouldDelete
-            ? beginning.slice(0, beginning.length - 1) + "..."
-            : beginning + "..."
-        return snippet
-    }
-
-    const icon: ReactElement = <FontAwesomeIcon icon={faAngleRight} onClick={() => setExpand(true)} />
-    const SnippetPlusIcon: ReactElement = <span>{generateSnippet()} {icon}</span>
-    const content: ReactNode = expand ? children : SnippetPlusIcon
-
-    return <li>{content}</li>
+    return (
+        <li className="lesson-list-el">
+            <div className="page-number-cont">
+                <span>{pageNumber}</span>
+            </div>
+            <div className={textContainerClass}>
+                <span className="lesson-list-text">{children}</span>
+            </div>
+        </li>
+    )
 }

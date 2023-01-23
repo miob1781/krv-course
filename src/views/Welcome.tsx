@@ -24,7 +24,6 @@ export default function Welcome() {
                 <ToCListEl
                     path={section.path}
                     sectionTitle={section.title}
-                    description={section.description}
                 />
             )
         })
@@ -36,7 +35,7 @@ export default function Welcome() {
             <p>Studiere Immanuel Kants berühmtestes Werk in deiner eigenen Geschwindigkeit.</p>
             <h2>Inhalt</h2>
             <ul className="ToC">
-                {renderToCEntries(sectionData)}
+                {renderToCEntries()}
             </ul>
         </div>
     )

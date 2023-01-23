@@ -1,0 +1,22 @@
+.lesson-list-el {
+    display: flex;
+    justify-content:space-around;
+    padding: 15px;
+}
+
+.page-number-cont {
+    min-width: 70px;
+}
+
+.lesson-list-text-cont {
+    padding: 20px;
+    margin: 0 -20px;
+}
+
+.lesson-list-text-cont.lesson-question {
+    background-color: beige;
+}
+
+lesson-list-text {
+
+}
