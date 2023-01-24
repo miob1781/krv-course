@@ -1,11 +1,11 @@
 .lesson-list-el {
     display: flex;
-    justify-content:space-around;
+    justify-content: left;
     padding: 15px;
 }
 
 .page-number-cont {
-    min-width: 70px;
+    min-width: 120px;
 }
 
 .lesson-list-text-cont {
@@ -18,5 +18,4 @@
 }
 
 lesson-list-text {
-
 }
