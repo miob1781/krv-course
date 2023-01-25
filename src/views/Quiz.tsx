@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react"
+import { ReactElement, useEffect, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
@@ -10,11 +10,23 @@ interface propsType {
     path: string
 }
 
+// shuffles array by the Fisher-Yates algorithm
+function shuffleArray(arr: QuizPart[] | Answer[]): QuizPart[] | Answer[] {
+    for (let i: number = arr.length - 1; i > 0; i--) {
+        const j: number = Math.floor(Math.random() * (i + 1));
+        const temp: QuizPart | Answer = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    return arr
+}
+
 export default function Quiz({ title, quiz, path }: propsType) {
+    const [shuffledQuiz, setShuffledQuiz] = useState<QuizPart[] | null>(null)
     const [partIndex, setPartIndex] = useState(0)
     const [answerIndex, setAnswerIndex] = useState(-1)
 
-    const button: ReactElement = partIndex === quiz.length - 1
+    const button: ReactElement = shuffledQuiz && partIndex === shuffledQuiz.length - 1
         ? <Link to={path}><button>Zurück zur Lektion</button></Link>
         : <button type="button" disabled={answerIndex === -1 ? true : false} onClick={onNextQuestion}>Nächste Frage</button>
 
@@ -28,8 +40,8 @@ export default function Quiz({ title, quiz, path }: propsType) {
         setAnswerIndex(-1)
     }
 
-    function renderQuestions() {
-        const part: QuizPart = quiz[partIndex]
+    function renderQuestions(): ReactElement {
+        const part: QuizPart = shuffledQuiz![partIndex]
         return (
             <section>
                 <h3>{partIndex + 1}. Frage</h3>
@@ -49,14 +61,20 @@ export default function Quiz({ title, quiz, path }: propsType) {
         )
     }
 
+    useEffect(() => {
+        shuffleArray(quiz)
+        quiz.forEach((part: QuizPart) => {
+            shuffleArray(part.answers)
+        })
+        setShuffledQuiz(quiz)
+    }, [])
+
     return (
         <div>
-            <p>quiz length: {quiz.length}</p>
-            <p>partIndex: {partIndex}</p>
             <h2>{title}</h2>
-            {renderQuestions()}
+            {shuffledQuiz && renderQuestions()}
             <div>
-                {button}
+                {shuffledQuiz && button}
             </div>
         </div>
     )

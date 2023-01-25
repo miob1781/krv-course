@@ -1,3 +1,5 @@
+import { ReactHTMLElement } from "react"
+
 export interface SectionData {
     title: string,
     path: string,
@@ -6,12 +8,12 @@ export interface SectionData {
 }
 
 export interface Answer {
-    suggestion: string,
-    solution: string,
+    suggestion: JSX.Element,
+    solution: JSX.Element,
     correct: boolean
 }
 
 export interface QuizPart {
-    question: string,
+    question: JSX.Element,
     answers: Answer[]
 }
