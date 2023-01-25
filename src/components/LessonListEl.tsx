@@ -1,12 +1,12 @@
 import { PropsWithChildren, ReactElement, ReactNode, useState } from "react";
 import "../style/LessonListEl.css"
 
-interface propsType {
+interface Props {
     pageNumber?: string,
     isQuestion?: boolean
 }
 
-export default function ListEl({ children, pageNumber, isQuestion = false }: PropsWithChildren<propsType>) {
+export default function ListEl({ children, pageNumber, isQuestion = false }: PropsWithChildren<Props>) {
     const textContainerClass: string = isQuestion ? "lesson-list-text-cont lesson-question" : "lesson-list-text-cont"
 
     return (

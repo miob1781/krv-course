@@ -28,7 +28,7 @@ const quiz: QuizPart[] = [
         ]
     },
     {
-        question: <span>Frage 2: Richtig oder falsch: Für Kant beginnt alle Erkenntnis <b>mit</b> der Erfahrung und entspringt zudem <b>aus</b> der Erfahrung.</span>,
+        question: <span>Richtig oder falsch: Für Kant beginnt alle Erkenntnis <b>mit</b> der Erfahrung und entspringt zudem <b>aus</b> der Erfahrung.</span>,
         answers: [
             {
                 suggestion: <span>Richtig.</span>,

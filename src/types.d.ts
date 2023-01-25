@@ -15,5 +15,6 @@ export interface Answer {
 
 export interface QuizPart {
     question: JSX.Element,
-    answers: Answer[]
+    answers: Answer[],
+    numberOfQuestion?: number
 }

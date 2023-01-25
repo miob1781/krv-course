@@ -4,7 +4,7 @@ import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 import { Answer, QuizPart } from "../types"
 
-interface propsType {
+interface Props {
     title: string,
     quiz: QuizPart[],
     path: string
@@ -21,30 +21,44 @@ function shuffleArray(arr: QuizPart[] | Answer[]): QuizPart[] | Answer[] {
     return arr
 }
 
-export default function Quiz({ title, quiz, path }: propsType) {
+export default function Quiz({ title, quiz, path }: Props) {
     const [shuffledQuiz, setShuffledQuiz] = useState<QuizPart[] | null>(null)
     const [partIndex, setPartIndex] = useState(0)
     const [answerIndex, setAnswerIndex] = useState(-1)
+    const [wronglyAnsweredQuestions, setWronglyAnsweredQuestions] = useState<QuizPart[]>([])
+    const [repeating, setRepeating] = useState(false)
 
-    const button: ReactElement = shuffledQuiz && partIndex === shuffledQuiz.length - 1
-        ? <Link to={path}><button>Zurück zur Lektion</button></Link>
-        : <button type="button" disabled={answerIndex === -1 ? true : false} onClick={onNextQuestion}>Nächste Frage</button>
-
-
-    function onSelectAnswer(index: number) {
+    function onSelectAnswer(part: QuizPart, correct: boolean, index: number) {
         setAnswerIndex(index)
+        if (!correct) {
+            setWronglyAnsweredQuestions((prev: QuizPart[]) => [...prev, part])
+        }
     }
 
     function onNextQuestion() {
-        setPartIndex((prevIndex: number) => prevIndex + 1)
         setAnswerIndex(-1)
+        if (repeating && partIndex === shuffledQuiz!.length - 1) {
+            setPartIndex(0)
+            setShuffledQuiz(wronglyAnsweredQuestions)
+            setWronglyAnsweredQuestions([])
+        } else {
+            setPartIndex((prevIndex: number) => prevIndex + 1)
+        }
+    }
+
+    function handleRepeatQuestions() {
+        setRepeating(true)
+        setShuffledQuiz(wronglyAnsweredQuestions)
+        setWronglyAnsweredQuestions([])
+        setPartIndex(0)
     }
 
     function renderQuestions(): ReactElement {
         const part: QuizPart = shuffledQuiz![partIndex]
         return (
-            <section>
-                <h3>{partIndex + 1}. Frage</h3>
+            <div>
+                <h2>{title}</h2>
+                <h3>{part.numberOfQuestion}. Frage</h3>
                 <p>{part.question}</p>
                 {part.answers.map((answer: Answer, index: number) => {
                     const icon: ReactElement = answerIndex === index
@@ -52,30 +66,77 @@ export default function Quiz({ title, quiz, path }: propsType) {
                         : <div />
                     return (
                         <div>
-                            <p onClick={() => onSelectAnswer(index)}>{answer.suggestion} {icon}</p>
+                            <p onClick={() => onSelectAnswer(part, answer.correct, index)}>{answer.suggestion} {icon}</p>
                             <p style={{ display: answerIndex === index ? "block" : "none" }}>{answer.solution}</p>
                         </div>
                     )
                 })}
-            </section>
+                <div>
+                    <button
+                        type="button"
+                        disabled={answerIndex === -1 ? true : false}
+                        onClick={onNextQuestion}
+                    >{!repeating && partIndex === quiz.length - 1 ? "Quiz beenden" : "Weiter"}</button>
+                </div>
+            </div>
         )
     }
 
-    useEffect(() => {
-        shuffleArray(quiz)
-        quiz.forEach((part: QuizPart) => {
-            shuffleArray(part.answers)
-        })
-        setShuffledQuiz(quiz)
-    }, [])
+    function renderResults() {
+        const totalQuestions: number = quiz.length
+        const totalWrongAnswers: number = wronglyAnsweredQuestions.length
 
-    return (
-        <div>
-            <h2>{title}</h2>
-            {shuffledQuiz && renderQuestions()}
+        const textAllAnswersCorrect = (
             <div>
-                {shuffledQuiz && button}
+                <p>Du hast alle Fragen im ersten Versuch richtig beantwortet. Fantastisch!</p>
+                <Link to={path}><button>Zurück zur Lektion</button></Link>
             </div>
+        )
+
+        const textBeforeRepeating = (
+            <div>
+                <p>Du hast {totalQuestions - totalWrongAnswers} von {totalQuestions} richtig beantwortet.</p>
+                <p>Jetzt wiederholen wir die Fragen, die du noch nicht richtig beantwortet hast.</p>
+                <div>
+                    <button type="button" onClick={handleRepeatQuestions}>Zu den Fragen</button>
+                </div>
+            </div>
+        )
+
+        return totalWrongAnswers === 0 ? textAllAnswersCorrect : textBeforeRepeating
+    }
+
+    const closingText = (
+        <div>
+            <p>Gut gemacht!</p>
+            <Link to={path}><button>Zurück zur Lektion</button></Link>
         </div>
     )
+
+    function renderQuizPage() {
+        if (!shuffledQuiz) return
+        if (shuffledQuiz.length === 0) {
+            return closingText
+        } else if (repeating) {
+            return renderQuestions()
+        } else if (!repeating && partIndex === quiz.length) {
+            return renderResults()
+        } else {
+            return renderQuestions()
+        }
+    }
+
+    useEffect(() => {
+        const newArray: QuizPart[] = [...quiz]
+        shuffleArray(newArray)
+        newArray.forEach((part: QuizPart, index: number) => {
+            shuffleArray(part.answers)
+            part.numberOfQuestion = index + 1
+        })
+        setShuffledQuiz(newArray)
+    }, [])
+
+    console.log("length of false questions: ", wronglyAnsweredQuestions.length, ", partIndex: ", partIndex, ", answerIndex: ", answerIndex)
+
+    return renderQuizPage()
 }

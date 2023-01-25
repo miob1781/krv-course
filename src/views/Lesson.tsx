@@ -1,14 +1,14 @@
 import { CSSProperties, PropsWithChildren, ReactElement, useState } from "react";
 import "../style/Lesson.css"
 
-interface propsType {
+interface Props {
     title: string,
     pages: string,
     quiz: ReactElement,
     style?: CSSProperties
 }
 
-export default function Lesson({ children, title, pages, quiz, style }: PropsWithChildren<propsType>) {
+export default function Lesson({ children, title, pages, quiz, style }: PropsWithChildren<Props>) {
     const [quizOn, setQuizOn] = useState(false)
 
     const lesson = (

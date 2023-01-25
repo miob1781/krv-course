@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
-interface propsType {
+interface Props {
     children: ReactNode,
     title: string
 }
 
-export default function Lesson({ children, title }: propsType) {
+export default function Lesson({ children, title }: Props) {
     return (
         <>
             <header>

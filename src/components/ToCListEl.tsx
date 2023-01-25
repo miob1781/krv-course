@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import "../style/ToCListEl.css"
 
-interface propsType {
+interface Props {
     children?: ReactNode,
     path: string,
     sectionTitle: string,
@@ -13,7 +13,7 @@ interface propsType {
     description?: string
 }
 
-export default function ToCListEl({children, path, sectionTitle, numberOfSection, description}: propsType) {
+export default function ToCListEl({children, path, sectionTitle, numberOfSection, description}: Props) {
     const [expand, setExpand] = useState(false)
 
     const iconStyle = { cursor: "pointer" }
