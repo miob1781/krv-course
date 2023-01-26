@@ -1,8 +1,9 @@
 import Lesson from "../../views/Lesson";
 import LessonListEl from "../LessonListEl";
 import Quiz_1_1 from "../quizzes/Quiz-1-1";
+import { SectionProps } from "../../types";
 
-export default function Section_1_1() {
+export default function Section_1_1({sectionData}: SectionProps) {
     return (
         <Lesson
             title="Einleitung"

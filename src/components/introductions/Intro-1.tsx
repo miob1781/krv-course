@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import Introduction from "../../views/Introduction";
+import { SectionProps } from "../../types";
 
-export default function Intro_1() {
+export default function Intro_1({sectionData}: SectionProps) {
     return (
         <Introduction title="Einleitung">
             <p>In der Einleitung stellt Kant das Projekt einer „Kritik der reinen Vernunft“ vor, welches dem Buch den Namen gegeben hat. Er sieht es als ein Manko an, dass vor ihm Philosophen das Vernunftvermögen angewandt haben, ohne zunächst dessen Möglichkeiten und Grenzen zu bestimmen. Das ist für Kant der Grund, warum alle philosophischen Systeme bis dahin scheiterten. Daher will er mit seinem Buch zunächst die Vernunft selbst beurteilen, um dadurch den Grundstein für ein dauerhaftes System der reinen Vernunft zu legen.</p>

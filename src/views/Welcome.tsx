@@ -1,34 +1,20 @@
-import { sectionData } from "../consts/section-data"
-import ToCListEl from "../components/ToCListEl"
+import ToCSection from "../components/ToCSection"
 import "../style/Welcome.css"
 import { ReactElement } from "react"
 import { SectionData } from "../types"
 
-export default function Welcome() {
-    function renderToCEntries(): ReactElement[] {
-        return sectionData.map((section: SectionData, index: number) => {
-            return (
-                <ToCListEl
-                    key={section.path}
-                    path={section.path}
-                    sectionTitle={section.title}
-                    description={section.description}
-                    numberOfSection={index + 1}
-                >{section.subSections && renderToCSubEntries(section.subSections)}</ToCListEl>
-            )
-        })
-    }
+interface Props {
+    allSectionData: SectionData[]
+}
 
-    function renderToCSubEntries(data: SectionData[]): ReactElement[] {
-        return data.map((section: SectionData) => {
-            return (
-                <ToCListEl
-                    key={section.path}
-                    path={section.path}
-                    sectionTitle={section.title}
-                />
-            )
-        })
+export default function Welcome({allSectionData}: Props) {
+    function renderToCEntries(): ReactElement[] {
+        return allSectionData.map((section: SectionData, index: number) => (
+            <ToCSection
+                section={section}
+                index={index}
+            />
+        ))
     }
 
     return (

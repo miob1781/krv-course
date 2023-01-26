@@ -1,23 +1,47 @@
+import { lazy, ReactElement, Suspense } from "react"
 import { Routes, Route } from "react-router-dom"
 import NavBar from './components/NavBar'
+import { sectionsData } from "./consts/sections-data"
 import './style/App.css'
 import Account from "./views/Account"
 import Welcome from "./views/Welcome"
-import Intro_1 from "./components/introductions/Intro-1"
-import Section_1_1 from "./components/sections/Section-1-1"
+import { SectionData } from "./types"
 
-function App() {
+const routes: ReactElement[] = []
+
+function getRoute(sectionData: SectionData): ReactElement {
+    const Component = lazy(() => import(sectionData.fsPath))
     return (
-        <div className="App">
-            <NavBar />
-            <Routes>
-                <Route path="/" element={<Welcome />} />
-                <Route path="/account" element={<Account />} />
-                <Route path="/section-1" element={<Intro_1 />} />
-                <Route path="/section-1-1" element={<Section_1_1 />} />
-            </Routes>
-        </div>
+        <Route
+            key={sectionData.path}
+            path={sectionData.path}
+            element={<Component sectionData={sectionData} />}
+        />
     )
 }
 
-export default App
+sectionsData.forEach((sectionData: SectionData) => {
+    const route: ReactElement = getRoute(sectionData)
+    routes.push(route)
+    if (sectionData.subSections) {
+        sectionData.subSections.forEach((subSectionData: SectionData) => {
+            const route: ReactElement = getRoute(subSectionData)
+            routes.push(route)
+        })
+    }
+})
+
+export default function App() {
+    return (
+        <div className="App">
+            <NavBar />
+            <Suspense fallback={<p>Loading...</p>}>
+                <Routes>
+                    <Route path="/" element={<Welcome allSectionData={sectionsData} />} />
+                    <Route path="/account" element={<Account />} />
+                    {routes}
+                </Routes>
+            </Suspense>
+        </div>
+    )
+}

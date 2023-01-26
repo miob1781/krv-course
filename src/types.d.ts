@@ -3,8 +3,13 @@ import { ReactHTMLElement } from "react"
 export interface SectionData {
     title: string,
     path: string,
+    fsPath: string,
     description?: string,
     subSections?: SectionData[]
+}
+
+export interface SectionProps {
+    sectionData: SectionData
 }
 
 export interface Answer {
