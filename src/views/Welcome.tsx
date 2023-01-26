@@ -1,18 +1,20 @@
 import ToCSection from "../components/ToCSection"
-import "../style/Welcome.css"
 import { ReactElement } from "react"
 import { SectionData } from "../types"
+import "../style/Welcome.css"
 
 interface Props {
-    allSectionData: SectionData[]
+    sectionsData: SectionData[]
 }
 
-export default function Welcome({allSectionData}: Props) {
+export default function Welcome({ sectionsData }: Props) {
     function renderToCEntries(): ReactElement[] {
-        return allSectionData.map((section: SectionData, index: number) => (
+        return sectionsData.map((sectionData: SectionData, index: number) => (
             <ToCSection
-                section={section}
-                index={index}
+                key={sectionData.path}
+                sectionData={sectionData}
+                numberOfSection={index + 1}
+                includeDescription={true}
             />
         ))
     }

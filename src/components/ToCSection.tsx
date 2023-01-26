@@ -1,30 +1,47 @@
-import { ReactElement } from "react"
+import { ReactElement, useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { SectionData } from "../types"
 import ToCListEl from "./ToCListEl"
+import "../style/ToCListEl.css"
 
 interface Props {
-    section: SectionData,
-    index: number
+    sectionData: SectionData
+    numberOfSection?: number
+    includeDescription: boolean
 }
 
-export default function ToCSection({ section, index }: Props) {
+export default function ToCSection({ sectionData, numberOfSection, includeDescription }: Props) {
+    const [expand, setExpand] = useState(includeDescription ? false : true)
+
+    const iconStyle = { cursor: "pointer" }
+
+    const icon: ReactElement = expand
+        ? <FontAwesomeIcon icon={faAngleUp} style={iconStyle} title="Details verbergen" onClick={() => setExpand(false)} />
+        : <FontAwesomeIcon icon={faAngleDown} style={iconStyle} title="Details zeigen" onClick={() => setExpand(true)} />
+
+
     function renderToCSubEntries(data: SectionData[]): ReactElement[] {
-        return data.map((section: SectionData) => (
+        return data.map((subSectionData: SectionData) => (
             <ToCListEl
-                key={section.path}
-                path={section.path}
-                sectionTitle={section.title}
+                key={subSectionData.path}
+                sectionData={subSectionData}
             />
         ))
     }
 
     return (
-        <ToCListEl
-            key={section.path}
-            path={section.path}
-            sectionTitle={section.title}
-            description={section.description}
-            numberOfSection={index + 1}
-        >{section.subSections && renderToCSubEntries(section.subSections)}</ToCListEl>
+        <div className="ToCListCont">
+            {includeDescription && icon}
+            {includeDescription && <ToCListEl
+                key={sectionData.path}
+                sectionData={sectionData}
+                numberOfSection={numberOfSection}
+            />}
+            <p style={{ marginLeft: "33px" }}>{includeDescription && expand && sectionData.description}</p>
+            <div style={{ marginLeft: "60px" }}>
+                {expand && renderToCSubEntries(sectionData.subSections!)}
+            </div>
+        </div>
     )
 }

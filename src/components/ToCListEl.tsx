@@ -1,36 +1,21 @@
-import { ReactElement, useState } from "react"
 import { ReactNode } from "react"
 import { Link } from "react-router-dom"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { SectionData } from "../types"
 import "../style/ToCListEl.css"
 
 interface Props {
-    children?: ReactNode,
-    path: string,
-    sectionTitle: string,
-    numberOfSection?: number,
-    description?: string
+    children?: ReactNode
+    sectionData: SectionData
+    numberOfSection?: number
 }
 
-export default function ToCListEl({children, path, sectionTitle, numberOfSection, description}: Props) {
-    const [expand, setExpand] = useState(false)
-
-    const iconStyle = { cursor: "pointer" }
-
-    const icon: ReactElement = expand
-        ? <FontAwesomeIcon icon={faAngleUp} style={iconStyle} title="Details verbergen" onClick={() => setExpand(false)} />
-        : <FontAwesomeIcon icon={faAngleDown} style={iconStyle} title="Details zeigen" onClick={() => setExpand(true)} />
-
+export default function ToCListEl({ sectionData, numberOfSection }: Props) {
+    const { path, title, pageNumbers } = sectionData
 
     return (
         <div className="ToCListCont">
-            <div>
-                {description && icon}
-                <Link to={path} className="ToCTitle">{numberOfSection && `${numberOfSection}. `}{sectionTitle}</Link>
-            </div>
-            <p style={{marginLeft: "33px"}}>{expand && description}</p>
-            <div style={{marginLeft: "60px"}}>{expand && children}</div>
+            <Link to={path} className="ToCTitle">{numberOfSection && `${numberOfSection}. `}{title}</Link>
+            <span className="page-numbers">{pageNumbers}</span>
         </div>
     )
 }

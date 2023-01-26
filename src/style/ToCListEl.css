@@ -5,3 +5,8 @@
 .ToCTitle {
     margin-left: 20px;
 }
+
+.page-numbers {
+    margin-left: 30px;
+    font-style: italic;
+}

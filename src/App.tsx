@@ -7,10 +7,11 @@ import Account from "./views/Account"
 import Welcome from "./views/Welcome"
 import { SectionData } from "./types"
 
-const routes: ReactElement[] = []
+// create the array of section routes outside of the App component
+const sectionRoutes: ReactElement[] = []
 
 function getRoute(sectionData: SectionData): ReactElement {
-    const Component = lazy(() => import(sectionData.fsPath))
+    const Component = lazy(() => import(/* @vite-ignore */ sectionData.fsPath))
     return (
         <Route
             key={sectionData.path}
@@ -22,24 +23,23 @@ function getRoute(sectionData: SectionData): ReactElement {
 
 sectionsData.forEach((sectionData: SectionData) => {
     const route: ReactElement = getRoute(sectionData)
-    routes.push(route)
-    if (sectionData.subSections) {
-        sectionData.subSections.forEach((subSectionData: SectionData) => {
-            const route: ReactElement = getRoute(subSectionData)
-            routes.push(route)
-        })
-    }
+    sectionRoutes.push(route)
+    sectionData.subSections!.forEach((subSectionData: SectionData) => {
+        const subRoute: ReactElement = getRoute(subSectionData)
+        sectionRoutes.push(subRoute)
+    })
 })
 
 export default function App() {
     return (
         <div className="App">
             <NavBar />
+            {/* TO DO: create loading screen with Kant making mustard picture and synthesis joke */}
             <Suspense fallback={<p>Loading...</p>}>
                 <Routes>
-                    <Route path="/" element={<Welcome allSectionData={sectionsData} />} />
+                    <Route path="/" element={<Welcome sectionsData={sectionsData} />} />
                     <Route path="/account" element={<Account />} />
-                    {routes}
+                    {sectionRoutes}
                 </Routes>
             </Suspense>
         </div>

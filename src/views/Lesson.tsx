@@ -2,9 +2,9 @@ import { CSSProperties, PropsWithChildren, ReactElement, useState } from "react"
 import "../style/Lesson.css"
 
 interface Props {
-    title: string,
-    pages: string,
-    quiz: ReactElement,
+    title: string
+    pages: string
+    quiz: ReactElement
     style?: CSSProperties
 }
 
