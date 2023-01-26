@@ -29,6 +29,7 @@ export default function Quiz({ title, quiz, path }: Props) {
     const [repeating, setRepeating] = useState(false)
 
     function onSelectAnswer(part: QuizPart, correct: boolean, index: number) {
+        if (answerIndex > -1) return
         setAnswerIndex(index)
         if (!correct) {
             setWronglyAnsweredQuestions((prev: QuizPart[]) => [...prev, part])
@@ -63,10 +64,13 @@ export default function Quiz({ title, quiz, path }: Props) {
                 {part.answers.map((answer: Answer, index: number) => {
                     const icon: ReactElement = answerIndex === index
                         ? <FontAwesomeIcon icon={answer.correct ? faCircleCheck : faCircleXmark} />
-                        : <div />
+                        : <span />
                     return (
-                        <div>
-                            <p onClick={() => onSelectAnswer(part, answer.correct, index)}>{answer.suggestion} {icon}</p>
+                        <div key={"key-" + index}>
+                            <p
+                                style={{ cursor: answerIndex === -1 ? "pointer" : "inherit" }}
+                                onClick={() => onSelectAnswer(part, answer.correct, index)}
+                            >{answer.suggestion} {icon}</p>
                             <p style={{ display: answerIndex === index ? "block" : "none" }}>{answer.solution}</p>
                         </div>
                     )
@@ -85,14 +89,12 @@ export default function Quiz({ title, quiz, path }: Props) {
     function renderResults() {
         const totalQuestions: number = quiz.length
         const totalWrongAnswers: number = wronglyAnsweredQuestions.length
-
         const textAllAnswersCorrect = (
             <div>
                 <p>Du hast alle Fragen im ersten Versuch richtig beantwortet. Fantastisch!</p>
                 <Link to={path}><button>Zurück zur Lektion</button></Link>
             </div>
         )
-
         const textBeforeRepeating = (
             <div>
                 <p>Du hast {totalQuestions - totalWrongAnswers} von {totalQuestions} richtig beantwortet.</p>
@@ -102,7 +104,6 @@ export default function Quiz({ title, quiz, path }: Props) {
                 </div>
             </div>
         )
-
         return totalWrongAnswers === 0 ? textAllAnswersCorrect : textBeforeRepeating
     }
 
@@ -135,8 +136,6 @@ export default function Quiz({ title, quiz, path }: Props) {
         })
         setShuffledQuiz(newArray)
     }, [])
-
-    console.log("length of false questions: ", wronglyAnsweredQuestions.length, ", partIndex: ", partIndex, ", answerIndex: ", answerIndex)
 
     return renderQuizPage()
 }
