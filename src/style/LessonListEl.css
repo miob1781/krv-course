@@ -17,5 +17,13 @@
     background-color: beige;
 }
 
-lesson-list-text {
+.lesson-list-text {
+}
+
+.note-cont {
+    min-width: 200px;
+}
+
+.note {
+    cursor: pointer;
 }

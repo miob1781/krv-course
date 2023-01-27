@@ -4,7 +4,6 @@ import { SectionData } from "../types"
 import "../style/ToCListEl.css"
 
 interface Props {
-    children?: ReactNode
     sectionData: SectionData
     numberOfSection?: number
 }

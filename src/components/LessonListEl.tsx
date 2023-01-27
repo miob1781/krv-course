@@ -1,4 +1,5 @@
-import { PropsWithChildren, ReactElement, ReactNode, useState } from "react";
+import { PropsWithChildren } from "react"
+import Note from "./Note"
 import "../style/LessonListEl.css"
 
 interface Props {
@@ -8,7 +9,6 @@ interface Props {
 
 export default function ListEl({ children, pageNumber, isQuestion = false }: PropsWithChildren<Props>) {
     const textContainerClass: string = isQuestion ? "lesson-list-text-cont lesson-question" : "lesson-list-text-cont"
-
     return (
         <li className="lesson-list-el">
             <div className="page-number-cont">
@@ -17,6 +17,7 @@ export default function ListEl({ children, pageNumber, isQuestion = false }: Pro
             <div className={textContainerClass}>
                 <span className="lesson-list-text">{children}</span>
             </div>
+            <Note />
         </li>
     )
 }
