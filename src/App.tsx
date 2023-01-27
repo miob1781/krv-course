@@ -6,6 +6,7 @@ import './style/App.css'
 import Account from "./views/Account"
 import Welcome from "./views/Welcome"
 import { SectionData } from "./types"
+import ToC from "./components/ToC"
 
 // create the array of section routes outside of the App component
 const sectionRoutes: ReactElement[] = []
@@ -34,14 +35,17 @@ export default function App() {
     return (
         <div className="App">
             <NavBar />
-            {/* TO DO: create loading screen with Kant making mustard picture and synthesis joke */}
-            <Suspense fallback={<p>Loading...</p>}>
-                <Routes>
-                    <Route path="/" element={<Welcome sectionsData={sectionsData} />} />
-                    <Route path="/account" element={<Account />} />
-                    {sectionRoutes}
-                </Routes>
-            </Suspense>
+            <div className="outer-cont">
+                <ToC className="sidebar" sectionsData={sectionsData} tocType="sidebar" />
+                {/* TO DO: create loading screen with Kant making mustard picture and synthesis joke */}
+                <Suspense fallback={<p>Loading...</p>}>
+                    <Routes>
+                        <Route path="/" element={<Welcome sectionsData={sectionsData} />} />
+                        <Route path="/account" element={<Account />} />
+                        {sectionRoutes}
+                    </Routes>
+                </Suspense>
+            </div>
         </div>
     )
 }

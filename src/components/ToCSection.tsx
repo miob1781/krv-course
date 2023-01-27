@@ -8,11 +8,11 @@ import "../style/ToCListEl.css"
 interface Props {
     sectionData: SectionData
     numberOfSection?: number
-    includeDescription: boolean
+    tocType: string
 }
 
-export default function ToCSection({ sectionData, numberOfSection, includeDescription }: Props) {
-    const [expand, setExpand] = useState(includeDescription ? false : true)
+export default function ToCSection({ sectionData, numberOfSection, tocType }: Props) {
+    const [expand, setExpand] = useState(tocType === "intro" ? true : false)
 
     const iconStyle = { cursor: "pointer" }
 
@@ -26,19 +26,21 @@ export default function ToCSection({ sectionData, numberOfSection, includeDescri
             <ToCListEl
                 key={subSectionData.path}
                 sectionData={subSectionData}
+                tocType={tocType}
             />
         ))
     }
 
     return (
         <div className="ToCListCont">
-            {includeDescription && icon}
-            {includeDescription && <ToCListEl
+            {tocType !== "intro" && icon}
+            {tocType !== "intro" && <ToCListEl
                 key={sectionData.path}
                 sectionData={sectionData}
                 numberOfSection={numberOfSection}
+                tocType={tocType}
             />}
-            <p style={{ marginLeft: "33px" }}>{includeDescription && expand && sectionData.description}</p>
+            <p style={{ marginLeft: "33px" }}>{tocType === "welcome" && expand && sectionData.description}</p>
             <div style={{ marginLeft: "60px" }}>
                 {expand && renderToCSubEntries(sectionData.subSections!)}
             </div>

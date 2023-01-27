@@ -6,15 +6,16 @@ import "../style/ToCListEl.css"
 interface Props {
     sectionData: SectionData
     numberOfSection?: number
+    tocType: string
 }
 
-export default function ToCListEl({ sectionData, numberOfSection }: Props) {
+export default function ToCListEl({ sectionData, numberOfSection, tocType }: Props) {
     const { path, title, pageNumbers } = sectionData
 
     return (
         <div className="ToCListCont">
             <Link to={path} className="ToCTitle">{numberOfSection && `${numberOfSection}. `}{title}</Link>
-            <span className="page-numbers">{pageNumbers}</span>
+            {tocType !== "sidebar" && <span className="page-numbers">{pageNumbers}</span>}
         </div>
     )
 }

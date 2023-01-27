@@ -1,5 +1,4 @@
-import ToCSection from "../components/ToCSection"
-import { ReactElement } from "react"
+import ToC from "../components/ToC"
 import { SectionData } from "../types"
 import "../style/Welcome.css"
 
@@ -8,25 +7,12 @@ interface Props {
 }
 
 export default function Welcome({ sectionsData }: Props) {
-    function renderToCEntries(): ReactElement[] {
-        return sectionsData.map((sectionData: SectionData, index: number) => (
-            <ToCSection
-                key={sectionData.path}
-                sectionData={sectionData}
-                numberOfSection={index + 1}
-                includeDescription={true}
-            />
-        ))
-    }
-
     return (
-        <div>
+        <div className="Welcome">
             <h1>Lies die <em>Kritik der reinen Vernunft</em>!</h1>
             <p>Studiere Immanuel Kants berühmtestes Werk in deiner eigenen Geschwindigkeit.</p>
             <h2>Inhalt</h2>
-            <div className="ToC">
-                {renderToCEntries()}
-            </div>
+            <ToC className="ToC" sectionsData={sectionsData} tocType="welcome" />
         </div>
     )
 }

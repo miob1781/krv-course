@@ -10,7 +10,7 @@ interface Props {
 
 export default function Introduction({ children, sectionData }: Props) {
     return (
-        <>
+        <div>
             <header>
                 <h2>{sectionData.title}</h2>
             </header>
@@ -18,9 +18,9 @@ export default function Introduction({ children, sectionData }: Props) {
                 <div>{children}</div>
                 <h3>Lektionen</h3>
                 <div className="ToC">
-                    <ToCSection sectionData={sectionData} includeDescription={false} />
+                    <ToCSection sectionData={sectionData} includeDescription={false} tocType="intro" />
                 </div>
             </main>
-        </>
+        </div>
     )
 }
