@@ -22,6 +22,7 @@
 
 .note-cont {
     min-width: 200px;
+    overflow: scroll;
 }
 
 .note {
