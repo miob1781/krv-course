@@ -3,12 +3,12 @@ import Note from "./Note"
 import "../style/LessonListEl.css"
 
 interface Props {
-    pageNumber?: string,
+    paragraphId: string
+    pageNumber?: string
     isQuestion?: boolean
-    paragraphIndex: number
 }
 
-export default function ListEl({ children, pageNumber, isQuestion = false, paragraphIndex }: PropsWithChildren<Props>) {
+export default function ListEl({ children, paragraphId, pageNumber, isQuestion = false }: PropsWithChildren<Props>) {
     const textContainerClass: string = isQuestion ? "lesson-list-text-cont lesson-question" : "lesson-list-text-cont"
     return (
         <li className="lesson-list-el">
@@ -18,7 +18,7 @@ export default function ListEl({ children, pageNumber, isQuestion = false, parag
             <div className={textContainerClass}>
                 <span className="lesson-list-text">{children}</span>
             </div>
-            <Note paragraphIndex={paragraphIndex} />
+            <Note paragraphId={paragraphId} />
         </li>
     )
 }

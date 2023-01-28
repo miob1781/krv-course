@@ -1,18 +1,20 @@
-import { CSSProperties, useEffect, useMemo, useState } from "react";
+import { CSSProperties, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 import NoteForm from "./NoteForm";
 
 interface Props {
-    paragraphIndex: number
+    paragraphId: string
 }
 
 const snippetLength: number = 10
 
-export default function Note({ paragraphIndex }: Props) {
+export default function Note({ paragraphId }: Props) {
     const [note, setNote] = useState("")
     const [displaySnippet, setDisplaySnippet] = useState(false)
     const [noteInputOpened, setNoteInputOpened] = useState(false)
+
+    // TO DO: Use context and paragraphId to get notes from DB.
 
     const plusIconStyle: CSSProperties = {
         marginLeft: "70px",
@@ -22,8 +24,6 @@ export default function Note({ paragraphIndex }: Props) {
     }
 
     const editIconStyle: CSSProperties = {
-        // marginRight: "20px",
-        // marginBottom: "20px",
         color: "purple",
         cursor: "pointer",
     }
@@ -94,10 +94,6 @@ export default function Note({ paragraphIndex }: Props) {
             />
         )
     }
-
-    useEffect(() => {
-        // TO DO: Load notes from DB after the initial render
-    }, [])
 
     return (
         <div className="note-cont">
