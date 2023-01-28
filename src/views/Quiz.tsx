@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react"
+import { ReactElement, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
@@ -62,11 +62,12 @@ export default function Quiz({ title, quiz, path }: Props) {
                 <h3>{part.numberOfQuestion}. Frage</h3>
                 <p>{part.question}</p>
                 {part.answers.map((answer: Answer, index: number) => {
-                    const icon: ReactElement = answerIndex === index
+                    const icon: ReactElement | null = answerIndex === index
                         ? <FontAwesomeIcon icon={answer.correct ? faCircleCheck : faCircleXmark} />
-                        : <span />
+                        : null
                     return (
-                        <div key={"key-" + index}>
+                        // The quiz, once shuffled, does not change, so I can use the index for the key here.
+                        <div key={index}> 
                             <p
                                 style={{ cursor: answerIndex === -1 ? "pointer" : "inherit" }}
                                 onClick={() => onSelectAnswer(part, answer.correct, index)}
@@ -127,7 +128,7 @@ export default function Quiz({ title, quiz, path }: Props) {
         }
     }
 
-    useEffect(() => {
+   function getShuffledQuiz(): void {
         const newArray: QuizPart[] = [...quiz]
         shuffleArray(newArray)
         newArray.forEach((part: QuizPart, index: number) => {
@@ -135,7 +136,9 @@ export default function Quiz({ title, quiz, path }: Props) {
             part.numberOfQuestion = index + 1
         })
         setShuffledQuiz(newArray)
-    }, [])
+    }
+
+    shuffledQuiz || getShuffledQuiz()
 
     return renderQuizPage()
 }
