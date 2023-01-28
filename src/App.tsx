@@ -1,35 +1,8 @@
-import { lazy, ReactElement, Suspense } from "react"
-import { Routes, Route } from "react-router-dom"
 import NavBar from './components/NavBar'
 import { sectionsData } from "./consts/sections-data"
 import './style/App.css'
-import Account from "./views/Account"
-import Welcome from "./views/Welcome"
-import { SectionData } from "./types"
 import ToC from "./components/ToC"
-
-// create the array of section routes outside of the App component
-const sectionRoutes: ReactElement[] = []
-
-function getRoute(sectionData: SectionData): ReactElement {
-    const Component = lazy(() => import(/* @vite-ignore */ sectionData.fsPath))
-    return (
-        <Route
-            key={sectionData.path}
-            path={sectionData.path}
-            element={<Component sectionData={sectionData} />}
-        />
-    )
-}
-
-sectionsData.forEach((sectionData: SectionData) => {
-    const route: ReactElement = getRoute(sectionData)
-    sectionRoutes.push(route)
-    sectionData.subSections!.forEach((subSectionData: SectionData) => {
-        const subRoute: ReactElement = getRoute(subSectionData)
-        sectionRoutes.push(subRoute)
-    })
-})
+import RouterContainer from './components/RouterContainer'
 
 export default function App() {
     return (
@@ -37,14 +10,7 @@ export default function App() {
             <NavBar />
             <div className="outer-cont">
                 <ToC className="sidebar" sectionsData={sectionsData} tocType="sidebar" />
-                {/* TO DO: create loading screen with Kant making mustard picture and synthesis joke */}
-                <Suspense fallback={<p>Loading...</p>}>
-                    <Routes>
-                        <Route path="/" element={<Welcome sectionsData={sectionsData} />} />
-                        <Route path="/account" element={<Account />} />
-                        {sectionRoutes}
-                    </Routes>
-                </Suspense>
+                <RouterContainer sectionsData={sectionsData} />
             </div>
         </div>
     )
