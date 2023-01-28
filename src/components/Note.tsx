@@ -1,6 +1,7 @@
-import { ChangeEvent, CSSProperties, FormEvent, useEffect, useState } from "react";
+import { CSSProperties, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus, faEdit } from '@fortawesome/free-solid-svg-icons'
+import NoteForm from "./NoteForm";
 
 interface Props {
     paragraphIndex: number
@@ -10,8 +11,7 @@ const snippetLength: number = 10
 
 export default function Note({ paragraphIndex }: Props) {
     const [note, setNote] = useState("")
-    const [noteInput, setNoteInput] = useState("")
-    const [snippet, setSnippet] = useState("")
+    const [displaySnippet, setDisplaySnippet] = useState(false)
     const [noteInputOpened, setNoteInputOpened] = useState(false)
 
     const plusIconStyle: CSSProperties = {
@@ -48,29 +48,33 @@ export default function Note({ paragraphIndex }: Props) {
         />
     )
 
+    const snippet: string = useMemo(() => {
+        const separatorRegex: RegExp = / |,|\.|;|:|\?|!/
+        const splittedNote: string[] = note.split(" ")
+        if (splittedNote.length < snippetLength) {
+            setDisplaySnippet(false)
+            return ""
+        } else {
+            const beginning: string = splittedNote.slice(0, snippetLength).join(" ")
+            const shouldDelete: boolean = separatorRegex.test(beginning[beginning.length - 1])
+            const snippet: string = shouldDelete
+                ? beginning.slice(0, beginning.length - 1) + "..."
+                : beginning + "..."
+            setDisplaySnippet(true)
+            return snippet
+        }
+    }, [note])
+
     const noteP: JSX.Element = <p className="note" onClick={handleOpenTextArea}>{note}</p>
 
     function handleOpenTextArea() {
         setNoteInputOpened(true)
     }
 
-    function handleTextAreaChange(e: ChangeEvent) {
-        const target = e.target as HTMLTextAreaElement
-        setNoteInput(target.value)
-    }
-
-    function handleSubmit(e: FormEvent) {
-        e.preventDefault()
-        // TO DO: axios.post()
-        setNote(noteInput)
-        setNoteInputOpened(false)
-        // getSnippet(noteInput)
-    }
-
     function renderNoteContainerContent() {
         if (!noteInputOpened) {
-            if (snippet) {
-                return <p>{snippet} <em onClick={() => setSnippet("")}>Mehr</em></p>
+            if (displaySnippet) {
+                return <p>{snippet} <em onClick={() => setDisplaySnippet(false)}>Mehr</em></p>
             }
             if (note) {
                 return (
@@ -83,32 +87,17 @@ export default function Note({ paragraphIndex }: Props) {
             return plusIcon
         }
         return (
-            <form onSubmit={(e: FormEvent) => handleSubmit(e)}>
-                <textarea
-                    name="note"
-                    defaultValue={note}
-                    onChange={(e: ChangeEvent) => handleTextAreaChange(e)}
-                />
-                <button type="button" onClick={() => setNoteInputOpened(false)}>Schließen</button>
-                <button type="submit">Senden</button>
-            </form>
+            <NoteForm
+                note={note}
+                setNote={setNote}
+                setNoteInputOpened={setNoteInputOpened}
+            />
         )
     }
 
     useEffect(() => {
-        const separatorRegex: RegExp = / |,|\.|;|:|\?|!/
-        const splittedNote: string[] = note.split(" ")
-        if (splittedNote.length < snippetLength) {
-            setSnippet("")
-        } else {
-            const beginning: string = splittedNote.slice(0, snippetLength).join(" ")
-            const shouldDelete: boolean = separatorRegex.test(beginning[beginning.length - 1])
-            const snippet: string = shouldDelete
-                ? beginning.slice(0, beginning.length - 1) + "..."
-                : beginning + "..."
-            setSnippet(snippet)
-        }
-    }, [note])
+        // TO DO: Load notes from DB after the initial render
+    }, [])
 
     return (
         <div className="note-cont">
