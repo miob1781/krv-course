@@ -1,8 +1,8 @@
 import { lazy, ReactElement, Suspense, useState } from "react"
 import { Routes, Route } from "react-router-dom"
-import Account from "../views/Account"
-import Welcome from "../views/Welcome"
-import { SectionData } from "../types"
+import Account from "../../views/Account"
+import Welcome from "../../views/Welcome"
+import { SectionData } from "../../types"
 
 interface Props {
     sectionsData: SectionData[]

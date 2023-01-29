@@ -1,30 +1,26 @@
 .lesson-list-el {
     display: flex;
     justify-content: left;
-    padding: 15px;
+    margin-bottom: 30px;
 }
 
 .page-number-cont {
-    min-width: 120px;
+    width: 120px;
+    margin-right: 20px;
 }
 
-.lesson-list-text-cont {
-    padding: 15px;
-    margin: -15px;
-}
-
-.lesson-list-text-cont.lesson-question {
-    background-color: beige;
+.lesson-header {
+    width: 100%;
+    max-width: 700px;
 }
 
 .lesson-list-text {
+    padding: 15px;
+    margin: -15px;
+    width: 700px;
+    text-align: justify;
 }
 
-.note-cont {
-    min-width: 200px;
-    overflow: scroll;
-}
-
-.note {
-    cursor: pointer;
+.lesson-list-text.lesson-question {
+    background-color: beige;
 }

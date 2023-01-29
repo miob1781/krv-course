@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
-import ToCSection from "../components/ToCSection";
+import ToCSection from "../components/ui/ToCSection";
 import { SectionData } from "../types";
+import "../style/Introduction.css"
 
 interface Props {
     children: ReactNode
@@ -10,7 +10,7 @@ interface Props {
 
 export default function Introduction({ children, sectionData }: Props) {
     return (
-        <div>
+        <div className="Introduction">
             <header>
                 <h2>{sectionData.title}</h2>
             </header>
@@ -18,7 +18,7 @@ export default function Introduction({ children, sectionData }: Props) {
                 <div>{children}</div>
                 <h3>Lektionen</h3>
                 <div className="ToC">
-                    <ToCSection sectionData={sectionData} includeDescription={false} tocType="intro" />
+                    <ToCSection sectionData={sectionData} tocType="intro" />
                 </div>
             </main>
         </div>

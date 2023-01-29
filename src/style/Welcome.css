@@ -1,7 +1,6 @@
 .ToC {
     margin: 0 100px;
     padding: 30px;
-    width: 600px;
+    width: 100%;
     background-color: beige;
-    list-style: none;
 }

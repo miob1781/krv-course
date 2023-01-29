@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
-import { SectionData } from "../types"
+import { SectionData } from "../../types"
 import ToCSection from "./ToCSection"
 
 interface Props {

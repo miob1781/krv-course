@@ -1,15 +1,15 @@
-import NavBar from './components/NavBar'
 import { sectionsData } from "./consts/sections-data"
+import NavBar from './components/ui/NavBar'
+import Sidebar from './components/ui/Sidebar'
+import RouterContainer from './components/ui/RouterContainer'
 import './style/App.css'
-import ToC from "./components/ToC"
-import RouterContainer from './components/RouterContainer'
 
 export default function App() {
     return (
         <div className="App">
             <NavBar />
             <div className="outer-cont">
-                <ToC className="sidebar" sectionsData={sectionsData} tocType="sidebar" />
+                <Sidebar sectionsData={sectionsData} />
                 <RouterContainer sectionsData={sectionsData} />
             </div>
         </div>

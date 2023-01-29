@@ -1,9 +1,9 @@
 import { ReactElement, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { SectionData } from "../types"
+import { SectionData } from "../../types"
 import ToCListEl from "./ToCListEl"
-import "../style/ToCListEl.css"
+import "../../style/ToCListEl.css"
 
 interface Props {
     sectionData: SectionData

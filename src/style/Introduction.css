@@ -1,0 +1,9 @@
+.Introduction {
+    max-width: 700px;
+    margin-left: 100px;
+}
+
+.Introduction p {
+    margin-bottom: 15px;
+    text-align: justify;
+}

@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import { Link } from "react-router-dom"
-import { SectionData } from "../types"
-import "../style/ToCListEl.css"
+import { SectionData } from "../../types"
+import "../../style/ToCListEl.css"
 
 interface Props {
     sectionData: SectionData

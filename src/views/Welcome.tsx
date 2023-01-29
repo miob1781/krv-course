@@ -1,4 +1,4 @@
-import ToC from "../components/ToC"
+import ToC from "../components/ui/ToC"
 import { SectionData } from "../types"
 import "../style/Welcome.css"
 

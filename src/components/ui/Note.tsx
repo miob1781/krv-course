@@ -2,9 +2,10 @@ import { CSSProperties, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 import NoteForm from "./NoteForm";
+import "../../style/Note.css"
 
 interface Props {
-    paragraphId: string
+    paragraphId?: string
 }
 
 const snippetLength: number = 10
@@ -17,21 +18,21 @@ export default function Note({ paragraphId }: Props) {
     // TO DO: Use context and paragraphId to get notes from DB.
 
     const plusIconStyle: CSSProperties = {
-        marginLeft: "70px",
-        marginTop: "30px",
+        marginLeft: "10px",
+        marginTop: "5px",
         color: "purple",
         cursor: "pointer",
     }
 
     const editIconStyle: CSSProperties = {
         color: "purple",
+        marginLeft: "0.5em",
         cursor: "pointer",
     }
 
     const plusIcon = (
         <FontAwesomeIcon
             icon={faCirclePlus}
-            size="2x"
             title="Notizen hinzufügen"
             style={plusIconStyle}
             onClick={handleOpenTextArea}
@@ -41,7 +42,6 @@ export default function Note({ paragraphId }: Props) {
     const editIcon = (
         <FontAwesomeIcon
             icon={faEdit}
-            size="2x"
             title="Notizen ändern"
             style={editIconStyle}
             onClick={handleOpenTextArea}
@@ -65,7 +65,7 @@ export default function Note({ paragraphId }: Props) {
         }
     }, [note])
 
-    const noteP: JSX.Element = <p className="note" onClick={handleOpenTextArea}>{note}</p>
+    const noteP: JSX.Element = <p className="note">{note} {editIcon}</p>
 
     function handleOpenTextArea() {
         setNoteInputOpened(true)
@@ -74,15 +74,14 @@ export default function Note({ paragraphId }: Props) {
     function renderNoteContainerContent() {
         if (!noteInputOpened) {
             if (displaySnippet) {
-                return <p>{snippet} <em onClick={() => setDisplaySnippet(false)}>Mehr</em></p>
+                return (
+                    <p className="snippet">{snippet}
+                        <span className="snippet-click-el" onClick={() => setDisplaySnippet(false)}>Mehr</span>
+                    </p>
+                )
             }
             if (note) {
-                return (
-                    <>
-                        {noteP}
-                        {editIcon}
-                    </>
-                )
+                return noteP
             }
             return plusIcon
         }
@@ -90,6 +89,7 @@ export default function Note({ paragraphId }: Props) {
             <NoteForm
                 note={note}
                 setNote={setNote}
+                setDisplaySnippet={setDisplaySnippet}
                 setNoteInputOpened={setNoteInputOpened}
             />
         )
@@ -97,7 +97,7 @@ export default function Note({ paragraphId }: Props) {
 
     return (
         <div className="note-cont">
-            {renderNoteContainerContent()}
+            {paragraphId !== "title" && renderNoteContainerContent()}
         </div>
     )
 }
