@@ -1,3 +1,6 @@
 :root {
-    
+    --primary-color: rgb(151, 3, 151);
+    --text-on-primary: whitesmoke;
+    --accent-color: rgb(231, 231, 143);
+    --main-font: Garamond, sans-serif;
 }

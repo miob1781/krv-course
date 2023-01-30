@@ -24,7 +24,7 @@ export default function NoteForm({note, setNote, setDisplaySnippet, setNoteInput
     }
 
     return (
-        <form onSubmit={(e: FormEvent) => handleSubmit(e)}>
+        <form className="NoteForm" onSubmit={(e: FormEvent) => handleSubmit(e)}>
             <textarea
                 defaultValue={note}
                 rows={5}

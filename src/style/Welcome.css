@@ -1,6 +1,9 @@
+@import "./variables.css";
+
 .ToC {
     margin: 0 100px;
     padding: 30px;
     width: 100%;
-    background-color: beige;
+    color: var(--text-on-primary);
+    background-color: var(--primary-color);
 }

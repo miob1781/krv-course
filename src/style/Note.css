@@ -1,4 +1,6 @@
-.note-cont {
+@import "./variables.css";
+
+.Note {
     max-width: 400px;
     min-width: 250px;
     height: 80%;
@@ -6,16 +8,31 @@
     text-align: left;
 }
 
-.note {
+.note-text {
     text-align: justify;
 }
 
 .snippet {
-
+    
 }
 
 .snippet-click-el {
     cursor: pointer;
     margin-left: 8px;
     font-style: italic;
+}
+
+.plus-icon {
+    margin-left: 10px;
+    margin-top: 5px;
+    color: var(--primary-color);
+    cursor: pointer;
+    box-shadow: 1.5px 1.5px 1.5px grey;
+    border-radius: 50%;
+}
+
+.edit-icon {
+    margin-left: 0.5em;
+    color: var(--primary-color);
+    cursor: pointer;
 }

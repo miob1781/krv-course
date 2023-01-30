@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 import NoteForm from "./NoteForm";
@@ -17,24 +17,11 @@ export default function Note({ paragraphId }: Props) {
 
     // TO DO: Use context and paragraphId to get notes from DB.
 
-    const plusIconStyle: CSSProperties = {
-        marginLeft: "10px",
-        marginTop: "5px",
-        color: "purple",
-        cursor: "pointer",
-    }
-
-    const editIconStyle: CSSProperties = {
-        color: "purple",
-        marginLeft: "0.5em",
-        cursor: "pointer",
-    }
-
     const plusIcon = (
         <FontAwesomeIcon
             icon={faCirclePlus}
             title="Notizen hinzufügen"
-            style={plusIconStyle}
+            className="plus-icon"
             onClick={handleOpenTextArea}
         />
     )
@@ -43,7 +30,7 @@ export default function Note({ paragraphId }: Props) {
         <FontAwesomeIcon
             icon={faEdit}
             title="Notizen ändern"
-            style={editIconStyle}
+            className="edit-icon"
             onClick={handleOpenTextArea}
         />
     )
@@ -65,8 +52,6 @@ export default function Note({ paragraphId }: Props) {
         }
     }, [note])
 
-    const noteP: JSX.Element = <p className="note">{note} {editIcon}</p>
-
     function handleOpenTextArea() {
         setNoteInputOpened(true)
     }
@@ -81,7 +66,7 @@ export default function Note({ paragraphId }: Props) {
                 )
             }
             if (note) {
-                return noteP
+                return <p className="note-text">{note} {editIcon}</p>
             }
             return plusIcon
         }
@@ -96,7 +81,7 @@ export default function Note({ paragraphId }: Props) {
     }
 
     return (
-        <div className="note-cont">
+        <div className="Note">
             {paragraphId !== "title" && renderNoteContainerContent()}
         </div>
     )
