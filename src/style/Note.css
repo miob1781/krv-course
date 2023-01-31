@@ -2,11 +2,15 @@
 
 .Note {
     grid-column: 3;
-    max-width: 400px;
-    min-width: 250px;
-    height: 80%;
-    margin-left: 30px;
+    display: flex;
+    place-items: center;
     text-align: left;
+    color: lightpink;
+}
+
+.Note:hover {
+    color: var(--primary-color);
+    transition: color 1s ease-out;
 }
 
 .note-text {
@@ -24,9 +28,7 @@
 }
 
 .plus-icon {
-    margin-left: 10px;
-    margin-top: 5px;
-    color: var(--primary-color);
+    margin-left: 40px;
     cursor: pointer;
     box-shadow: 1.5px 1.5px 1.5px grey;
     border-radius: 50%;
