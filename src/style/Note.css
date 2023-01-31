@@ -4,6 +4,7 @@
     grid-column: 3;
     display: flex;
     place-items: center;
+    max-height: 100%;
     text-align: left;
     color: lightpink;
 }
@@ -15,6 +16,7 @@
 
 .note-text {
     text-align: justify;
+    overflow: hidden;
 }
 
 .snippet {
@@ -29,6 +31,7 @@
 
 .plus-icon {
     margin-left: 40px;
+    font-size: 1.6rem;
     cursor: pointer;
     box-shadow: 1.5px 1.5px 1.5px grey;
     border-radius: 50%;

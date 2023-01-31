@@ -2,9 +2,9 @@
 
 .lesson-grid {
     display: grid;
-    grid-template-columns: 110px 5fr 1fr;
+    grid-template-columns: 110px minmax(400px, 700px) minmax(auto, 500px);
     gap: 20px 15px;
-    width: clamp(600px, 1100px, 1400px);
+    width: 100%;
 }
 
 .lesson-header {
