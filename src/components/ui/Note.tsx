@@ -5,7 +5,7 @@ import NoteForm from "./NoteForm";
 import "../../style/Note.css"
 
 interface Props {
-    paragraphId?: string
+    paragraphId: string
 }
 
 const snippetLength: number = 10
@@ -82,7 +82,7 @@ export default function Note({ paragraphId }: Props) {
 
     return (
         <div className="Note">
-            {paragraphId !== "title" && renderNoteContainerContent()}
+            {renderNoteContainerContent()}
         </div>
     )
 }

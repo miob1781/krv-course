@@ -1,32 +1,17 @@
 @import "./variables.css";
 
-.lesson-list-el {
-    display: flex;
-    justify-content: left;
-    margin-bottom: 30px;
-}
-
 .page-number-cont {
-    width: 120px;
-    margin-right: 20px;
-}
-
-.lesson-header {
-    width: 100%;
-    max-width: 700px;
+    grid-column: 1;
 }
 
 .lesson-list-text {
-    width: 700px;
-    min-width: 700px;
+    grid-column: 2;
     text-align: justify;
     margin: 0 15px;
 }
 
 .lesson-list-text.lesson-question {
     padding: 15px;
-    left: 15px;
-    right: 15px;
     background-color: var(--accent-color);
     border-radius: 7px;
     box-shadow: 5px 7px 5px gray;

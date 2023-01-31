@@ -1,0 +1,30 @@
+@import "./variables.css";
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: 110px 5fr 1fr;
+    gap: 20px 15px;
+    width: clamp(600px, 1100px, 1400px);
+}
+
+.lesson-header {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+}
+
+.lesson-end-button-cont {
+    grid-column: 2;
+    justify-self: center;
+}
+
+.lesson-end-button {
+    color: var(--text-on-primary);
+    background-color: var(--primary-color);
+    padding: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 3px solid grey;
+    box-shadow: 2px 2px 2px grey;
+    border-radius: 5px;
+}
