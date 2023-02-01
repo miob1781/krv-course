@@ -7,7 +7,7 @@ interface Props {
     setNoteInputOpened: Dispatch<SetStateAction<boolean>>
 }
 
-export default function NoteForm({note, setNote, setDisplaySnippet, setNoteInputOpened}: Props) {
+export default function NoteForm({ note, setNote, setDisplaySnippet, setNoteInputOpened }: Props) {
     const [noteInput, setNoteInput] = useState(note)
 
     function handleTextAreaChange(e: ChangeEvent) {
@@ -27,12 +27,21 @@ export default function NoteForm({note, setNote, setDisplaySnippet, setNoteInput
         <form className="NoteForm" onSubmit={(e: FormEvent) => handleSubmit(e)}>
             <textarea
                 defaultValue={note}
-                rows={5}
-                cols={30}
+                rows={8}
+                cols={40}
                 onChange={(e: ChangeEvent) => handleTextAreaChange(e)}
             />
-            <button type="button" onClick={() => setNoteInputOpened(false)}>Schließen</button>
-            <button type="submit">Senden</button>
+            <div>
+                <button
+                    type="button"
+                    title="Fenster schließen"
+                    onClick={() => setNoteInputOpened(false)}
+                >Schließen</button>
+                <button
+                    type="submit"
+                    title="Notiz absenden"
+                >Senden</button>
+            </div>
         </form>
     )
 }
