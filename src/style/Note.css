@@ -14,19 +14,16 @@
     transition: color 1s ease-out;
 }
 
+.note-text,
+.snippet {
+    color: darkslategrey;
+    font-family: var(--notes-font);
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+
 .note-text {
     text-align: justify;
-    overflow: hidden;
-}
-
-.snippet {
-    
-}
-
-.snippet-click-el {
-    cursor: pointer;
-    margin-left: 8px;
-    font-style: italic;
 }
 
 .plus-icon {
@@ -37,7 +34,7 @@
     border-radius: 50%;
 }
 
-.edit-icon {
+.edit-icon, .open-icon, .close-icon {
     margin-left: 0.5em;
     color: var(--primary-color);
     cursor: pointer;

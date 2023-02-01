@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCirclePlus, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faEdit, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import NoteForm from "./NoteForm";
 import "../../style/Note.css"
 
@@ -20,7 +20,7 @@ export default function Note({ paragraphId }: Props) {
     const plusIcon = (
         <FontAwesomeIcon
             icon={faCirclePlus}
-            title="Notizen hinzufügen"
+            title="Notiz hinzufügen"
             className="plus-icon"
             onClick={handleOpenTextArea}
         />
@@ -29,9 +29,27 @@ export default function Note({ paragraphId }: Props) {
     const editIcon = (
         <FontAwesomeIcon
             icon={faEdit}
-            title="Notizen ändern"
+            title="Notiz ändern"
             className="edit-icon"
             onClick={handleOpenTextArea}
+        />
+    )
+
+    const openIcon = (
+        <FontAwesomeIcon
+            icon={faAngleDown}
+            title="Notiz ausklappen"
+            className="open-icon"
+            onClick={() => setDisplaySnippet(false)}
+        />
+    )
+
+    const closeIcon = (
+        <FontAwesomeIcon
+            icon={faAngleUp}
+            title="Notiz minimieren"
+            className="close-icon"
+            onClick={() => setDisplaySnippet(true)}
         />
     )
 
@@ -61,12 +79,12 @@ export default function Note({ paragraphId }: Props) {
             if (displaySnippet) {
                 return (
                     <p className="snippet">{snippet}
-                        <span className="snippet-click-el" onClick={() => setDisplaySnippet(false)}>Mehr</span>
+                        {openIcon}
                     </p>
                 )
             }
             if (note) {
-                return <p className="note-text">{note} {editIcon}</p>
+                return <p className="note-text">{note} {editIcon} { snippet && closeIcon}</p>
             }
             return plusIcon
         }

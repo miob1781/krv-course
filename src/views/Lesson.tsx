@@ -19,7 +19,11 @@ export default function Lesson({ children, quiz, title, pages }: PropsWithChildr
                 </div>
                 {children}
                 <div className="lesson-end-button-cont">
-                    <button className="lesson-end-button" onClick={() => setQuizOn(true)}>Quiz</button>
+                    <button
+                        className="lesson-end-button"
+                        title="Zum Quiz"
+                        onClick={() => setQuizOn(true)}
+                    >Gehe zum Quiz, um die Lektion abzuschließen.</button>
                 </div>
             </div>
         </div>

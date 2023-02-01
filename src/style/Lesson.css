@@ -3,7 +3,8 @@
 .lesson-grid {
     display: grid;
     grid-template-columns: 110px minmax(400px, 700px) minmax(auto, 500px);
-    gap: 20px 15px;
+    column-gap: 20px;
+    row-gap: 25px;
     width: 100%;
 }
 
@@ -19,12 +20,4 @@
 }
 
 .lesson-end-button {
-    color: var(--text-on-primary);
-    background-color: var(--primary-color);
-    padding: 6px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: 3px solid grey;
-    box-shadow: 2px 2px 2px grey;
-    border-radius: 5px;
 }
