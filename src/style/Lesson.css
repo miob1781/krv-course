@@ -3,7 +3,12 @@
 .lesson-grid {
     display: grid;
     grid-template-columns: 110px minmax(400px, 700px) minmax(auto, 500px);
+<<<<<<< HEAD
     gap: 25px 20px;
+=======
+    column-gap: 20px;
+    row-gap: 25px;
+>>>>>>> 71b92a192bb22af437880794d6d962cf3b836df2
     width: 100%;
 }
 
