@@ -14,7 +14,7 @@ export default function ListEl({children, paragraphId, pageNumber, isQuestion = 
     return (
         <>
             <div className="page-number-cont">
-                <span>{pageNumber}</span>
+                <span className="page-number">{pageNumber}</span>
             </div>
             <p className={textContainerClass}>
                 {children}
