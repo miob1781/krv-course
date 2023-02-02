@@ -1,4 +1,5 @@
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from "react"
+import "../../style/NoteForm.css"
 
 interface Props {
     note: string

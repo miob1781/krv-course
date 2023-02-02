@@ -1,2 +1,4 @@
-.NoteForm {
+.NoteForm button {
+    font-weight: normal;
+    margin-right: 5px;
 }
