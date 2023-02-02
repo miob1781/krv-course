@@ -14,8 +14,11 @@ export default function ToCListEl({ sectionData, numberOfSection, tocType }: Pro
 
     return (
         <div className="ToCListCont">
-            <Link to={path} className="ToCTitle">{numberOfSection && `${numberOfSection}. `}{title}</Link>
-            {tocType !== "sidebar" && <span className="page-numbers">{pageNumbers}</span>}
+            <span>
+                {numberOfSection && `${numberOfSection}. `}
+                <Link to={path} className="ToCTitle">{title}</Link>
+                {tocType !== "sidebar" && ": " + pageNumbers}
+            </span>
         </div>
     )
 }

@@ -33,7 +33,7 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
 
     return (
         <div className="ToCListCont">
-            {tocType !== "intro" && icon}
+            {tocType === "welcome" && icon}
             {tocType !== "intro" && <ToCListEl
                 key={sectionData.path}
                 sectionData={sectionData}

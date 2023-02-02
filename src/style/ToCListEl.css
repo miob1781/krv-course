@@ -1,9 +1,12 @@
+@import "./variables.css";
+
 .ToCListCont {
     text-align: justify;
+    color: var(--text-on-primary-color);
 }
 
 .ToCTitle {
-    margin-left: 20px;
+    color: var(--text-on-primary-color);
 }
 
 .page-numbers {
