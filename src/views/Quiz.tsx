@@ -1,8 +1,9 @@
-import { ReactElement, useState } from "react"
+import { CSSProperties, ReactElement, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 import { Answer, QuizPart } from "../types"
+import "../style/Quiz.css"
 
 interface Props {
     title: string,
@@ -20,6 +21,9 @@ function shuffleArray(arr: QuizPart[] | Answer[]): QuizPart[] | Answer[] {
     }
     return arr
 }
+
+// indexes of answers
+const answerIndexes: string[] = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 export default function Quiz({ title, quiz, path }: Props) {
     const [shuffledQuiz, setShuffledQuiz] = useState<QuizPart[] | null>(null)
@@ -54,50 +58,83 @@ export default function Quiz({ title, quiz, path }: Props) {
         setPartIndex(0)
     }
 
-    function renderQuestions(): ReactElement {
+    function getButtonText(): string {
+        let buttonText: string
+        if (repeating) {
+            buttonText = "Weiter"
+        } else {
+            if (partIndex + 1 === quiz.length) {
+                buttonText = "Zur Auswertung"
+            } else {
+                buttonText = "Nächste Frage"
+            }
+        }
+        return buttonText
+    }
+
+    function getAnswerButtonStyle(index: number, correct: boolean): CSSProperties {
+        return {
+            cursor: answerIndex === -1 ? "pointer" : "inherit",
+            border: answerIndex === index ?  `${correct ? "whitesmoke" : "red"} 3.5px solid` : "",
+            borderRadius: answerIndex === index ? "10px" : "" ,
+        }
+    }
+
+    function renderQuestions(): JSX.Element {
         const part: QuizPart = shuffledQuiz![partIndex]
         return (
-            <div>
+            <div className="quiz-inner-cont">
                 <h2>{title}</h2>
                 <h3>{part.numberOfQuestion}. Frage</h3>
-                <p>{part.question}</p>
-                {part.answers.map((answer: Answer, index: number) => {
-                    const icon: ReactElement | null = answerIndex === index
-                        ? <FontAwesomeIcon icon={answer.correct ? faCircleCheck : faCircleXmark} />
-                        : null
-                    return (
-                        // The quiz, once shuffled, does not change, so I can use the index for the key here.
-                        <div key={index}> 
-                            <p
-                                style={{ cursor: answerIndex === -1 ? "pointer" : "inherit" }}
-                                onClick={() => onSelectAnswer(part, answer.correct, index)}
-                            >{answer.suggestion} {icon}</p>
-                            <p style={{ display: answerIndex === index ? "block" : "none" }}>{answer.solution}</p>
-                        </div>
-                    )
-                })}
-                <div>
+                <p className="quiz-question">{part.question}</p>
+                <div className="quiz-answers">
+                    {part.answers.map((answer: Answer, index: number) => {
+                        const icon: ReactElement | null = answerIndex === index
+                            ? <FontAwesomeIcon icon={answer.correct ? faCircleCheck : faCircleXmark} />
+                            : null
+                        return (
+                            // The quiz, once shuffled, does not change, so I can use the index for the key here.
+                            <div key={index} className="answer-outer-cont">
+                                <div className="answer-index-cont">
+                                    <span className="answer-index">{answerIndexes[index]}.</span>
+                                </div>
+                                <div className="answer-cont">
+                                    <button
+                                        className="answer"
+                                        style={getAnswerButtonStyle(index, answer.correct)}
+                                        onClick={() => onSelectAnswer(part, answer.correct, index)}
+                                    >{answer.suggestion}</button>
+                                    <div className="solution-cont" style={{ display: answerIndex === index ? "flex" : "none" }}>
+                                        <div className="quiz-icon-cont">{icon}</div>
+                                        <p>{answer.solution}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className="quiz-button-cont">
                     <button
                         type="button"
                         disabled={answerIndex === -1 ? true : false}
                         onClick={onNextQuestion}
-                    >{!repeating && partIndex === quiz.length - 1 ? "Quiz beenden" : "Weiter"}</button>
+                    >{getButtonText()}</button>
                 </div>
             </div>
         )
     }
 
-    function renderResults() {
+    function renderResults(): JSX.Element {
         const totalQuestions: number = quiz.length
         const totalWrongAnswers: number = wronglyAnsweredQuestions.length
-        const textAllAnswersCorrect = (
-            <div>
+        const textAllAnswersCorrect: JSX.Element = (
+            <div className="quiz-result">
                 <p>Du hast alle Fragen im ersten Versuch richtig beantwortet. Fantastisch!</p>
                 <Link to={path}><button>Zurück zur Lektion</button></Link>
             </div>
         )
-        const textBeforeRepeating = (
-            <div>
+        const textBeforeRepeating: JSX.Element = (
+            <div className="quiz-result">
                 <p>Du hast {totalQuestions - totalWrongAnswers} von {totalQuestions} richtig beantwortet.</p>
                 <p>Jetzt wiederholen wir die Fragen, die du noch nicht richtig beantwortet hast.</p>
                 <div>
@@ -108,14 +145,16 @@ export default function Quiz({ title, quiz, path }: Props) {
         return totalWrongAnswers === 0 ? textAllAnswersCorrect : textBeforeRepeating
     }
 
-    const closingText = (
-        <div>
+    const closingText: JSX.Element = (
+        <div className="quiz-result">
             <p>Gut gemacht!</p>
-            <Link to={path}><button>Zurück zur Lektion</button></Link>
+            <div>
+                <Link to={path}><button>Zurück zur Lektion</button></Link>
+            </div>
         </div>
     )
 
-    function renderQuizPage() {
+    function renderQuizPage(): JSX.Element | undefined {
         if (!shuffledQuiz) return
         if (shuffledQuiz.length === 0) {
             return closingText
@@ -128,7 +167,7 @@ export default function Quiz({ title, quiz, path }: Props) {
         }
     }
 
-   function getShuffledQuiz(): void {
+    function getShuffledQuiz() {
         const newArray: QuizPart[] = [...quiz]
         shuffleArray(newArray)
         newArray.forEach((part: QuizPart, index: number) => {
@@ -140,5 +179,9 @@ export default function Quiz({ title, quiz, path }: Props) {
 
     shuffledQuiz || getShuffledQuiz()
 
-    return renderQuizPage()
+    return (
+        <div className="Quiz">
+            {renderQuizPage()}
+        </div>
+    )
 }

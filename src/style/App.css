@@ -6,9 +6,6 @@
     box-sizing: border-box;
     hyphens: auto;
     line-height: 1.4;
-}
-
-:root {
     font-family: var(--main-font);
     font-size: 21px;
 }
@@ -34,8 +31,8 @@ h3 {
 button {
     color: var(--text-on-primary-color);
     background-color: var(--primary-color);
-    padding: 6px;
-    font-size: 0.8rem;
+    padding: 8px 10px;
+    font-size: 1rem;
     font-weight: bold;
     border: 1px solid grey;
     box-shadow: 2px 2px 2px grey;
