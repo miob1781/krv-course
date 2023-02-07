@@ -10,14 +10,14 @@ interface Props {
 
 export default function Introduction({ children, sectionData }: Props) {
     return (
-        <div className="Introduction">
+        <div className="Intro">
             <header>
                 <h2>{sectionData.title}</h2>
             </header>
             <main>
                 <div>{children}</div>
                 <h3>Lektionen</h3>
-                <div className="ToC">
+                <div className="toc">
                     <ToCSection sectionData={sectionData} tocType="intro" />
                 </div>
             </main>

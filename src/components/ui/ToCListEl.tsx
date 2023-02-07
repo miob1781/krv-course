@@ -1,24 +1,21 @@
-import { ReactNode } from "react"
 import { Link } from "react-router-dom"
-import { SectionData } from "../../types"
+import { SectionData, ToCType } from "../../types"
 import "../../style/ToCListEl.css"
 
 interface Props {
     sectionData: SectionData
     numberOfSection?: number
-    tocType: string
 }
 
-export default function ToCListEl({ sectionData, numberOfSection, tocType }: Props) {
+export default function ToCListEl({ sectionData, numberOfSection }: Props) {
     const { path, title, pageNumbers } = sectionData
 
+    const className = !pageNumbers ? "toc-list-inner-cont" : "toc-sublist-inner-cont"
+
     return (
-        <div className="ToCListCont">
-            <span>
-                {numberOfSection && `${numberOfSection}. `}
-                <Link to={path} className="ToCTitle">{title}</Link>
-                {tocType !== "sidebar" && ": " + pageNumbers}
-            </span>
-        </div>
+        <p className={className}>
+            {numberOfSection && <span className="toc-list-num">{`${numberOfSection}. `}</span>}
+            <Link to={path} className="toc-title">{title}{pageNumbers && `: ${pageNumbers}`}</Link>
+        </p>
     )
 }

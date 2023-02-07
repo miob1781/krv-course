@@ -1,10 +1,22 @@
 @import "./variables.css";
 
 .Sidebar {
-    min-width: 150px;
-    max-width: 200px;
-    margin-left: 50px;
-    margin-top: 60px;
+    width: 250px;
+    flex-shrink: 0;
+    margin-left: 20px;
     background-color: var(--primary-color);
+    color: var(--text-on-primary-color);
+    text-align: center;
+}
+
+.Sidebar .toc-list-outer-cont {
+    margin-left: 15px;
+}
+
+.Sidebar .toc-list-outer-cont:hover {
+    background-color: var(--primary-color-light);
+}
+
+.Sidebar .toc-title {
     color: var(--text-on-primary-color);
 }

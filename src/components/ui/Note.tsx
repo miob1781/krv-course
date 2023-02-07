@@ -30,7 +30,7 @@ export default function Note({ paragraphId }: Props) {
         <FontAwesomeIcon
             icon={faEdit}
             title="Notiz ändern"
-            className="edit-icon"
+            className="edit-note-icon"
             onClick={handleOpenTextArea}
         />
     )
@@ -39,7 +39,7 @@ export default function Note({ paragraphId }: Props) {
         <FontAwesomeIcon
             icon={faAngleDown}
             title="Notiz ausklappen"
-            className="open-icon"
+            className="open-note-icon"
             onClick={() => setDisplaySnippet(false)}
         />
     )
@@ -48,7 +48,7 @@ export default function Note({ paragraphId }: Props) {
         <FontAwesomeIcon
             icon={faAngleUp}
             title="Notiz minimieren"
-            className="close-icon"
+            className="close-note-icon"
             onClick={() => setDisplaySnippet(true)}
         />
     )

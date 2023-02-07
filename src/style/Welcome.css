@@ -1,9 +1,19 @@
 @import "./variables.css";
 
-.ToC {
-    margin: 0 100px;
-    padding: 30px;
-    width: 100%;
-    color: var(--text-on-primary);
-    background-color: var(--primary-color);
+.Welcome {
+    margin: 60px;
+}
+
+.Welcome .ToC {
+    border-left: var(--primary-color) 10px solid;
+}
+
+.welcome-text-cont {
+    max-width: 800px;
+    min-height: 190px;
+}
+
+.book-cover-img {
+    float: right;
+    margin-left: 30px;
 }

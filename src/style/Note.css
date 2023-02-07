@@ -34,7 +34,7 @@
     border-radius: 50%;
 }
 
-.edit-icon, .open-icon, .close-icon {
+.edit-note-icon, .open-note-icon, .close-note-icon {
     margin-left: 0.5em;
     color: var(--primary-color);
     cursor: pointer;

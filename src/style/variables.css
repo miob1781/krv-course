@@ -3,8 +3,9 @@
     --primary-color-light: rgb(184, 44, 184);
     --primary-color-very-light: rgb(214, 60, 214);
     --primary-color-dark: rgb(121, 5, 121);
+    --primary-color-very-dark: rgb(83, 4, 83);
     --text-on-primary-color: whitesmoke;
-    --accent-color: rgb(231, 231, 143);
+    --accent-color: rgb(235, 235, 85);
     --main-font: Garamond, sans-serif;
     --notes-font: Optima, sans-serif;
 }

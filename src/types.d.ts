@@ -1,3 +1,5 @@
+export type ToCType = "intro" | "sidebar" | "welcome"
+
 export interface SectionData {
     title: string
     path: string
