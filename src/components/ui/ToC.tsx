@@ -1,7 +1,6 @@
 import { ReactElement } from "react"
 import { SectionData, ToCType } from "../../types"
 import ToCSection from "./ToCSection"
-import "../../style/ToC.css"
 
 interface Props {
     sectionsData: SectionData[]
@@ -21,6 +20,6 @@ export default function ToC({sectionsData, tocType}: Props) {
     }
 
     return (
-        <div className="ToC">{renderToCEntries()}</div>
+        <div>{renderToCEntries()}</div>
     )
 }

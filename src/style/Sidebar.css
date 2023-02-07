@@ -10,7 +10,8 @@
 }
 
 .Sidebar .toc-list-outer-cont {
-    margin-left: 15px;
+    padding: 10px;
+    padding-left: 30px;
 }
 
 .Sidebar .toc-list-outer-cont:hover {
