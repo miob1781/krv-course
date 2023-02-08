@@ -16,8 +16,8 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
     const [expand, setExpand] = useState(false)
 
     const icon: ReactElement = expand
-        ? <FontAwesomeIcon icon={faAngleUp} className="open-toc-content-icon" title="Details verbergen" onClick={() => setExpand(false)} />
-        : <FontAwesomeIcon icon={faAngleDown} className="close-toc-content-icon" title="Details zeigen" onClick={() => setExpand(true)} />
+        ? <FontAwesomeIcon icon={faAngleUp} />
+        : <FontAwesomeIcon icon={faAngleDown} />
 
 
     function renderToCSubEntries(data: SectionData[]): ReactElement {
@@ -35,11 +35,17 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
 
     return (
         <div className="toc-list-outer-cont">
-            {tocType === "welcome" && <div className="toc-list-icon-cont">
-                {icon}
-            </div>}
+            {tocType === "welcome" && (
+                <p
+                    className="toc-list-title-cont"
+                    title={expand ? "Details verbergen" : "Details zeigen"}
+                    onClick={() => setExpand(prevExpand => !prevExpand)}
+                >
+                    {icon}<span className="toc-list-title">{numberOfSection}. {sectionData.title}</span>
+                </p>
+            )}
             <div>
-                {tocType !== "intro" && <ToCListEl
+                {tocType === "sidebar" && <ToCListEl
                     key={sectionData.path}
                     sectionData={sectionData}
                     numberOfSection={numberOfSection}

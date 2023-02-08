@@ -1,6 +1,7 @@
 @import "./variables.css";
 
 .Welcome {
+    max-width: 800px;
     margin: 60px;
 }
 

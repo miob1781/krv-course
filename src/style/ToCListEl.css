@@ -1,9 +1,5 @@
 @import "./variables.css";
 
-.toc-list-outer-cont {
-    display: flex;
-}
-
 .toc-list-inner-cont {
     display: flex;
     font-weight: bold;
@@ -11,7 +7,6 @@
 
 .toc-sublist-inner-cont {
     display: flex;
-    /* padding: 5px 7px; */
     background-color: var(--primary-color);
     color: var(--text-on-primary-color);
 }
@@ -21,8 +16,14 @@
     text-decoration-color: var(--text-on-primary-color);
 }
 
-.toc-list-icon-cont {
+.toc-list-title-cont {
     margin-right: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toc-list-title {
+    margin-left: 20px;
 }
 
 .toc-list-num, .toc-title {
@@ -45,14 +46,10 @@
     font-style: italic;
 }
 
-.open-toc-content-icon, .close-toc-content-icon {
-    cursor: pointer;
-}
-
 .toc-description {
     margin: 15px 0;
 }
 
 .toc-description, .toc-intro-link {
-    margin-left: 30px;
+    margin-left: 40px;
 }
