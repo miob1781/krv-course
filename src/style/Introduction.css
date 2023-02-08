@@ -3,6 +3,10 @@
     margin-left: 100px;
 }
 
+.Intro .toc-sublist-inner-cont {
+    padding: 10px 15px;
+}
+
 .Intro p {
     margin-bottom: 15px;
     text-align: justify;

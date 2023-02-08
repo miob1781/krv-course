@@ -13,7 +13,6 @@
 
 .toc-sublist-inner-cont:hover {
     background-color: var(--primary-color-light);
-    text-decoration-color: var(--text-on-primary-color);
 }
 
 .toc-list-title-cont {
@@ -33,12 +32,13 @@
 .toc-title {
     margin-left: 5px;
     color: unset;
-    text-decoration: none;
     text-align: left;
+    text-decoration: none;
 }
 
 .toc-title:hover {
     text-decoration: underline;
+    text-decoration-color: currentColor;
 }
 
 .page-numbers {
