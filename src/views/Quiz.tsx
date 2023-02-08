@@ -74,9 +74,8 @@ export default function Quiz({ title, quiz, path }: Props) {
 
     function getAnswerButtonStyle(index: number, correct: boolean): CSSProperties {
         return {
-            cursor: answerIndex === -1 ? "pointer" : "inherit",
-            border: answerIndex === index ?  `${correct ? "whitesmoke" : "red"} 3.5px solid` : "",
-            borderRadius: answerIndex === index ? "10px" : "" ,
+            border: answerIndex === index ? `${correct ? "whitesmoke" : "red"} 3.5px solid` : "",
+            borderRadius: answerIndex === index ? "10px" : "",
         }
     }
 
@@ -100,7 +99,7 @@ export default function Quiz({ title, quiz, path }: Props) {
                                 </div>
                                 <div className="answer-cont">
                                     <button
-                                        className="answer"
+                                        className={answerIndex > -1 ? "answer" : "answer selectable-button"}
                                         style={getAnswerButtonStyle(index, answer.correct)}
                                         onClick={() => onSelectAnswer(part, answer.correct, index)}
                                     >{answer.suggestion}</button>
@@ -116,6 +115,7 @@ export default function Quiz({ title, quiz, path }: Props) {
                 <div className="quiz-button-cont">
                     <button
                         type="button"
+                        className={answerIndex > -1 ? "selectable-button" : ""}
                         disabled={answerIndex === -1 ? true : false}
                         onClick={onNextQuestion}
                     >{getButtonText()}</button>
@@ -130,7 +130,9 @@ export default function Quiz({ title, quiz, path }: Props) {
         const textAllAnswersCorrect: JSX.Element = (
             <div className="quiz-result">
                 <p>Du hast alle Fragen im ersten Versuch richtig beantwortet. Fantastisch!</p>
-                <Link to={path}><button>Zurück zur Lektion</button></Link>
+                <Link to={path}>
+                    <button className="selectable-button">Zurück zur Lektion</button>
+                </Link>
             </div>
         )
         const textBeforeRepeating: JSX.Element = (
@@ -138,7 +140,11 @@ export default function Quiz({ title, quiz, path }: Props) {
                 <p>Du hast {totalQuestions - totalWrongAnswers} von {totalQuestions} richtig beantwortet.</p>
                 <p>Jetzt wiederholen wir die Fragen, die du noch nicht richtig beantwortet hast.</p>
                 <div>
-                    <button type="button" onClick={handleRepeatQuestions}>Zu den Fragen</button>
+                    <button
+                        className="selectable-button"
+                        type="button"
+                        onClick={handleRepeatQuestions}
+                    >Zu den Fragen</button>
                 </div>
             </div>
         )
@@ -149,7 +155,9 @@ export default function Quiz({ title, quiz, path }: Props) {
         <div className="quiz-result">
             <p>Gut gemacht!</p>
             <div>
-                <Link to={path}><button>Zurück zur Lektion</button></Link>
+                <Link to={path}>
+                    <button className="selectable-button">Zurück zur Lektion</button>
+                </Link>
             </div>
         </div>
     )

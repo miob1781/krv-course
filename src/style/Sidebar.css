@@ -17,4 +17,11 @@
 
 .Sidebar .toc-list-outer-cont:hover {
     background-color: var(--primary-color-light);
+    background-color: var(--primary-color-light);
+    transition: 0.5s ease-out;
+}
+
+.Sidebar .toc-list-outer-cont:active {
+    background-color: var(--primary-color-very-dark);
+    transition: 0.2s ease-in;
 }
