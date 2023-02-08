@@ -40,8 +40,8 @@ export default function NoteForm({ note, setNote, setDisplaySnippet, setNoteInpu
                 >Schließen</button>
                 <button
                     type="submit"
-                    title="Notiz absenden"
-                >Senden</button>
+                    title="Notiz speichern"
+                >Speichern</button>
             </div>
         </form>
     )

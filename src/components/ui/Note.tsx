@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCirclePlus, faEdit, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faEdit, faAngleUp, faAngleDown, faChampagneGlasses } from '@fortawesome/free-solid-svg-icons'
 import NoteForm from "./NoteForm";
 import "../../style/Note.css"
 
@@ -63,8 +63,8 @@ export default function Note({ paragraphId }: Props) {
             const beginning: string = splittedNote.slice(0, snippetLength).join(" ")
             const shouldDelete: boolean = separatorRegex.test(beginning[beginning.length - 1])
             const snippet: string = shouldDelete
-                ? beginning.slice(0, beginning.length - 1) + "..."
-                : beginning + "..."
+            ? beginning.slice(0, beginning.length - 1) + "..."
+            : beginning + "..."
             setDisplaySnippet(true)
             return snippet
         }
@@ -76,7 +76,7 @@ export default function Note({ paragraphId }: Props) {
 
     function renderNoteContainerContent() {
         if (!noteInputOpened) {
-            if (displaySnippet) {
+            if (displaySnippet && snippet.length > 0) {
                 return (
                     <p className="snippet">{snippet}
                         {openIcon}
