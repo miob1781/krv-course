@@ -3,6 +3,7 @@
 .Sidebar {
     width: 250px;
     margin-top: 30px;
+    padding: 15px 0;
     flex-shrink: 0;
     background-color: var(--primary-color);
     color: var(--text-on-primary-color);

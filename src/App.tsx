@@ -7,9 +7,17 @@ import './style/App.css'
 export default function App() {
     return (
         <div className="App">
-            <NavBar />
             <div className="outer-cont">
-                <Sidebar sectionsData={sectionsData} />
+                <NavBar />
+                <div>
+                    <img
+                        className="kant-image"
+                        src="../assets/images/Kant-image.jpg"
+                        alt="Immanuel Kant"
+                        title="Immanuel Kant"
+                    />
+                    <Sidebar sectionsData={sectionsData} />
+                </div>
                 <RouterContainer sectionsData={sectionsData} />
             </div>
         </div>
