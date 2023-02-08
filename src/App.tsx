@@ -7,8 +7,7 @@ import './style/App.css'
 export default function App() {
     return (
         <div className="App">
-            <div className="outer-cont">
-                <div>
+                <div className="side-cont">
                     <NavBar />
                     <img
                         className="kant-image"
@@ -19,7 +18,7 @@ export default function App() {
                     <Sidebar sectionsData={sectionsData} />
                 </div>
                 <RouterContainer sectionsData={sectionsData} />
-            </div>
+            
         </div>
     )
 }

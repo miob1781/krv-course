@@ -5,9 +5,12 @@ textarea {
     font-family: var(--notes-font);
     font-size: 0.8rem;
     line-height: 1.15;
+    border-radius: 5px;
 }
 
 .NoteForm button {
+    margin-top: 5px;
+    font-size: 0.9rem;
     font-weight: normal;
-    margin-right: 5px;
+    margin-right: 8px;
 }

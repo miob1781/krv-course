@@ -1,13 +1,20 @@
+@import "./variables.css";
+
 .Intro {
     max-width: 700px;
     margin-left: 100px;
 }
 
-.Intro .toc-sublist-inner-cont {
-    padding: 10px 15px;
+.Intro .toc-list-outer-cont {
+    /* background-color: var(--primary-color); */
 }
 
-.Intro p {
-    margin-bottom: 15px;
+.Intro .toc-sublist-inner-cont {
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.intro-text p {
     text-align: justify;
+    margin-bottom: 10px;
 }

@@ -51,14 +51,19 @@ button:active {
 
 .App {
     margin: 40px;
+    display: flex;
+    width: 100%;
+    min-height: 700px;
+}
+
+.side-cont {
+    width: 250px;
+}
+
+.side-cont > * {
+    border-radius: 5px;
 }
 
 .kant-image {
     max-width: 250px;
-}
-
-.outer-cont {
-    display: flex;
-    width: 100%;
-    min-height: 700px;
 }

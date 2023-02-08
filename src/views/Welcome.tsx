@@ -23,6 +23,7 @@ export default function Welcome({ sectionsData }: Props) {
                     Zudem hast du Platz für deine eigenen Notizen und du behältst jederzeit deinen Lernfortschritt im Blick.
                 </p>
             </div>
+            <h2>Kursinhalt</h2>
             <ToC sectionsData={sectionsData} tocType="welcome" />
         </div>
     )

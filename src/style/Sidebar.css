@@ -1,7 +1,6 @@
 @import "./variables.css";
 
 .Sidebar {
-    width: 250px;
     margin-top: 30px;
     padding: 15px 0;
     flex-shrink: 0;

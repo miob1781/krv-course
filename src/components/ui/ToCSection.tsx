@@ -22,14 +22,14 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
 
     function renderToCSubEntries(data: SectionData[]): ReactElement {
         return (
-            <div>
+            <>
                 {data.map((subSectionData: SectionData) => (
                     <ToCListEl
                         key={subSectionData.path}
                         sectionData={subSectionData}
                     />
                 ))}
-            </div>
+            </>
         )
     }
 
@@ -44,7 +44,7 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
                     {icon}<span className="toc-list-title">{numberOfSection}. {sectionData.title}</span>
                 </p>
             )}
-            <div>
+            {tocType !== "intro" && <div>
                 {tocType === "sidebar" && <ToCListEl
                     key={sectionData.path}
                     sectionData={sectionData}
@@ -58,8 +58,8 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
                         </Link>
                     </>
                 )}
-                {tocType === "intro" && renderToCSubEntries(sectionData.subSections!)}
-            </div>
+            </div>}
+            {tocType === "intro" && renderToCSubEntries(sectionData.subSections!)}
         </div>
     )
 }

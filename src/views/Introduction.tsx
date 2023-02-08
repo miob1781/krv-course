@@ -15,11 +15,9 @@ export default function Introduction({ children, sectionData }: Props) {
                 <h2>{sectionData.title}</h2>
             </header>
             <main>
-                <div>{children}</div>
+                <div className="intro-text">{children}</div>
                 <h3>Lektionen</h3>
-                <div className="toc">
-                    <ToCSection sectionData={sectionData} tocType="intro" />
-                </div>
+                <ToCSection sectionData={sectionData} tocType="intro" />
             </main>
         </div>
     )
