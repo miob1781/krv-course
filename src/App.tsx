@@ -8,8 +8,8 @@ export default function App() {
     return (
         <div className="App">
             <div className="outer-cont">
-                <NavBar />
                 <div>
+                    <NavBar />
                     <img
                         className="kant-image"
                         src="../assets/images/Kant-image.jpg"

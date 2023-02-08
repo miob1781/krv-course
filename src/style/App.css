@@ -51,7 +51,6 @@ button:active {
 
 .App {
     margin: 40px;
-    /* background-image: linear-gradient(to bottom, var(--primary-color-very-light), var(--primary-color-very-dark)) */
 }
 
 .kant-image {
