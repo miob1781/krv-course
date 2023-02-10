@@ -1,9 +1,11 @@
 import { lazy, ReactElement, Suspense, useState } from "react"
 import { Routes, Route } from "react-router-dom"
+import { SectionData } from "../../types"
 import Account from "../../views/Account"
 import Welcome from "../../views/Welcome"
-import { Loading } from "./Loading"
-import { SectionData } from "../../types"
+import Loading from "./Loading"
+import Login from "../auth/Login"
+import Signup from "../auth/Signup"
 
 interface Props {
     sectionsData: SectionData[]
@@ -46,6 +48,8 @@ export default function RouterContainer({ sectionsData }: Props) {
             <Routes>
                 <Route path="/" element={<Welcome sectionsData={sectionsData} />} />
                 <Route path="/account" element={<Account />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
                 {sectionRoutes}
             </Routes>
         </Suspense>

@@ -1,6 +1,6 @@
 import "../../style/Loading.css"
 
-export function Loading() {
+export default function Loading() {
     return (
         <div className="Loading">
             <div className="loading-inner-cont">
