@@ -23,7 +23,11 @@
         display: block;
     }
 
-    .quiz-button-second-half {
+    .lesson-end-button-cont {
+        margin-top: 10px;
+    }
+
+    .lesson-end-button-second-half {
         display: none;
     }
 }

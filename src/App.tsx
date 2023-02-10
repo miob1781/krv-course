@@ -17,7 +17,7 @@ export default function App() {
                 />
                 <Sidebar sectionsData={sectionsData} />
             </div>
-            <div>
+            <div className="app-inner-cont">
                 <NavBar smallScreen />
                 <RouterContainer sectionsData={sectionsData} />
             </div>

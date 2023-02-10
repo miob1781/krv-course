@@ -1,0 +1,15 @@
+.Loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-inner-cont {
+    max-width: min(70vw, 200px);
+    text-align: center;
+}
+
+.loading-inner-cont img {
+    max-width: 100px;
+    height: auto;
+}

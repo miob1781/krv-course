@@ -69,6 +69,10 @@ button:active {
     max-width: 250px;
 }
 
+.app-inner-cont {
+    min-width: 100%;
+}
+
 @media screen and (max-width: 720px) {
     .App {
         max-width: 84vw;

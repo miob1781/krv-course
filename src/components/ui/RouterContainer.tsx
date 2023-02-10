@@ -2,6 +2,7 @@ import { lazy, ReactElement, Suspense, useState } from "react"
 import { Routes, Route } from "react-router-dom"
 import Account from "../../views/Account"
 import Welcome from "../../views/Welcome"
+import { Loading } from "./Loading"
 import { SectionData } from "../../types"
 
 interface Props {
@@ -41,7 +42,7 @@ export default function RouterContainer({ sectionsData }: Props) {
 
     return (
         // TO DO: create loading screen with Kant making mustard picture and synthesis joke
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loading />}>
             <Routes>
                 <Route path="/" element={<Welcome sectionsData={sectionsData} />} />
                 <Route path="/account" element={<Account />} />

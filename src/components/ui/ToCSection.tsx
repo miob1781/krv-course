@@ -1,10 +1,10 @@
 import { ReactElement, useState } from "react"
+import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { SectionData, ToCType } from "../../types"
 import ToCListEl from "./ToCListEl"
 import "../../style/ToCListEl.css"
-import { Link } from "react-router-dom"
 
 interface Props {
     sectionData: SectionData
