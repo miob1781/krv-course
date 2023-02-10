@@ -43,7 +43,6 @@ export default function RouterContainer({ sectionsData }: Props) {
     sectionRoutes || getSectionRoutes()
 
     return (
-        // TO DO: create loading screen with Kant making mustard picture and synthesis joke
         <Suspense fallback={<Loading />}>
             <Routes>
                 <Route path="/" element={<Welcome sectionsData={sectionsData} />} />
