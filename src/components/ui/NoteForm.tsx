@@ -32,6 +32,15 @@ export default function NoteForm({ note, setNote, setDisplaySnippet, setNoteInpu
                 cols={40}
                 onChange={(e: ChangeEvent) => handleTextAreaChange(e)}
             />
+            <div className="small-textarea-cont">
+                <textarea
+                    className="small"
+                    defaultValue={note}
+                    rows={5}
+                    cols={25}
+                    onChange={(e: ChangeEvent) => handleTextAreaChange(e)}
+                />
+            </div>
             <div>
                 <button
                     type="button"

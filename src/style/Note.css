@@ -39,8 +39,40 @@
     border-radius: 50%;
 }
 
+.plus-icon.small {
+    display: none;
+}
+
 .edit-note-icon, .open-note-icon, .close-note-icon {
     margin-left: 0.5em;
     color: var(--primary-color);
     cursor: pointer;
+}
+
+.small-note-intro {
+    display: none;
+} 
+
+@media screen and (max-width: 720px) {
+    .note-text {
+        max-width: 100%;
+    }
+
+    .plus-icon {
+        display: none;
+    }
+
+    .plus-icon.small {
+        display: inline;
+        margin-left: 10px;
+        color: var(--primary-color);
+        font-size: inherit;
+    }
+
+    .small-note-intro {
+        display: inline;
+        margin-right: 8px;
+        color: var(--primary-color);
+        font-style: italic;
+    }
 }

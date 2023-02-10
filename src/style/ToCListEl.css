@@ -54,8 +54,19 @@
 
 .toc-description {
     margin: 15px 0;
+    text-align: justify;
 }
 
 .toc-description, .toc-intro-link {
     margin-left: 40px;
+}
+
+@media screen and (max-width: 720px) {
+    .toc-list-title {
+        margin-left: 10px;
+    }
+
+    .toc-description, .toc-intro-link {
+        margin-left: 4px;
+    }    
 }

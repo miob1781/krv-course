@@ -1,7 +1,7 @@
 @import "./variables.css";
 
 .Intro {
-    max-width: 700px;
+    max-width: min(700px, 100%);
     margin-left: 100px;
 }
 
@@ -17,4 +17,10 @@
 .intro-text p {
     text-align: justify;
     margin-bottom: 10px;
+}
+
+@media screen and (max-width: 720px) {
+    .Intro {
+        margin-left: 0;
+    }
 }

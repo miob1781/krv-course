@@ -1,37 +1,31 @@
-import { useMemo, useState } from "react";
+import { Dispatch, ReactElement, SetStateAction, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCirclePlus, faEdit, faAngleUp, faAngleDown, faChampagneGlasses } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import NoteForm from "./NoteForm";
 import "../../style/Note.css"
 
 interface Props {
+    plusIcon: ReactElement
     paragraphId: string
+    note: string
+    setNote: Dispatch<SetStateAction<string>>
+    noteInputOpened: boolean
+    setNoteInputOpened: Dispatch<SetStateAction<boolean>>
 }
 
 const snippetLength: number = 10
 
-export default function Note({ paragraphId }: Props) {
-    const [note, setNote] = useState("")
+export default function Note({ paragraphId, plusIcon, note, setNote, noteInputOpened, setNoteInputOpened }: Props) {
     const [displaySnippet, setDisplaySnippet] = useState(false)
-    const [noteInputOpened, setNoteInputOpened] = useState(false)
 
     // TO DO: Use context and paragraphId to get notes from DB.
-
-    const plusIcon = (
-        <FontAwesomeIcon
-            icon={faCirclePlus}
-            title="Notiz hinzufügen"
-            className="plus-icon"
-            onClick={handleOpenTextArea}
-        />
-    )
 
     const editIcon = (
         <FontAwesomeIcon
             icon={faEdit}
             title="Notiz ändern"
             className="edit-note-icon"
-            onClick={handleOpenTextArea}
+            onClick={() => setNoteInputOpened(true)}
         />
     )
 
@@ -70,21 +64,15 @@ export default function Note({ paragraphId }: Props) {
         }
     }, [note])
 
-    function handleOpenTextArea() {
-        setNoteInputOpened(true)
-    }
+    const noteIntro: ReactElement = <span className="small-note-intro">Notiz:</span>
 
     function renderNoteContainerContent() {
         if (!noteInputOpened) {
             if (displaySnippet && snippet.length > 0) {
-                return (
-                    <p className="snippet">{snippet}
-                        {openIcon}
-                    </p>
-                )
+                return <p className="snippet">{noteIntro}{snippet}{openIcon}</p>
             }
             if (note) {
-                return <p className="note-text">{note} {editIcon} { snippet && closeIcon}</p>
+                return <p className="note-text">{noteIntro}{note} {editIcon} { snippet && closeIcon}</p>
             }
             return plusIcon
         }

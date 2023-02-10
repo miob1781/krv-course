@@ -21,3 +21,23 @@
     border-radius: 7px;
     box-shadow: 4px 6px 4px gray;
 }
+
+.small-page-number-cont {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .page-number-cont {
+        display: none;
+    }
+    
+    .small-page-number-cont {
+        display: inline;
+        font-weight: bold;
+    }
+
+    .lesson-list-text {
+        margin: 15px 0;
+    }
+}
+    

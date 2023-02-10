@@ -12,7 +12,8 @@
 
 h1, h2, h3 {
     text-align: center;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 h1 {
@@ -66,4 +67,31 @@ button:active {
 
 .kant-image {
     max-width: 250px;
+}
+
+@media screen and (max-width: 720px) {
+    .App {
+        max-width: 84vw;
+        margin: 8vw;
+    }
+
+    .side-cont {
+        display: none;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    button {
+        padding: 6px;
+    }
 }

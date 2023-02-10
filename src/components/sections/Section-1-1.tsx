@@ -22,10 +22,10 @@ export default function Section_1_1({sectionData}: SectionProps) {
                 Doch erstere ist nicht-empirisch/a priori, da man zwar erst mal Erfahrung braucht, um sich über diese Art der Erkenntnis Gedanken zu machen, ihre Quellen jedoch nicht in der Erfahrung liegen.
                 Laut Kant hat sogar Erfahrung Elemente, die a priori erkannt werden.
             </LessonListEl>
-            <LessonListEl paragraphId={sectionData.path + "-4"} isQuestion={true}>
+            <LessonListEl paragraphId={sectionData.path + "-4"} isQuestion>
                 Versuche, dadurch den Satz zu verstehen: <em>„Der Zeit nach geht also keine Erkenntnis in uns vor der Erfahrung vorher, und mit dieser fängt alle an.“</em> (B1)
             </LessonListEl>
-            <LessonListEl paragraphId={sectionData.path + "-5"} pageNumber="B2" isQuestion={true}>
+            <LessonListEl paragraphId={sectionData.path + "-5"} pageNumber="B2" isQuestion>
                 Erkläre den Unterschied zwischen „a priori“ bzw. “nicht-empirisch“ und „a posteriori“ bzw. „empirisch“ mit eigenen Worten.
                 Ist Physik a priori oder a posteriori? Könnte sie vielleicht sogar von beidem etwas haben?
             </LessonListEl>
@@ -50,11 +50,11 @@ export default function Section_1_1({sectionData}: SectionProps) {
                 Daher ist das Urteil „Alle Körper sind ausgedehnt“ analytisch, weil in ihm bloß verdeutlicht wird, was in dem Begriff des Körpers dunkel gedacht worden ist.
                 Das Urteil „Alle Körper sind schwer“ ist hingegen synthetisch, da Körper ohne den Begriff der Schwere gedacht werden und durch den bloßen Vergleich der Begriffe nicht festzustellen ist, ob das Urteil wahr ist.
             </LessonListEl>
-            <LessonListEl paragraphId={sectionData.path + "-10"} isQuestion={true}>
+            <LessonListEl paragraphId={sectionData.path + "-10"} isQuestion>
                 Findest du weitere Beispiele für analytische und synthetische Urteile?
                 Sind alle Urteile entweder analytisch oder synthetisch?
             </LessonListEl>
-            <LessonListEl paragraphId={sectionData.path + "-11"} pageNumber="A9f./B12-14" isQuestion={true}>
+            <LessonListEl paragraphId={sectionData.path + "-11"} pageNumber="A9f./B12-14" isQuestion>
                 Erläutere, warum Kant bei synthetischen Urteilen a priori eine Schwierigkeit sieht, die es bei analytischen Urteilen oder synthetischen Urteilen a posteriori nicht gibt.
             </LessonListEl>
             <LessonListEl paragraphId={sectionData.path + "-12"} pageNumber="B14-17">

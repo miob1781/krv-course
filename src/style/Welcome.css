@@ -1,20 +1,33 @@
 @import "./variables.css";
 
 .Welcome {
-    max-width: 800px;
-    margin: 60px;
+    max-width: min(100%, 700px);
+    margin-left: 80px;
 }
 
-.Welcome .ToC {
+.Welcome .toc-list-outer-cont {
+    padding-left: 15px;
     border-left: var(--primary-color) 10px solid;
 }
 
 .welcome-text-cont {
     max-width: 800px;
     min-height: 190px;
+    text-align: justify;
 }
 
 .book-cover-img {
     float: right;
-    margin-left: 30px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 720px) {
+    .Welcome {
+        margin-left: 0;
+    }
+
+    .book-cover-img {
+        display: none;
+    }
 }

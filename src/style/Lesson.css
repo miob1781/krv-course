@@ -1,6 +1,6 @@
 @import "./variables.css";
 
-.lesson-grid {
+.lesson-cont {
     display: grid;
     grid-template-columns: 110px minmax(400px, 700px) minmax(auto, 500px);
     gap: 25px 20px;
@@ -18,5 +18,12 @@
     justify-self: center;
 }
 
-.lesson-end-button {
+@media screen and (max-width: 720px) {
+    .lesson-cont {
+        display: block;
+    }
+
+    .quiz-button-second-half {
+        display: none;
+    }
 }

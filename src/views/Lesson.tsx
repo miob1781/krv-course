@@ -12,7 +12,7 @@ export default function Lesson({ children, quiz, title, pages }: PropsWithChildr
 
     const lesson = (
         <div>
-            <div className="lesson-grid">
+            <div className="lesson-cont">
                 <div className="lesson-header">
                     <h2>{title}</h2>
                     <h3>{pages}</h3>
@@ -23,7 +23,7 @@ export default function Lesson({ children, quiz, title, pages }: PropsWithChildr
                         className="lesson-end-button"
                         title="Zum Quiz"
                         onClick={() => setQuizOn(true)}
-                    >Gehe zum Quiz, um die Lektion abzuschließen.</button>
+                    >Gehe zum Quiz<span className="quiz-button-second-half">, um die Lektion abzuschließen</span>.</button>
                 </div>
             </div>
         </div>
