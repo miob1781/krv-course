@@ -88,3 +88,40 @@
 .quiz-result > * {
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 720px) {
+    .Quiz {
+        max-width: 100%;
+        margin: 0;
+        padding: 6vw;
+    }
+
+    .quiz-question {
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    .quiz-answers {
+        margin-left: 5vw;
+    }
+
+    .answer-outer-cont {
+        padding: 10px 0;
+    }
+
+    .answer-index-cont {
+        min-width: 10vw;
+    }
+
+    .answer {
+        line-height: 1.2;
+    }
+
+    .solution-cont {
+        margin-left: -10vw;
+    }
+
+    .quiz-button-cont {
+        margin-top: 20px;
+    }
+}

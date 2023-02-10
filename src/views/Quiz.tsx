@@ -156,7 +156,7 @@ export default function Quiz({ title, quiz, path }: Props) {
             <p>Gut gemacht!</p>
             <div>
                 <Link to={path}>
-                    <button className="selectable-button">Zurück zur Lektion</button>
+                    <button className="selectable-button">Zurück zu den Lektionen</button>
                 </Link>
             </div>
         </div>
