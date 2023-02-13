@@ -4,17 +4,17 @@ export const sectionsData: SectionData[] = [
     {
         title: "Einleitung",
         path: "/section-1",
-        fsPath: "../introductions/Intro-1.tsx",
+        fsPath: "../introductions/Intro-1",
         description: "In der Einleitung beschäftigt sich Kant mit dem Projekt einer Kritik der reinen Vernunft und unterscheidet zwischen analytischen und synthetischen Urteilen sowie zwischen Urteilen a priori und a posteriori.",
-    //     subSections: [
-    //         {
-    //             title: "Einleitung",
-    //             path: "/section-1-1",
-    //             fsPath: "../sections/Section-1-1.tsx",
-    //             pageNumbers: "A1/B1-A16/B29"
-    //         }
-    //     ]
-    // },
+        subSections: [
+            {
+                title: "Einleitung",
+                path: "/section-1-1",
+                fsPath: "../sections/Section-1-1",
+                pageNumbers: "A1/B1-A16/B29"
+            }
+        ]
+    },
     // {
     //     title: "Transzendentale Ästhetik",
     //     path: "/section-1",
