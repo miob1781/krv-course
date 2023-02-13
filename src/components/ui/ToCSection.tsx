@@ -53,7 +53,7 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
                 {tocType === "welcome" && expand && (
                     <>
                         <p className="toc-description">{sectionData.description}</p>
-                        <Link className="toc-intro-link" to={sectionData.sectionNumber}>
+                        <Link className="toc-intro-link" to={`section-${sectionData.sectionNumber}`}>
                             <button type="button">Gehe zu den Lektionen</button>
                         </Link>
                     </>
