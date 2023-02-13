@@ -3,14 +3,12 @@ import { SectionData } from "../types"
 export const sectionsData: SectionData[] = [
     {
         title: "Einleitung",
-        path: "/section-1",
-        importNumber: "1",
+        sectionNumber: "1",
         description: "In der Einleitung beschäftigt sich Kant mit dem Projekt einer Kritik der reinen Vernunft und unterscheidet zwischen analytischen und synthetischen Urteilen sowie zwischen Urteilen a priori und a posteriori.",
         subSections: [
             {
                 title: "Einleitung",
-                path: "/section-1-1",
-                importNumber: "1-1",
+                sectionNumber: "1-1",
                 pageNumbers: "A1/B1-A16/B29"
             }
         ]

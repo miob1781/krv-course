@@ -25,7 +25,7 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
             <>
                 {data.map((subSectionData: SectionData) => (
                     <ToCListEl
-                        key={subSectionData.path}
+                        key={subSectionData.sectionNumber}
                         sectionData={subSectionData}
                     />
                 ))}
@@ -46,14 +46,14 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
             )}
             {tocType !== "intro" && <div>
                 {tocType === "sidebar" && <ToCListEl
-                    key={sectionData.path}
+                    key={sectionData.sectionNumber}
                     sectionData={sectionData}
                     numberOfSection={numberOfSection}
                 />}
                 {tocType === "welcome" && expand && (
                     <>
                         <p className="toc-description">{sectionData.description}</p>
-                        <Link className="toc-intro-link" to={sectionData.path}>
+                        <Link className="toc-intro-link" to={sectionData.sectionNumber}>
                             <button type="button">Gehe zu den Lektionen</button>
                         </Link>
                     </>
