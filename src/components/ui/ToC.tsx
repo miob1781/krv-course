@@ -1,13 +1,13 @@
 import { ReactElement } from "react"
 import { SectionData, ToCType } from "../../types"
 import ToCSection from "./ToCSection"
+import { sectionsData } from "../../consts/sections-data"
 
 interface Props {
-    sectionsData: SectionData[]
     tocType: ToCType
 }
 
-export default function ToC({sectionsData, tocType}: Props) {
+export default function ToC({tocType}: Props) {
     function renderToCEntries(): ReactElement[] {
         return sectionsData.map((sectionData: SectionData, index: number) => (
             <ToCSection

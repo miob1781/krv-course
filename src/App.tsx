@@ -1,4 +1,3 @@
-import { sectionsData } from "./consts/sections-data"
 import NavBar from './components/ui/NavBar'
 import Sidebar from './components/ui/Sidebar'
 import RouterContainer from './components/ui/RouterContainer'
@@ -15,13 +14,12 @@ export default function App() {
                     alt="Immanuel Kant"
                     title="Immanuel Kant"
                 />
-                <Sidebar sectionsData={sectionsData} />
+                <Sidebar />
             </div>
             <div className="app-inner-cont">
                 <NavBar smallScreen />
-                <RouterContainer sectionsData={sectionsData} />
+                <RouterContainer />
             </div>
-
         </div>
     )
 }

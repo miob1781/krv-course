@@ -1,12 +1,7 @@
 import ToC from "../components/ui/ToC"
-import { SectionData } from "../types"
 import "../style/Welcome.css"
 
-interface Props {
-    sectionsData: SectionData[]
-}
-
-export default function Welcome({ sectionsData }: Props) {
+export default function Welcome() {
     return (
         <div className="Welcome">
             <h1>Lies die Kritik der reinen Vernunft!</h1>
@@ -24,7 +19,7 @@ export default function Welcome({ sectionsData }: Props) {
                 </p>
             </div>
             <h2>Kursinhalt</h2>
-            <ToC sectionsData={sectionsData} tocType="welcome" />
+            <ToC tocType="welcome" />
         </div>
     )
 }
