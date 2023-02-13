@@ -12,7 +12,7 @@ import Signup from "../auth/Signup"
 const sectionRoutes: ReactElement[] = []
 
 function getRoute(sectionData: SectionData): ReactElement {
-    const Component = lazy(() => import(`../sections/Section-${sectionData.sectionNumber}.jsx`)) // change .jsx to .tsx in development
+    const Component = lazy(() => import(`../sections/Section-${sectionData.sectionNumber}.tsx`))
     return (
         <Route
             key={sectionData.sectionNumber}
