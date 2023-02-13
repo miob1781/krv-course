@@ -1,7 +1,7 @@
 import Introduction from "../../views/Introduction";
 import { SectionProps } from "../../types";
 
-export default function Intro_1({sectionData}: SectionProps) {
+export default function Section_1({sectionData}: SectionProps) {
     return (
         <Introduction sectionData={sectionData}>
             <p>

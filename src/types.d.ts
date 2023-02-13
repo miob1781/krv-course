@@ -3,7 +3,7 @@ export type ToCType = "intro" | "sidebar" | "welcome"
 export interface SectionData {
     title: string
     path: string
-    fsPath: string
+    importNumber: string
     description?: string
     subSections?: SectionData[]
     pageNumbers?: string
