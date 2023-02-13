@@ -51,6 +51,126 @@ const quiz: QuizPart[] = [
                 correct: false
             }
         ]
+    },
+    {
+        question: <span>Was ist <b>kein</b> Merkmal von Urteilen a priori?</span>,
+        answers: [
+            {
+                suggestion: <span>Strenge Allgemeinheit</span>,
+                solution: <span>Das ist falsch. Strenge Allgemeinheit ist ein Merkmal von Urteilen a priori.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Notwendigkeit</span>,
+                solution: <span>Das ist falsch. Notwendigkeit ist ein Merkmal von Urteilen a priori.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Analytizität</span>,
+                solution: <span>Richtig. Analytizität ist für Kant kein Merkmal von Urteilen a priori, da es auch synthetische Urteile a priori gibt.</span>,
+                correct: true
+            }
+        ]
+    },
+    {
+        question: <span>Welche Wissenschaften verfügen laut Kant <b>nicht</b> über synthetische Urteile a priori?</span>,
+        answers: [
+            {
+                suggestion: <span>Mathematik</span>,
+                solution: <span>Das ist falsch. Mathematik besteht laut Kant zum großen Teil aus synthetischen Urteilen a priori.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Naturwissenschaft</span>,
+                solution: <span>Das ist falsch. Zwar ist Naturwissenschaft zum größten Teil empirisch, doch sie verfügt Kant gemäß auch über Sätze, die a priori gelten.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Metaphysik</span>,
+                solution: <span>Metaphysik besteht laut Kant aus synthetischen Urteilen a priori.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Logik</span>,
+                solution: <span>Korrekt. Logik besteht laut Kant aus analytischen Urteilen.</span>,
+                correct: true
+            }
+        ]
+    },
+    {
+        question: <span>Ergänze: In analytischen Urteilen ist das Prädikat…</span>,
+        answers: [
+            {
+                suggestion: <span>...im Subjekt enthalten.</span>,
+                solution: <span>Jep.</span>,
+                correct: true
+            },
+            {
+                suggestion: <span>...gleich dem Subjekt.</span>,
+                solution: <span>Leider nicht. Das trifft nur auf „identische“ Urteile zu, die allenfalls als eine bestimmte Art von analytischen Urteilen aufgefasst werden können.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>...nicht im Subjekt enthalten.</span>,
+                solution: <span>Leider nicht. Das träfe auf synthetische Urteile zu.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>...sehr wertvoll.</span>,
+                solution: <span>Nein, das macht keinen Sinn.</span>,
+                correct: false
+            }
+        ]
+    },
+    {
+        question: <span>Wie würde Kant dieses Urteil klassifizieren: „Alle Preußen sind Menschen“?</span>,
+        answers: [
+            {
+                suggestion: <span>Analytisch und a priori</span>,
+                solution: <span>Richtig. Das Urteil ist analytisch und alle analytischen Urteile gelten a priori.</span>,
+                correct: true
+            },
+            {
+                suggestion: <span>Analytisch und a posteriori</span>,
+                solution: <span>Leider nicht. Das Urteil ist zwar analytisch, doch sind alle analytischen Urteile a priori.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Synthetisch und a priori</span>,
+                solution: <span>Leider nicht. Das Urteil ist analytisch und somit auch a priori, da „Mensch“ in „Preuße“ enthalten ist.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Synthetisch und a posteriori</span>,
+                solution: <span>Leider nicht. Das Urteil ist analytisch und somit auch a priori, da „Mensch“ in „Preuße“ enthalten ist.</span>,
+                correct: false
+            }
+        ]
+    },
+    {
+        question: <span>Womit befasst sich eine Kritik der reinen Vernunft?</span>,
+        answers: [
+            {
+                suggestion: <span>Mit den bestehenden philosophischen Systemen</span>,
+                solution: <span>Leider nicht. Das bestreitet Kant explizit.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Mit einem System aller Prinzipien der reinen Vernunft</span>,
+                solution: <span>Leider nicht. Das wäre eine Transzendental-Philosophie, die über eine Kritik der reinen Vernunft insofern hinausgeht, als sie die Begriffe der reinen Vernunft vollständig zergliedert.</span>,
+                correct: false
+            },
+            {
+                suggestion: <span>Mit den Quellen und Grenzen der reinen Vernunft</span>,
+                solution: <span>Richtig. Dabei werden zwar die Stammbegriffe der Vernunft behandelt, aber nicht vollständig zergliedert.</span>,
+                correct: true
+            },
+            {
+                suggestion: <span>Mit den ersten Prinzipen der Metaphysik</span>,
+                solution: <span>Leider nicht. Die Kritik der reinen Vernunft befasst sich mit den ersten Prinzipien der Erkenntnis, wodurch erst Metaphysik ermöglicht wird.</span>,
+                correct: false
+            },
+        ]
     }
 ]
 
