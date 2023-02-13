@@ -8,7 +8,7 @@ import Loading from "./Loading"
 import Login from "../auth/Login"
 import Signup from "../auth/Signup"
 // import Intro_1 from "../introductions/Intro-1"
-import Section_1_1 from "../sections/Section-1-1"
+// import Section_1_1 from "../sections/Section-1-1"
 
 // create routes of sections for lazy imports
 // const sectionRoutes: ReactElement[] = []
@@ -33,7 +33,8 @@ import Section_1_1 from "../sections/Section-1-1"
 //     })
 // })
 
-const INTRO_1 = lazy(() => import("../sections/Section-1-1.jsx"))
+const INTRO_1 = lazy(() => import("../introductions/Intro-1.jsx"))
+const SECTION_1_1 = lazy(() => import("../sections/Section-1-1.jsx"))
 
 export default function RouterContainer() {
     return (
@@ -44,7 +45,7 @@ export default function RouterContainer() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/section-1" element={<INTRO_1 sectionData={sectionsData[0]} />} />
-                {/* <Route path="/section-1-1" element={<Section_1_1 sectionData={sectionsData[0]} />} /> */}
+                <Route path="/section-1-1" element={<SECTION_1_1 sectionData={sectionsData[0].subSections![0]} />} />
                 {/* {sectionRoutes} */}
             </Routes>
         </Suspense>
