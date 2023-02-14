@@ -10,7 +10,7 @@ interface Props {
     isQuestion?: boolean
 }
 
-export default function ListEl({ children, paragraphId, pageNumber, isQuestion = false }: PropsWithChildren<Props>) {
+export default function LessonListEl({ children, paragraphId, pageNumber, isQuestion = false }: PropsWithChildren<Props>) {
     const [note, setNote] = useState("")
     const [noteInputOpened, setNoteInputOpened] = useState(false)
 
@@ -27,18 +27,25 @@ export default function ListEl({ children, paragraphId, pageNumber, isQuestion =
         )
     }
 
+    function getGridRow() {
+        const paragraphNumber: number = Number(paragraphId.split("-")[2])
+        const gridRow: string = String(paragraphNumber + 1)
+        return gridRow
+    }
+
     return (
         <>
-            <div className="page-number-cont">
+            <div className="page-number-cont" style={{gridRow: getGridRow()}}>
                 <span className="page-number">{pageNumber}</span>
             </div>
-            <p className={textContainerClass}>
+            <p className={textContainerClass} style={{gridRow: getGridRow()}}>
                 {pageNumber && <span className="small-page-number-cont">{pageNumber}: </span>}
                 {children}
                 {!note && getPlusIcon("plus-icon small")}
             </p>
             <Note
                 paragraphId={paragraphId}
+                gridRow={getGridRow()}
                 plusIcon={getPlusIcon("plus-icon")}
                 note={note}
                 setNote={setNote}

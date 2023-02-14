@@ -7,6 +7,7 @@ import "../../style/Note.css"
 interface Props {
     plusIcon: ReactElement
     paragraphId: string
+    gridRow: string
     note: string
     setNote: Dispatch<SetStateAction<string>>
     noteInputOpened: boolean
@@ -15,7 +16,7 @@ interface Props {
 
 const snippetLength: number = 10
 
-export default function Note({ paragraphId, plusIcon, note, setNote, noteInputOpened, setNoteInputOpened }: Props) {
+export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, noteInputOpened, setNoteInputOpened }: Props) {
     const [displaySnippet, setDisplaySnippet] = useState(false)
 
     // TO DO: Use context and paragraphId to get notes from DB.
@@ -87,7 +88,7 @@ export default function Note({ paragraphId, plusIcon, note, setNote, noteInputOp
     }
 
     return (
-        <div className="Note">
+        <div className="Note" style={{gridRow: gridRow}}>
             {renderNoteContainerContent()}
         </div>
     )
