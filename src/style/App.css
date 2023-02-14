@@ -50,6 +50,24 @@ button:active {
     transition: 0.2s ease-in;
 }
 
+ul, ol, blockquote {
+    margin-left: min(50px, 10vw);
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+ol {
+    list-style: decimal;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+b, i, li {
+    line-height: inherit;
+}
+
 .App {
     margin: 40px;
     display: flex;

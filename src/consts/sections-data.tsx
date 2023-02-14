@@ -13,27 +13,27 @@ export const sectionsData: SectionData[] = [
             }
         ]
     },
-    // {
-    //     title: "Transzendentale Ästhetik",
-    //     path: "/section-1",
-    //     description: "Die Transzendentale Ästhetik befasst sich mit der Sinnlichkeit. Sie legt dar, dass Raum und Zeit die Formen der Anschauung sind und diese nur die Formen der Erscheinungen, nicht aber der Dinge an sich sind.",
-    //     subSections: [
-    //         {
-    //             title: "part 2-1",
-    //             path: "/path-2-1",
-    //         },
-    //         {
-    //             title: "part 2-2",
-    //             path: "/path-2-2",
-    //         },
-    //         {
-    //             title: "part 2-3",
-    //             path: "/path-2-3",
-    //         },
-    //         {
-    //             title: "part 2-4",
-    //             path: "/path-2-4",
-    //         },
-    //     ]
-    // },
+    {
+        title: "Transzendentale Ästhetik",
+        sectionNumber: "2",
+        description: "Die Transzendentale Ästhetik befasst sich mit der Sinnlichkeit. Sie legt dar, dass Raum und Zeit die Formen der Anschauung sind und diese nur die Formen der Erscheinungen, nicht aber der Dinge an sich sind.",
+        subSections: [
+            {
+                title: "part 2-1",
+                sectionNumber: "2-1",
+            },
+            {
+                title: "part 2-2",
+                sectionNumber: "2-2",
+            },
+            {
+                title: "part 2-3",
+                sectionNumber: "2-3",
+            },
+            {
+                title: "part 2-4",
+                sectionNumber: "2-4",
+            },
+        ]
+    },
 ]
