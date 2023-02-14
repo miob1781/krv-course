@@ -7,6 +7,7 @@
 
 .Welcome .toc-list-outer-cont {
     padding-left: 15px;
+    padding-bottom: 25px;
     border-left: var(--primary-color) 10px solid;
 }
 
