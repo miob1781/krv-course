@@ -5,8 +5,6 @@ import { sectionsData } from "../../consts/sections-data"
 import Account from "../../views/Account"
 import Welcome from "../../views/Welcome"
 import Loading from "./Loading"
-import Login from "../auth/Login"
-import Signup from "../auth/Signup"
 
 // create routes of sections for lazy imports
 const sectionRoutes: ReactElement[] = []
@@ -37,8 +35,6 @@ export default function RouterContainer() {
             <Routes>
                 <Route path="/" element={<Welcome />} />
                 <Route path="/account" element={<Account />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
                 {sectionRoutes}
             </Routes>
         </Suspense>

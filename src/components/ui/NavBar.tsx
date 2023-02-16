@@ -13,7 +13,7 @@ export default function NavBar({smallScreen = false}: Props) {
             <Link to="/">
                 <FontAwesomeIcon icon={faHouse} />
             </Link>
-            <Link to="/">
+            <Link to="/account">
                 <FontAwesomeIcon icon={faUser} />
             </Link>
         </nav>
