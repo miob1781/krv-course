@@ -1,3 +1,5 @@
+import { EventHandler } from "react"
+
 export type ToCType = "intro" | "sidebar" | "welcome"
 
 export interface SectionData {
@@ -22,4 +24,14 @@ export interface QuizPart {
     question: JSX.Element
     answers: Answer[]
     numberOfQuestion?: number
+}
+
+export interface AuthContextTypes {
+    isLoggedIn: boolean
+    isLoading: boolean
+    username: string
+    lessonIds: string[]
+    storeToken: Function
+    authenticateUser: Function
+    logOutUser: EventHandler
 }
