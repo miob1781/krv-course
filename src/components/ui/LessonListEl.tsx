@@ -35,10 +35,10 @@ export default function LessonListEl({ children, paragraphId, pageNumber, isQues
 
     return (
         <>
-            <div className="page-number-cont" style={{gridRow: getGridRow()}}>
+            <div className="page-number-cont" style={{ gridRow: getGridRow(), paddingTop: isQuestion ? "15px" : 0 }}>
                 <span className="page-number">{pageNumber}</span>
             </div>
-            <p className={textContainerClass} style={{gridRow: getGridRow()}}>
+            <p className={textContainerClass} style={{ gridRow: getGridRow() }}>
                 {pageNumber && <span className="small-page-number-cont">{pageNumber}: </span>}
                 {children}
                 {!note && getPlusIcon("plus-icon small")}
