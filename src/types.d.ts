@@ -26,12 +26,21 @@ export interface QuizPart {
     numberOfQuestion?: number
 }
 
+export interface NoteObject {
+    text: string
+    paragraphId: string
+}
+
 export interface AuthContextTypes {
     isLoggedIn: boolean
     isLoading: boolean
+    userId: string
     username: string
     lessonIds: string[]
+    notes: NoteObject[]
     storeToken: Function
     authenticateUser: Function
     logOutUser: EventHandler
+    getLessonDone: (sectionNumber: string) => boolean
+    getLessonDisabled: (sectionData: SectionData[], sectionNumber: string) => boolean
 }

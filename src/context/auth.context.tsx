@@ -1,6 +1,6 @@
 import { useState, createContext, PropsWithChildren, useEffect } from "react"
 import axios from "axios"
-import { AuthContextTypes } from "../types"
+import { AuthContextTypes, NoteObject, SectionData } from "../types"
 import { useNavigate } from "react-router-dom"
 
 export const AuthContext = createContext<AuthContextTypes | null>(null)
@@ -10,11 +10,22 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+    const [userId, setUserId] = useState("")
     const [username, setUsername] = useState("")
-    const [lessonIds, setLessonIds] = useState([])
+    const [lessonIds, setLessonIds] = useState<string[]>([])
+    const [notes, setNotes] = useState<NoteObject[]>([])
 
     function storeToken(token: string) {
         localStorage.setItem("authToken", token)
+    }
+
+    function resetValues() {
+        setIsLoggedIn(false)
+        setIsLoading(false)
+        setUserId("")
+        setUsername("")
+        setLessonIds([])
+        setNotes([])
     }
 
     function authenticateUser() {
@@ -23,24 +34,20 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
             axios.get(`${import.meta.env.VITE_BASE_URL}/auth/verify`,
                 { headers: { Authorization: `Bearer ${storedToken}` } })
                 .then(response => {
-                    const userData = response.data
+                    console.log(response.data)
                     setIsLoggedIn(true)
                     setIsLoading(false)
-                    setUsername(userData.username)
-                    setLessonIds(userData.lessonIds)
+                    setUserId(response.data?.userId)
+                    setUsername(response.data?.username)
+                    setLessonIds(response.data?.lessonIds)
+                    setNotes(response.data?.notes)
                 })
                 .catch(err => {
                     console.log(err)
-                    setIsLoggedIn(false)
-                    setIsLoading(false)
-                    setUsername("")
-                    setLessonIds([])
+                    resetValues()
                 })
         } else {
-            setIsLoggedIn(false)
-            setIsLoading(false)
-            setUsername("")
-            setLessonIds([])
+            resetValues()
         }
     }
 
@@ -54,12 +61,42 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
         navigate("/")
     }
 
+    function getLessonDone(sectionNumber: string): boolean {
+        const lessonDone: boolean = lessonIds.includes(sectionNumber)
+        return lessonDone
+    }
+
+    function getLessonDisabled(sectionData: SectionData[], sectionNumber: string): boolean {
+        let sectionDisabled: boolean
+        const currentSubSectionIndex: number = Number(sectionNumber[2])
+        if (currentSubSectionIndex === 1) {
+            sectionDisabled = false
+        } else if (!getLessonDone(sectionData[currentSubSectionIndex - 2].sectionNumber)) {
+            sectionDisabled = true
+        } else {
+            sectionDisabled = false
+        }
+        return sectionDisabled
+    }
+
     useEffect(() => {
         authenticateUser()
     }, [])
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, isLoading, username, lessonIds, storeToken, authenticateUser, logOutUser }}>
+        <AuthContext.Provider value={{
+            isLoggedIn,
+            isLoading,
+            userId,
+            username,
+            lessonIds,
+            notes,
+            storeToken,
+            authenticateUser,
+            logOutUser,
+            getLessonDone,
+            getLessonDisabled
+        }}>
             {children}
         </AuthContext.Provider>
     )

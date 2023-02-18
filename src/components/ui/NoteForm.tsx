@@ -1,27 +1,44 @@
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from "react"
+import axios from "axios"
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useContext, useState } from "react"
+import { AuthContext } from "../../context/auth.context"
 import "../../style/NoteForm.css"
+import { AuthContextTypes, NoteObject } from "../../types"
 
 interface Props {
+    paragraphId: string
     note: string
     setNote: Dispatch<SetStateAction<string>>
     setDisplaySnippet: Dispatch<SetStateAction<boolean>>
     setNoteInputOpened: Dispatch<SetStateAction<boolean>>
 }
 
-export default function NoteForm({ note, setNote, setDisplaySnippet, setNoteInputOpened }: Props) {
+export default function NoteForm({ paragraphId, note, setNote, setDisplaySnippet, setNoteInputOpened }: Props) {
+    const { userId, authenticateUser } = useContext(AuthContext) as AuthContextTypes
+
     const [noteInput, setNoteInput] = useState(note)
 
+    // changes state when user types input
     function handleTextAreaChange(e: ChangeEvent) {
         const target = e.target as HTMLTextAreaElement
         setNoteInput(target.value)
     }
 
+    // sends note to server and stores note in state
     function handleSubmit(e: FormEvent) {
         e.preventDefault()
-        // TO DO: axios.post()
-        setNote(noteInput)
-        setDisplaySnippet(true)
-        setNoteInputOpened(false)
+        const noteObject: NoteObject = { paragraphId, text: noteInput }
+        const authToken: string | null = localStorage.getItem("authToken")
+        if (!authToken) return
+        axios.post(
+            `${import.meta.env.BASE_URL}/notes`,
+            { userId, note: noteObject },
+            { headers: { Authorization: `Bearer ${authToken}` } }
+        ).then(() => {
+            setNote(noteInput)
+            setDisplaySnippet(true)
+            setNoteInputOpened(false)
+            authenticateUser()
+        }).catch(err => console.log(err))
     }
 
     return (

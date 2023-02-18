@@ -58,8 +58,8 @@ export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, no
             const beginning: string = splittedNote.slice(0, snippetLength).join(" ")
             const shouldDelete: boolean = separatorRegex.test(beginning[beginning.length - 1])
             const snippet: string = shouldDelete
-            ? beginning.slice(0, beginning.length - 1) + "..."
-            : beginning + "..."
+                ? beginning.slice(0, beginning.length - 1) + "..."
+                : beginning + "..."
             setDisplaySnippet(true)
             return snippet
         }
@@ -73,12 +73,13 @@ export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, no
                 return <p className="snippet">{noteIntro}{snippet}{openIcon}</p>
             }
             if (note) {
-                return <p className="note-text">{noteIntro}{note} {editIcon} { snippet && closeIcon}</p>
+                return <p className="note-text">{noteIntro}{note} {editIcon} {snippet && closeIcon}</p>
             }
             return plusIcon
         }
         return (
             <NoteForm
+                paragraphId={paragraphId}
                 note={note}
                 setNote={setNote}
                 setDisplaySnippet={setDisplaySnippet}
@@ -88,7 +89,7 @@ export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, no
     }
 
     return (
-        <div className="Note" style={{gridRow: gridRow}}>
+        <div className="Note" style={{ gridRow: gridRow }}>
             {renderNoteContainerContent()}
         </div>
     )
