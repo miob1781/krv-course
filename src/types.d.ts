@@ -4,7 +4,7 @@ export type ToCType = "intro" | "sidebar" | "welcome"
 
 export interface SectionData {
     title: string
-    sectionNumber: string
+    lessonId: string
     description?: string
     subSections?: SectionData[]
     pageNumbers?: string
@@ -37,11 +37,12 @@ export interface AuthContextTypes {
     userId: string
     username: string
     lessonIds: string[]
+    setLessonIds: Dispatch<SetStateAction<string>>
     notes: NoteObject[]
     setNotes: Dispatch<SetStateAction<NoteObject>>
     storeToken: Function
     authenticateUser: Function
     logOutUser: EventHandler
-    getLessonDone: (sectionNumber: string) => boolean
-    getLessonDisabled: (sectionData: SectionData[], sectionNumber: string) => boolean
+    getLessonDone: (lessonId: string) => boolean
+    getLessonDisabled: (sectionData: SectionData[], lessonId: string) => boolean
 }

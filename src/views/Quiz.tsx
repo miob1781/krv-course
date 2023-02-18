@@ -1,13 +1,16 @@
-import { CSSProperties, ReactElement, useState } from "react"
+import { CSSProperties, ReactElement, useContext, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
-import { Answer, QuizPart } from "../types"
+import { Answer, AuthContextTypes, QuizPart } from "../types"
 import "../style/Quiz.css"
+import axios from "axios"
+import { AuthContext } from "../context/auth.context"
 
 interface Props {
-    title: string,
-    quiz: QuizPart[],
+    title: string
+    quiz: QuizPart[]
+    lessonId: string
     path: string
 }
 
@@ -25,7 +28,9 @@ function shuffleArray(arr: QuizPart[] | Answer[]): QuizPart[] | Answer[] {
 // indexes of answers
 const answerIndexes: string[] = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
-export default function Quiz({ title, quiz, path }: Props) {
+export default function Quiz({ title, quiz, lessonId, path }: Props) {
+    const { userId, setLessonIds } = useContext(AuthContext) as AuthContextTypes
+
     const [shuffledQuiz, setShuffledQuiz] = useState<QuizPart[] | null>(null)
     const [partIndex, setPartIndex] = useState(0)
     const [answerIndex, setAnswerIndex] = useState(-1)
@@ -75,8 +80,20 @@ export default function Quiz({ title, quiz, path }: Props) {
     function getAnswerButtonStyle(index: number, correct: boolean): CSSProperties {
         return {
             border: answerIndex === index ? `${correct ? "whitesmoke" : "red"} 3.5px solid` : "",
-            borderRadius: answerIndex === index ? "10px" : "",
+            borderRadius: answerIndex === index ? "10px" : ""
         }
+    }
+
+    function postlessonId() {
+        const authToken: string | null = localStorage.getItem("authToken")
+        if (!authToken) return
+        axios.put(
+            `${import.meta.env.BASE_URL}/lessons`,
+            { userId, lessonId },
+            { headers: { Authorization: `Bearer ${authToken}` } }
+        ).then(() => {
+            setLessonIds((prevIds: string[]) => [...prevIds, lessonId])
+        }).catch(err => console.log(err))
     }
 
     function renderQuestions(): JSX.Element {
@@ -131,7 +148,7 @@ export default function Quiz({ title, quiz, path }: Props) {
             <div className="quiz-result">
                 <p>Du hast alle Fragen im ersten Versuch richtig beantwortet. Fantastisch!</p>
                 <Link to={path}>
-                    <button className="selectable-button">Zurück zur Lektion</button>
+                    <button className="selectable-button" onClick={postlessonId}>Zurück zur Lektion</button>
                 </Link>
             </div>
         )
@@ -156,7 +173,7 @@ export default function Quiz({ title, quiz, path }: Props) {
             <p>Gut gemacht!</p>
             <div>
                 <Link to={path}>
-                    <button className="selectable-button">Zurück zu den Lektionen</button>
+                    <button className="selectable-button" onClick={postlessonId}>Zurück zu den Lektionen</button>
                 </Link>
             </div>
         </div>
@@ -165,6 +182,7 @@ export default function Quiz({ title, quiz, path }: Props) {
     function renderQuizPage(): JSX.Element | undefined {
         if (!shuffledQuiz) return
         if (shuffledQuiz.length === 0) {
+            axios.put(`${import.meta.env.VITE_BASE_URL}/lessons`, {})
             return closingText
         } else if (repeating) {
             return renderQuestions()

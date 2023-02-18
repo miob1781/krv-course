@@ -1,10 +1,11 @@
-import { ReactElement, useState } from "react"
+import { ReactElement, useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { SectionData, ToCType } from "../../types"
+import { AuthContextTypes, SectionData, ToCType } from "../../types"
 import ToCListEl from "./ToCListEl"
 import "../../style/ToCListEl.css"
+import { AuthContext } from "../../context/auth.context"
 
 interface Props {
     sectionData: SectionData
@@ -14,6 +15,8 @@ interface Props {
 
 export default function ToCSection({ sectionData, numberOfSection, tocType }: Props) {
     const [expand, setExpand] = useState(false)
+
+    const { getLessonDone, getLessonDisabled } = useContext(AuthContext) as AuthContextTypes
 
     const icon: ReactElement = expand
         ? <FontAwesomeIcon icon={faAngleUp} />
@@ -25,8 +28,10 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
             <>
                 {data.map((subSectionData: SectionData) => (
                     <ToCListEl
-                        key={subSectionData.sectionNumber}
+                        key={subSectionData.lessonId}
                         sectionData={subSectionData}
+                        lessonDone={getLessonDone(subSectionData.lessonId)}
+                        disabled={getLessonDisabled(data, subSectionData.lessonId)}
                     />
                 ))}
             </>
@@ -46,14 +51,14 @@ export default function ToCSection({ sectionData, numberOfSection, tocType }: Pr
             )}
             {tocType !== "intro" && <div>
                 {tocType === "sidebar" && <ToCListEl
-                    key={sectionData.sectionNumber}
+                    key={sectionData.lessonId}
                     sectionData={sectionData}
                     numberOfSection={numberOfSection}
                 />}
                 {tocType === "welcome" && expand && (
                     <>
                         <p className="toc-description">{sectionData.description}</p>
-                        <Link className="toc-intro-link" to={`section-${sectionData.sectionNumber}`}>
+                        <Link className="toc-intro-link" to={`section-${sectionData.lessonId}`}>
                             <button type="button">Gehe zu den Lektionen</button>
                         </Link>
                     </>

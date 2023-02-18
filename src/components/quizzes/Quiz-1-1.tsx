@@ -178,6 +178,7 @@ export default function Quiz_1_1() {
     return <Quiz
         title="Einleitung"
         quiz={quiz}
+        lessonId="1-1"
         path="/section-1"
     />
 }

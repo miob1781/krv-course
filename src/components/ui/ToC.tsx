@@ -11,7 +11,7 @@ export default function ToC({tocType}: Props) {
     function renderToCEntries(): ReactElement[] {
         return sectionsData.map((sectionData: SectionData, index: number) => (
             <ToCSection
-                key={sectionData.sectionNumber}
+                key={sectionData.lessonId}
                 sectionData={sectionData}
                 numberOfSection={index + 1}
                 tocType={tocType}

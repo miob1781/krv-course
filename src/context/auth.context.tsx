@@ -61,17 +61,17 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
         navigate("/")
     }
 
-    function getLessonDone(sectionNumber: string): boolean {
-        const lessonDone: boolean = lessonIds.includes(sectionNumber)
+    function getLessonDone(lessonId: string): boolean {
+        const lessonDone: boolean = lessonIds.includes(lessonId)
         return lessonDone
     }
 
-    function getLessonDisabled(sectionData: SectionData[], sectionNumber: string): boolean {
+    function getLessonDisabled(sectionData: SectionData[], lessonId: string): boolean {
         let sectionDisabled: boolean
-        const currentSubSectionIndex: number = Number(sectionNumber[2])
+        const currentSubSectionIndex: number = Number(lessonId[2])
         if (currentSubSectionIndex === 1) {
             sectionDisabled = false
-        } else if (!getLessonDone(sectionData[currentSubSectionIndex - 2].sectionNumber)) {
+        } else if (!getLessonDone(sectionData[currentSubSectionIndex - 2].lessonId)) {
             sectionDisabled = true
         } else {
             sectionDisabled = false
@@ -90,6 +90,7 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
             userId,
             username,
             lessonIds,
+            setLessonIds,
             notes,
             setNotes,
             storeToken,

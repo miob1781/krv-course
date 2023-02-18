@@ -10,11 +10,11 @@ import Loading from "./Loading"
 const sectionRoutes: ReactElement[] = []
 
 function getRoute(sectionData: SectionData): ReactElement {
-    const Component = lazy(() => import(`../sections/Section-${sectionData.sectionNumber}.tsx`))
+    const Component = lazy(() => import(`../sections/Section-${sectionData.lessonId}.tsx`))
     return (
         <Route
-            key={sectionData.sectionNumber}
-            path={`section-${sectionData.sectionNumber}`}
+            key={sectionData.lessonId}
+            path={`section-${sectionData.lessonId}`}
             element={<Component sectionData={sectionData} />}
         />
     )
