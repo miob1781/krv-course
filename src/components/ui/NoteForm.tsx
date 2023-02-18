@@ -36,8 +36,18 @@ export default function NoteForm({ paragraphId, note, setNote, setDisplaySnippet
             `${import.meta.env.BASE_URL}/notes`,
             { userId, note: noteObject },
             { headers: { Authorization: `Bearer ${authToken}` } }
-        ).then(message => {
-            setNotes((prevNotes: NoteObject[]) => [...prevNotes, note])
+        ).then(() => {
+            setNotes((prevNotes: NoteObject[]) => {
+                let copy: NoteObject[] = [...prevNotes]
+                copy = copy.filter((note: NoteObject) => note.paragraphId !== paragraphId)
+                if (note) {
+                    copy.push({
+                        paragraphId,
+                        text: note
+                    })
+                }
+                return copy
+            })
         }).catch(err => console.log(err))
     }
 
