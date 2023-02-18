@@ -1,4 +1,4 @@
-import { EventHandler } from "react"
+import { EventHandler, SetStateAction } from "react"
 
 export type ToCType = "intro" | "sidebar" | "welcome"
 
@@ -38,6 +38,7 @@ export interface AuthContextTypes {
     username: string
     lessonIds: string[]
     notes: NoteObject[]
+    setNotes: Dispatch<SetStateAction<NoteObject>>
     storeToken: Function
     authenticateUser: Function
     logOutUser: EventHandler

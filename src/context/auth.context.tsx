@@ -91,6 +91,7 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
             username,
             lessonIds,
             notes,
+            setNotes,
             storeToken,
             authenticateUser,
             logOutUser,

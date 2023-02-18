@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function NoteForm({ paragraphId, note, setNote, setDisplaySnippet, setNoteInputOpened }: Props) {
-    const { userId, authenticateUser } = useContext(AuthContext) as AuthContextTypes
+    const { userId, setNotes } = useContext(AuthContext) as AuthContextTypes
 
     const [noteInput, setNoteInput] = useState(note)
 
@@ -28,16 +28,16 @@ export default function NoteForm({ paragraphId, note, setNote, setDisplaySnippet
         e.preventDefault()
         const noteObject: NoteObject = { paragraphId, text: noteInput }
         const authToken: string | null = localStorage.getItem("authToken")
+        setNote(noteInput)
+        setDisplaySnippet(true)
+        setNoteInputOpened(false)
         if (!authToken) return
         axios.post(
             `${import.meta.env.BASE_URL}/notes`,
             { userId, note: noteObject },
             { headers: { Authorization: `Bearer ${authToken}` } }
-        ).then(() => {
-            setNote(noteInput)
-            setDisplaySnippet(true)
-            setNoteInputOpened(false)
-            authenticateUser()
+        ).then(message => {
+            setNotes((prevNotes: NoteObject[]) => [...prevNotes, note])
         }).catch(err => console.log(err))
     }
 
