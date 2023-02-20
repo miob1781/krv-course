@@ -42,6 +42,12 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
         }).catch(err => console.log("Error while loading lessonNotes: ", err))
     }
 
+    function loadLessonIds(userId: string, authToken: string) {
+        axios.get(`${import.meta.env.VITE_BASE_URL}/lessons/${userId}`, { headers: { Authorization: `Bearer ${authToken}` }})
+            .then(response => setLessonIds(response.data?.lessonIds))
+            .catch(err => console.log("An error has occurred while loading lessonIds: ", err))
+    }
+
     function authenticateUser() {
         const storedToken: string | null = localStorage.getItem("authToken")
         if (storedToken) {
@@ -53,6 +59,7 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
                     setIsLoading(false)
                     setUserId(response.data?.userId)
                     setUsername(response.data?.username)
+                    loadLessonIds(response.data?.userId, storedToken)
                 })
                 .catch(err => {
                     console.log(err)
