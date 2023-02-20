@@ -1,0 +1,34 @@
+.welcome-toc-outer-cont {
+    padding-left: 15px;
+    padding-bottom: 25px;
+    border-left: var(--primary-color) 10px solid;
+}
+
+.welcome-toc-title-cont {
+    margin-right: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.welcome-toc-title {
+    margin-left: 20px;
+}
+
+.welcome-toc-description {
+    margin: 15px 0;
+    text-align: justify;
+}
+
+.welcome-toc-description, .welcome-toc-intro-link {
+    margin-left: 40px;
+}
+
+@media screen and (max-width: 720px) {
+    .welcome-toc-title {
+        margin-left: 10px;
+    }
+
+    .welcome-toc-description, .welcome-toc-intro-link {
+        margin-left: 4px;
+    }    
+}

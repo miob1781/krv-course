@@ -79,7 +79,7 @@ export default function Account() {
 
     const successText = (
         <div>
-            <p>Du bist jetzt erfolgreich eingeloggt.</p>
+            <p>Du hast dich erfolgreich eingeloggt.</p>
             <Link to="/"><button>Zur Startseite</button></Link>
         </div>
     )

@@ -87,12 +87,12 @@ export default function Quiz({ title, quiz, lessonId, path }: Props) {
     function postlessonId() {
         const authToken: string | null = localStorage.getItem("authToken")
         if (!authToken) return
-        axios.put(
-            `${import.meta.env.BASE_URL}/lessons`,
+        axios.post(
+            `${import.meta.env.VITE_BASE_URL}/lessons`,
             { userId, lessonId },
             { headers: { Authorization: `Bearer ${authToken}` } }
-        ).then(() => {
-            setLessonIds((prevIds: string[]) => [...prevIds, lessonId])
+        ).then(response => {
+            setLessonIds(response.data.lessonIds)
         }).catch(err => console.log(err))
     }
 

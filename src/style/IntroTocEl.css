@@ -1,0 +1,43 @@
+.intro-toc-inner-cont {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 7px;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-on-primary-color);
+    font-weight: bold;
+}
+
+.intro-toc-inner-cont:hover {
+    background-color: var(--primary-color-light);
+    transition: 0.5s ease-out;
+}
+
+.intro-toc-inner-cont:active {
+    background-color: var(--primary-color-very-dark);
+    transition: 0.2s ease-in;
+}
+
+.intro-toc-inner-cont.disabled {
+    background-color: var(--primary-color-disabled);
+}
+
+.intro-toc-num, .intro-toc-title {
+    line-height: 1.2;
+}
+
+.intro-toc-title {
+    margin-left: 5px;
+    color: unset;
+    text-align: left;
+    text-decoration: none;
+}
+
+.intro-toc-title:hover {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+}
+
+.intro-checkmark {
+
+}

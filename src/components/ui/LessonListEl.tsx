@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import "../../style/LessonListEl.css"
 import { AuthContext } from "../../context/auth.context"
-import { AuthContextTypes } from "../../types"
+import { AuthContextTypes, LessonNotes } from "../../types"
 
 interface Props {
     paragraphId: string
@@ -23,7 +23,20 @@ export default function LessonListEl({ children, paragraphId, pageNumber, isQues
 
     // returns note of paragraph from notes from DB if note exists or empty string, executed only when component is mounted
     function getNote(): string {
-        const note: string = notes.find(note => note.paragraphId === paragraphId)?.text || ""
+
+        // get lessonId from paragraphId
+        const lessonId: string = paragraphId.split("-").slice(0, 2).join("-")
+
+        // get notes of lesson
+        const lessonNotes: LessonNotes | undefined = notes.find((lessonNotesObject: LessonNotes) => lessonNotesObject.lessonId === lessonId)
+
+        // get note
+        let note: string
+        if (lessonNotes) {
+            note = lessonNotes.notes.find(note => note.paragraphId === paragraphId)?.text || ""
+        } else {
+            note = ""
+        }
         return note
     }
 

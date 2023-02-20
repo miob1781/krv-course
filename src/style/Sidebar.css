@@ -9,18 +9,37 @@
     text-align: center;
 }
 
-.Sidebar .toc-list-outer-cont {
+.sidebar-title-cont {
+    display: flex;
     padding: 10px;
     padding-left: 30px;
+    font-weight: bold;
 }
 
-.Sidebar .toc-list-outer-cont:hover {
+.sidebar-title-cont:hover {
     background-color: var(--primary-color-light);
     background-color: var(--primary-color-light);
     transition: 0.5s ease-out;
 }
 
-.Sidebar .toc-list-outer-cont:active {
+.sidebar-title-cont:active {
     background-color: var(--primary-color-very-dark);
     transition: 0.2s ease-in;
 }
+
+.sidebar-title {
+    margin-left: 5px;
+    color: unset;
+    text-align: left;
+    text-decoration: none;
+}
+
+.sidebar-title:hover {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+}
+
+.sidebar-num, .sidebar-title {
+    line-height: 1.2;
+}
+

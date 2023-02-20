@@ -1,14 +1,22 @@
-import { PropsWithChildren, ReactElement, useState } from "react";
+import { PropsWithChildren, ReactElement, useContext, useState } from "react";
+import { AuthContext } from "../context/auth.context";
 import "../style/Lesson.css"
+import { AuthContextTypes } from "../types";
 
 interface Props {
+    lessonId: string
     quiz: ReactElement
     title: string
     pages: string
 }
 
-export default function Lesson({ children, quiz, title, pages }: PropsWithChildren<Props>) {
+export default function Lesson({ children, lessonId, quiz, title, pages }: PropsWithChildren<Props>) {
+    const { loadNotes } = useContext(AuthContext) as AuthContextTypes
+
     const [quizOn, setQuizOn] = useState(false)
+
+    // loads notes when loading the lesson
+    loadNotes(lessonId)
 
     const lesson = (
         <div>

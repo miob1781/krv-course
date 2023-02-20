@@ -1,6 +1,6 @@
 import { useState, createContext, PropsWithChildren, useEffect } from "react"
 import axios from "axios"
-import { AuthContextTypes, NoteObject, SectionData } from "../types"
+import { AuthContextTypes, LessonNotes } from "../types"
 import { useNavigate } from "react-router-dom"
 
 export const AuthContext = createContext<AuthContextTypes | null>(null)
@@ -13,7 +13,7 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
     const [userId, setUserId] = useState("")
     const [username, setUsername] = useState("")
     const [lessonIds, setLessonIds] = useState<string[]>([])
-    const [notes, setNotes] = useState<NoteObject[]>([])
+    const [notes, setNotes] = useState<LessonNotes[]>([])
 
     function storeToken(token: string) {
         localStorage.setItem("authToken", token)
@@ -28,6 +28,20 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
         setNotes([])
     }
 
+    function loadNotes(lessonId: string) {
+        axios.get(
+            `${import.meta.env.VITE_BASE_URL}/notes`,
+            { params: { userId, lessonId } }
+        ).then(response => {
+            setNotes((prevNotes: LessonNotes[]) => {
+                let copy = [...prevNotes]
+                copy = copy.filter((lessonNotes: LessonNotes) => lessonNotes.lessonId !== lessonId)
+                copy.push(response.data.lessonNotes)
+                return copy
+            })
+        }).catch(err => console.log("Error while loading lessonNotes: ", err))
+    }
+
     function authenticateUser() {
         const storedToken: string | null = localStorage.getItem("authToken")
         if (storedToken) {
@@ -39,8 +53,6 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
                     setIsLoading(false)
                     setUserId(response.data?.userId)
                     setUsername(response.data?.username)
-                    setLessonIds(response.data?.lessonIds)
-                    setNotes(response.data?.notes)
                 })
                 .catch(err => {
                     console.log(err)
@@ -61,24 +73,6 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
         navigate("/")
     }
 
-    function getLessonDone(lessonId: string): boolean {
-        const lessonDone: boolean = lessonIds.includes(lessonId)
-        return lessonDone
-    }
-
-    function getLessonDisabled(sectionData: SectionData[], lessonId: string): boolean {
-        let sectionDisabled: boolean
-        const currentSubSectionIndex: number = Number(lessonId[2])
-        if (currentSubSectionIndex === 1) {
-            sectionDisabled = false
-        } else if (!getLessonDone(sectionData[currentSubSectionIndex - 2].lessonId)) {
-            sectionDisabled = true
-        } else {
-            sectionDisabled = false
-        }
-        return sectionDisabled
-    }
-
     useEffect(() => {
         authenticateUser()
     }, [])
@@ -96,8 +90,7 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
             storeToken,
             authenticateUser,
             logOutUser,
-            getLessonDone,
-            getLessonDisabled
+            loadNotes
         }}>
             {children}
         </AuthContext.Provider>

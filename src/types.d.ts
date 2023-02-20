@@ -1,13 +1,16 @@
 import { EventHandler, SetStateAction } from "react"
 
-export type ToCType = "intro" | "sidebar" | "welcome"
+export interface SubSectionData {
+    title: string
+    lessonId: string
+    pageNumbers: string
+}
 
 export interface SectionData {
     title: string
     lessonId: string
-    description?: string
-    subSections?: SectionData[]
-    pageNumbers?: string
+    description: string
+    subSections: SubSectionData[]
 }
 
 export interface SectionProps {
@@ -31,6 +34,11 @@ export interface NoteObject {
     paragraphId: string
 }
 
+export interface LessonNotes {
+    lessonId: string
+    notes: NoteObject[]
+}
+
 export interface AuthContextTypes {
     isLoggedIn: boolean
     isLoading: boolean
@@ -38,11 +46,10 @@ export interface AuthContextTypes {
     username: string
     lessonIds: string[]
     setLessonIds: Dispatch<SetStateAction<string>>
-    notes: NoteObject[]
-    setNotes: Dispatch<SetStateAction<NoteObject>>
+    notes: LessonNotes[]
+    setNotes: Dispatch<SetStateAction<LessonNotes>>
     storeToken: Function
     authenticateUser: Function
     logOutUser: EventHandler
-    getLessonDone: (lessonId: string) => boolean
-    getLessonDisabled: (sectionData: SectionData[], lessonId: string) => boolean
+    loadNotes: (lessonId: string) => void
 }

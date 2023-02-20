@@ -5,12 +5,6 @@
     margin-left: 80px;
 }
 
-.Welcome .toc-list-outer-cont {
-    padding-left: 15px;
-    padding-bottom: 25px;
-    border-left: var(--primary-color) 10px solid;
-}
-
 .welcome-text-cont {
     max-width: 800px;
     min-height: 190px;

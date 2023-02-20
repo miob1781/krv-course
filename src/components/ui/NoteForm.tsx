@@ -2,7 +2,7 @@ import axios from "axios"
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import "../../style/NoteForm.css"
-import { AuthContextTypes, NoteObject } from "../../types"
+import { AuthContextTypes, LessonNotes, NoteObject } from "../../types"
 
 interface Props {
     paragraphId: string
@@ -33,19 +33,15 @@ export default function NoteForm({ paragraphId, note, setNote, setDisplaySnippet
         setNoteInputOpened(false)
         if (!authToken) return
         axios.post(
-            `${import.meta.env.BASE_URL}/notes`,
+            `${import.meta.env.VITE_BASE_URL}/notes`,
             { userId, note: noteObject },
             { headers: { Authorization: `Bearer ${authToken}` } }
-        ).then(() => {
-            setNotes((prevNotes: NoteObject[]) => {
-                let copy: NoteObject[] = [...prevNotes]
-                copy = copy.filter((note: NoteObject) => note.paragraphId !== paragraphId)
-                if (note) {
-                    copy.push({
-                        paragraphId,
-                        text: note
-                    })
-                }
+        ).then(response => {
+            setNotes((prevNotes: LessonNotes[]) => {
+                let copy: LessonNotes[] = [...prevNotes]
+                const lessonId: string = paragraphId.split("-").slice(0, 2).join("-")
+                copy = copy.filter((lessonNotes: LessonNotes) => lessonNotes.lessonId !== lessonId)
+                copy.push(response.data.lessonNotes)
                 return copy
             })
         }).catch(err => console.log(err))

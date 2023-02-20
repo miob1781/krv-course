@@ -1,7 +1,16 @@
-import ToC from "../components/ui/ToC"
+import { ReactElement } from "react"
+import WelcomeTocSection from "../components/ui/WelcomeTocSection"
+import { sectionsData } from "../consts/sections-data"
+import { SectionData } from "../types"
 import "../style/Welcome.css"
 
 export default function Welcome() {
+    function renderWelcomeTocSections(): ReactElement[] {
+        return sectionsData.map((sectionData: SectionData, index: number) => (
+            <WelcomeTocSection sectionData={sectionData} sectionNumber={index + 1} />
+        ))
+    }
+
     return (
         <div className="Welcome">
             <h1>Lies die Kritik der reinen Vernunft!</h1>
@@ -19,7 +28,7 @@ export default function Welcome() {
                 </p>
             </div>
             <h2>Kursinhalt</h2>
-            <ToC tocType="welcome" />
+            <div>{renderWelcomeTocSections()}</div>
         </div>
     )
 }
