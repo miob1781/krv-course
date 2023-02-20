@@ -10,7 +10,7 @@
 
 .intro-toc-inner-cont:hover {
     background-color: var(--primary-color-light);
-    transition: 0.5s ease-out;
+    transition: 0.4s ease-out;
 }
 
 .intro-toc-inner-cont:active {
@@ -20,6 +20,11 @@
 
 .intro-toc-inner-cont.disabled {
     background-color: var(--primary-color-disabled);
+}
+
+.intro-toc-inner-cont.disabled > .intro-toc-title {
+    text-decoration: none;
+    cursor: not-allowed;
 }
 
 .intro-toc-num, .intro-toc-title {
@@ -39,5 +44,5 @@
 }
 
 .intro-checkmark {
-
+    margin-left: 10px;
 }

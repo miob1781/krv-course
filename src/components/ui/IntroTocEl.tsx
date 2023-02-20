@@ -33,7 +33,7 @@ export default function IntroTocEl({ lessonId, numberOfSection, title }: Props) 
             disabled = true
 
         // checks if the second-last lesson before the current lesson has been completed
-        } else if (!lessonIds.includes(lessonId.slice(0, 2) + String(Number(lessonId[2]) - 2))) {
+        } else if (!lessonIds.includes(lessonId.slice(0, 2) + String(Number(lessonId[2]) - 1))) {
             disabled = true
         } else {
             disabled = false
@@ -47,7 +47,7 @@ export default function IntroTocEl({ lessonId, numberOfSection, title }: Props) 
     return (
         <p className={lessonDisabled ? "intro-toc-inner-cont disabled" : "intro-toc-inner-cont"}>
             {numberOfSection && <span className="intro-toc-num">{`${numberOfSection}. `}</span>}
-            <Link to={`/section-${lessonId}`} className="intro-toc-title">{title}{lessonDone && checkmark}</Link>
+            <Link to={!lessonDisabled ? `/section-${lessonId}` : ""} className="intro-toc-title">{title}{lessonDone && checkmark}</Link>
         </p>
     )
 }
