@@ -1,6 +1,6 @@
 import NavBar from './components/ui/NavBar'
 import Sidebar from './components/ui/Sidebar'
-import RouterContainer from './components/ui/RouterContainer'
+import RouterContainer from './components/routing/RouterContainer'
 import './style/App.css'
 
 export default function App() {

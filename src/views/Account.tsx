@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useContext, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 import { AuthContextTypes } from "../types"
 import "../style/Account.css"
@@ -9,6 +9,7 @@ type TextDisplayed = "" | "edit" | "login-success" | "signup-success" | "logout-
 
 export default function Account() {
     const { isLoggedIn, userId, username, storeToken, authenticateUser, logOutUser } = useContext(AuthContext) as AuthContextTypes
+    const { lessonId } = useParams()
 
     const [usernameSignup, setUsernameSignup] = useState("")
     const [passwordSignup, setPasswordSignup] = useState("")
@@ -42,8 +43,8 @@ export default function Account() {
         ).then(response => {
             storeToken(response.data.authToken)
             authenticateUser()
-            setTextDisplayed(type === "signup" ? "signup-success" : "login-success")
             resetFields()
+            setTextDisplayed(type === "signup" ? "signup-success" : "login-success")
         }).catch(err => {
             setErrorMessage(err.message)
         })
@@ -80,6 +81,11 @@ export default function Account() {
         }).catch(err => {
             setErrorMessage(err.message)
         })
+    }
+
+    function handleLogOut() {
+        logOutUser()
+        setTextDisplayed("logout-success")
     }
 
     function getText() {
@@ -136,7 +142,7 @@ export default function Account() {
             <h2>Hi {username}!</h2>
             <p>Du bist als {username} angemeldet. Wenn du das nicht bist, dann kannst du dich hier abmelden:</p>
             <div className="button-cont">
-                <button type="button" onClick={logOutUser}>Abmelden</button>
+                <button type="button" onClick={handleLogOut}>Abmelden</button>
             </div>
             <p>Möchtest du deine Daten bearbeiten oder deinen Account löschen?</p>
             <div className="button-cont">
@@ -175,7 +181,9 @@ export default function Account() {
         <div>
             <p>Du hast dich erfolgreich registriert.</p>
             <div className="button-cont">
-                <Link to="/"><button>Zur Startseite</button></Link>
+                <Link to={`/${lessonId && "section-" + lessonId}`}>
+                    <button>{lessonId ? "Zur Lektion" : "Zur Startseite"}</button>
+                </Link>
             </div>
         </div>
     )
@@ -184,7 +192,9 @@ export default function Account() {
         <div>
             <p>Du hast dich erfolgreich eingeloggt.</p>
             <div className="button-cont">
-                <Link to="/"><button>Zur Startseite</button></Link>
+            <Link to={`/${lessonId && "section-" + lessonId}`}>
+                    <button>{lessonId ? "Zur Lektion" : "Zur Startseite"}</button>
+                </Link>
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import Account from "../../views/Account"
 import Welcome from "../../views/Welcome"
 import Loading from "./Loading"
+import IsPrivate from "./IsPrivate"
 import { sectionsData } from "../../consts/sections-data"
 import { SectionData, SubSectionData } from "../../types"
 
@@ -15,7 +16,11 @@ function getRoute(sectionData: SectionData | SubSectionData): ReactElement {
         <Route
             key={sectionData.lessonId}
             path={`section-${sectionData.lessonId}`}
-            element={<Component sectionData={sectionData} />}
+            element={
+                <IsPrivate lessonId={sectionData.lessonId}>
+                    <Component sectionData={sectionData} />
+                </IsPrivate>
+            }
         />
     )
 }
@@ -35,6 +40,7 @@ export default function RouterContainer() {
             <Routes>
                 <Route path="/" element={<Welcome />} />
                 <Route path="/account" element={<Account />} />
+                <Route path="/account/:lessonId" element={<Account />} />
                 {sectionRoutes}
             </Routes>
         </Suspense>
