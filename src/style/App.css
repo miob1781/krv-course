@@ -93,9 +93,13 @@ b, i, li {
 }
 
 @media screen and (max-width: 720px) {
+    * {
+        font-size: 18px;
+    }
+
     .App {
-        max-width: 84vw;
-        margin: 8vw;
+        max-width: 92vw;
+        margin: 4vw;
     }
 
     .side-cont {

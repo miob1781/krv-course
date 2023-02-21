@@ -54,7 +54,7 @@
 } 
 
 @media screen and (max-width: 720px) {
-    .note-text {
+    .note-text, .snippet {
         max-width: 100%;
     }
 
@@ -67,12 +67,19 @@
         margin-left: 10px;
         color: var(--primary-color);
         font-size: inherit;
+        line-height: inherit;
     }
+
+    .note-text * {
+        font-size: inherit;
+        line-height: inherit;
+    }    
 
     .small-note-intro {
         display: inline;
         margin-right: 8px;
         color: var(--primary-color);
         font-style: italic;
+        line-height: inherit;
     }
 }
