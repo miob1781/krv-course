@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 import { AuthContextTypes } from "../types"
+import "../style/Account.css"
 
 type TextDisplayed = "" | "edit" | "login-success" | "signup-success" | "logout-success" | "edit-success" | "delete-success"
 
@@ -62,6 +63,7 @@ export default function Account() {
             storeToken(response.data.authToken)
             authenticateUser()
             setTextDisplayed("edit-success")
+            resetFields()
         }).catch(err => {
             setErrorMessage(err.message)
         })
@@ -74,6 +76,7 @@ export default function Account() {
         ).then(() => {
             logOutUser()
             setTextDisplayed("delete-success")
+            resetFields()
         }).catch(err => {
             setErrorMessage(err.message)
         })
@@ -97,30 +100,32 @@ export default function Account() {
                 Deine Daten werden nur für die Verwendung dieses E-Learning-Angebots verwendet und nicht an Dritte weitergegeben.
             </p>
             <form>
-                <div>
-                    <label htmlFor="login-username">Benutzername</label>
+                <div className="form-grid">
+                    <label htmlFor="login-username">Benutzername:</label>
                     <input type="text" name="" id="login-username" onChange={e => setUsernameLogin(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="login-password">Passwort</label>
+                    <label htmlFor="login-password">Passwort:</label>
                     <input type="password" name="" id="login-password" autoComplete="current-password" onChange={e => setPasswordLogin(e.target.value)} />
                 </div>
-                <button type="button" onClick={() => registerUser("login")}>Anmelden</button>
+                <div className="button-cont">
+                    <button type="button" onClick={() => registerUser("login")}>Anmelden</button>
+                </div>
             </form>
             <p>Du bist noch nicht registriert?</p>
-            <button type="button" onClick={() => setSignup(true)}>Jetzt registrieren!</button>
+            <div className="button-cont">
+                <button type="button" onClick={() => setSignup(true)}>Jetzt registrieren!</button>
+            </div>
 
             {/* form is opened if user clicks button to open signup form */}
             <form style={{ display: signup ? "block" : "none" }}>
-                <div>
-                    <label htmlFor="signup-username">Benutzername</label>
+                <div className="form-grid">
+                    <label htmlFor="signup-username">Benutzername:</label>
                     <input type="text" name="" id="signup-username" onChange={e => setUsernameSignup(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="signup-password">Passwort</label>
+                    <label htmlFor="signup-password">Passwort:</label>
                     <input type="password" name="" id="signup-password" autoComplete="new-password" onChange={e => setPasswordSignup(e.target.value)} />
                 </div>
-                <button type="button" onClick={() => registerUser("signup")}>Registieren</button>
+                <div className="button-cont">
+                    <button type="button" onClick={() => registerUser("signup")}>Registieren</button>
+                </div>
             </form>
             <p>{errorMessage}</p>
         </div>
@@ -130,32 +135,34 @@ export default function Account() {
         <div>
             <h2>Hi {username}!</h2>
             <p>Du bist als {username} angemeldet. Wenn du das nicht bist, dann kannst du dich hier abmelden:</p>
-            <button type="button" onClick={logOutUser}>Abmelden</button>
+            <div className="button-cont">
+                <button type="button" onClick={logOutUser}>Abmelden</button>
+            </div>
             <p>Möchtest du deine Daten bearbeiten oder deinen Account löschen?</p>
-            <div>
+            <div className="button-cont">
                 <button type="button" onClick={() => setTextDisplayed("edit")}>Account bearbeiten</button>
                 <button type="button" onClick={() => setDeleteAccount(true)}>Account löschen</button>
             </div>
             <div style={{ display: deleteAccount ? "block" : "none" }}>
                 <p>Möchtest du deinen Account wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.</p>
-                <button type="button" style={{ backgroundColor: "red" }} onClick={deleteUser}>Ja, Account löschen</button>
+                <div className="button-cont">
+                    <button className="delete" type="button" onClick={deleteUser}>Ja, Account löschen</button>
+                </div>
             </div>
         </div>
     )
 
     const editForm = (
         <div>
-            <p>Bearbeite hier deine Daten:</p>
+            <h3>Account bearbeiten</h3>
             <form>
-                <div>
-                    <label htmlFor="edit-username">Benutzername</label>
+                <div className="form-grid">
+                    <label htmlFor="edit-username">Benutzername:</label>
                     <input type="text" name="" id="edit-username" defaultValue={username} onChange={e => setUsernameEdit(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="edit-password">Passwort</label>
+                    <label htmlFor="edit-password">Passwort:</label>
                     <input type="password" name="" id="edit-password" autoComplete="current-password" onChange={e => setPasswordEdit(e.target.value)} />
                 </div>
-                <div>
+                <div className="button-cont">
                     <button type="button" onClick={editUser}>Bearbeiten</button>
                     <button type="button" onClick={() => setTextDisplayed("")}>Zurück</button>
                 </div>
@@ -167,30 +174,42 @@ export default function Account() {
     const signupSuccessText = (
         <div>
             <p>Du hast dich erfolgreich registriert.</p>
-            <Link to="/"><button>Zur Startseite</button></Link>
+            <div className="button-cont">
+                <Link to="/"><button>Zur Startseite</button></Link>
+            </div>
         </div>
     )
 
     const loginSuccessText = (
         <div>
             <p>Du hast dich erfolgreich eingeloggt.</p>
-            <Link to="/"><button>Zur Startseite</button></Link>
+            <div className="button-cont">
+                <Link to="/"><button>Zur Startseite</button></Link>
+            </div>
         </div>
     )
 
     const editSuccessText = (
         <div>
             <p>Du hast deine Daten erfolgreich geändert.</p>
-            <Link to="/"><button>Zur Startseite</button></Link>
+            <div className="button-cont">
+                <Link to="/"><button>Zur Startseite</button></Link>
+            </div>
         </div>
     )
 
     const logOutSuccessText = (
         <div>
             <p>Du hast dich ausgeloggt.</p>
-            <Link to="/"><button>Zur Startseite</button></Link>
+            <div className="button-cont">
+                <Link to="/"><button>Zur Startseite</button></Link>
+            </div>
         </div>
     )
 
-    return getText()
+    return (
+        <div className="Account">
+            {getText()}
+        </div>
+    )
 }

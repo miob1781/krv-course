@@ -7,7 +7,7 @@ import "../style/Welcome.css"
 export default function Welcome() {
     function renderWelcomeTocSections(): ReactElement[] {
         return sectionsData.map((sectionData: SectionData, index: number) => (
-            <WelcomeTocSection sectionData={sectionData} sectionNumber={index + 1} />
+            <WelcomeTocSection key={sectionData.lessonId} sectionData={sectionData} sectionNumber={index + 1} />
         ))
     }
 

@@ -7,7 +7,7 @@ import "../../style/Sidebar.css"
 export default function Sidebar() {
     function renderTitles(): ReactElement[] {
         return sectionsData.map((sectionData: SectionData, index: number) => (
-            <p className="sidebar-title-cont">
+            <p key={sectionData.lessonId} className="sidebar-title-cont">
                 <span className="sidebar-num">{`${index + 1}. `}</span>
                 <Link
                     to={`/section-${sectionData.lessonId}`}

@@ -1,0 +1,66 @@
+@import "./variables.css";
+
+.Account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: min(84vw, 80%, 700px);
+    margin: 50px;
+    margin-left: 100px;
+    padding: 40px;
+    padding-bottom: 20px;
+    background-color: var(--primary-color);
+    color: var(--text-on-primary-color);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 150px 200px;
+    gap: 10px 20px;
+    margin: 25px 0;
+}
+
+.form-grid label {
+    grid-column: 1;
+}
+
+.form-grid input {
+    grid-column: 2;
+    padding: 5px;
+    font-family: var(--notes-font);
+    font-size: 0.8rem;
+}
+
+.Account .button-cont {
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+
+.Account button {
+    margin-right: 15px;
+    padding: 6px 8px;
+    background-color: var(--primary-color-dark);
+}
+
+.Account button:hover {
+    background-color: var(--primary-color-light);
+    transition: 0.4s ease-out;
+}
+
+.Account button:active {
+    background-color: var(--primary-color-very-dark);
+    transition: 0.2s ease-in;
+}
+
+.Account button.delete {
+    margin-top: 10px;
+    background-color: red;
+}
+
+.Account button.delete:hover {
+    background-color: rgb(240, 129, 85);
+}
+
+.Account button.delete:active {
+    background-color: firebrick;
+}
