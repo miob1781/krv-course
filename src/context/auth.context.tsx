@@ -1,13 +1,10 @@
 import { useState, createContext, PropsWithChildren, useEffect } from "react"
 import axios from "axios"
 import { AuthContextTypes, LessonNotes } from "../types"
-import { useNavigate } from "react-router-dom"
 
 export const AuthContext = createContext<AuthContextTypes | null>(null)
 
 export function AuthProviderWrapper({ children }: PropsWithChildren) {
-    const navigate = useNavigate()
-
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [userId, setUserId] = useState("")
@@ -77,7 +74,6 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
     function logOutUser() {
         removeToken()
         authenticateUser()
-        navigate("/")
     }
 
     useEffect(() => {
