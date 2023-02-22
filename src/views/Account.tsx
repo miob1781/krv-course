@@ -37,7 +37,6 @@ export default function Account() {
             username: type === "signup" ? usernameSignup : usernameLogin,
             password: type === "signup" ? passwordSignup : passwordLogin
         }
-        console.log(`Registering user at ${import.meta.env.VITE_BASE_URL}/auth/${type === "signup" ? "signup" : "login"}`)
         axios.post(
             `${import.meta.env.VITE_BASE_URL}/auth/${type === "signup" ? "signup" : "login"}`,
             userData
@@ -182,7 +181,7 @@ export default function Account() {
         <div>
             <p>Du hast dich erfolgreich registriert.</p>
             <div className="button-cont">
-                <Link to={`/${lessonId && "section-" + lessonId}`}>
+                <Link to={`/${lessonId ? "section-" + lessonId : ""}`}>
                     <button>{lessonId ? "Zur Lektion" : "Zur Startseite"}</button>
                 </Link>
             </div>
@@ -193,7 +192,7 @@ export default function Account() {
         <div>
             <p>Du hast dich erfolgreich eingeloggt.</p>
             <div className="button-cont">
-            <Link to={`/${lessonId && "section-" + lessonId}`}>
+                <Link to={`/${lessonId ? "section-" + lessonId : ""}`}>
                     <button>{lessonId ? "Zur Lektion" : "Zur Startseite"}</button>
                 </Link>
             </div>

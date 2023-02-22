@@ -28,7 +28,10 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
     function loadNotes(lessonId: string) {
         axios.get(
             `${import.meta.env.VITE_BASE_URL}/notes`,
-            { params: { userId, lessonId } }
+            {
+                params: { userId, lessonId },
+                headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
+            }
         ).then(response => {
             setNotes((prevNotes: LessonNotes[]) => {
                 let copy = [...prevNotes]
