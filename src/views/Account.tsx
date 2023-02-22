@@ -37,6 +37,7 @@ export default function Account() {
             username: type === "signup" ? usernameSignup : usernameLogin,
             password: type === "signup" ? passwordSignup : passwordLogin
         }
+        console.log(`Registering user at ${import.meta.env.VITE_BASE_URL}/auth/${type === "signup" ? "signup" : "login"}`)
         axios.post(
             `${import.meta.env.VITE_BASE_URL}/auth/${type === "signup" ? "signup" : "login"}`,
             userData
