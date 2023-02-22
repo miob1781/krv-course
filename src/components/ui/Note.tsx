@@ -19,8 +19,6 @@ const snippetLength: number = 10
 export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, noteInputOpened, setNoteInputOpened }: Props) {
     const [displaySnippet, setDisplaySnippet] = useState(false)
 
-    // TO DO: Use context and paragraphId to get notes from DB.
-
     const editIcon = (
         <FontAwesomeIcon
             icon={faEdit}

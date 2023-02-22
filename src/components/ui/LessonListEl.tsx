@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactElement, useContext, useState } from "react"
+import { PropsWithChildren, ReactElement, useContext, useEffect, useState } from "react"
 import Note from "./Note"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
@@ -15,8 +15,9 @@ interface Props {
 export default function LessonListEl({ children, paragraphId, pageNumber, isQuestion = false }: PropsWithChildren<Props>) {
     const { notes } = useContext(AuthContext) as AuthContextTypes
 
-    const [note, setNote] = useState(getNote())
+    const [note, setNote] = useState("")
     const [noteInputOpened, setNoteInputOpened] = useState(false)
+    const [notesLoaded, setNotesLoaded] = useState(false)
 
     // gets class of paragraph, dependent on whether the paragraph is a question to the user
     const textContainerClass: string = isQuestion ? "lesson-list-text lesson-question" : "lesson-list-text"
@@ -37,8 +38,13 @@ export default function LessonListEl({ children, paragraphId, pageNumber, isQues
         } else {
             note = ""
         }
+        setNotesLoaded(true)
         return note
     }
+
+    useEffect(() => {
+        notes.length > 0 && !notesLoaded && setNote(getNote())
+    }, [notes])
 
     function getPlusIcon(className: string): ReactElement {
         return (
