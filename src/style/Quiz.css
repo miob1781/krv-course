@@ -20,6 +20,7 @@
 
 .Quiz .selectable-button {
     cursor: pointer;
+    transition: 0.2 linear;
 }
 
 .Quiz .selectable-button:hover {

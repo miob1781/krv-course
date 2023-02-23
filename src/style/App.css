@@ -38,6 +38,7 @@ button {
     box-shadow: 2px 2px 2px grey;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.2s linear;
 }
 
 button:hover {

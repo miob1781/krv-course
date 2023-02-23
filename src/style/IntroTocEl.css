@@ -6,6 +6,7 @@
     background-color: var(--primary-color);
     color: var(--text-on-primary-color);
     font-weight: bold;
+    transition: 0.2s linear;
 }
 
 .intro-toc-inner-cont:hover {

@@ -10,12 +10,12 @@
     margin: 0 10px;
     color: var(--text-on-primary-color);
     font-size: 1.1rem;
-    transition: linear 0.2s;
+    transition: 0.2s linear;
 }
 
 .home-icon:hover, .account-icon:hover {
     font-size: 1.25rem;
-    transition: linear 0.3s;
+    transition: 0.3s linear;
 }
 
 .NavBar.small {
