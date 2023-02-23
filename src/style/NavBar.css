@@ -6,9 +6,16 @@
     background-color: var(--primary-color);
 }
 
-.NavBar > * {
-    margin-right: 15px;
+.home-icon, .account-icon {
+    margin: 0 10px;
     color: var(--text-on-primary-color);
+    font-size: 1.1rem;
+    transition: linear 0.2s;
+}
+
+.home-icon:hover, .account-icon:hover {
+    font-size: 1.25rem;
+    transition: linear 0.3s;
 }
 
 .NavBar.small {

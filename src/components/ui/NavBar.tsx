@@ -10,11 +10,11 @@ interface Props {
 export default function NavBar({smallScreen = false}: Props) {
     return (
         <nav className={smallScreen ? "NavBar small" : "NavBar"}>
-            <Link to="/">
-                <FontAwesomeIcon icon={faHouse} />
+            <Link to="/" title="Zur Startseite">
+                <FontAwesomeIcon className="home-icon" icon={faHouse} />
             </Link>
-            <Link to="/account">
-                <FontAwesomeIcon icon={faUser} />
+            <Link to="/account" title="Zum Account">
+                <FontAwesomeIcon className="account-icon" icon={faUser} />
             </Link>
         </nav>
     )
