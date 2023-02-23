@@ -22,28 +22,26 @@ export default function LessonListEl({ children, paragraphId, pageNumber, isQues
     // gets class of paragraph, dependent on whether the paragraph is a question to the user
     const textContainerClass: string = isQuestion ? "lesson-list-text lesson-question" : "lesson-list-text"
 
-    // returns note of paragraph from notes from DB if note exists or empty string, executed only when component is mounted
-    function getNote(): string {
-
+    // gets notes of lesson
+    function getLessonNotes(): LessonNotes | undefined {
         // get lessonId from paragraphId
         const lessonId: string = paragraphId.split("-").slice(0, 2).join("-")
 
         // get notes of lesson
         const lessonNotes: LessonNotes | undefined = notes.find((lessonNotesObject: LessonNotes) => lessonNotesObject.lessonId === lessonId)
+        return lessonNotes
+    }
 
-        // get note
-        let note: string
-        if (lessonNotes) {
-            note = lessonNotes.notes.find(note => note.paragraphId === paragraphId)?.text || ""
-        } else {
-            note = ""
-        }
+    // returns note of paragraph from notes from DB if note exists or empty string
+    function getNote(lessonNotes: LessonNotes): string {
+        const note: string = lessonNotes.notes.find(note => note.paragraphId === paragraphId)?.text || ""
         setNotesLoaded(true)
         return note
     }
 
     useEffect(() => {
-        notes.length > 0 && !notesLoaded && setNote(getNote())
+        const lessonNotes: LessonNotes | undefined = getLessonNotes()
+        lessonNotes && !notesLoaded && setNote(getNote(lessonNotes))
     }, [notes])
 
     function getPlusIcon(className: string): ReactElement {

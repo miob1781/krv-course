@@ -33,10 +33,11 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
                 headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
             }
         ).then(response => {
-            setNotes((prevNotes: LessonNotes[]) => {
+            const lessonNotesFromDB: LessonNotes | undefined = response.data.lessonNotes
+            lessonNotesFromDB && setNotes((prevNotes: LessonNotes[]) => {
                 let copy = [...prevNotes]
-                copy = copy.filter((lessonNotes: LessonNotes) => lessonNotes.lessonId !== lessonId)
-                copy.push(response.data.lessonNotes)
+                copy = copy.length > 0 ? copy.filter((lessonNotes: LessonNotes) => lessonNotes.lessonId !== lessonId) : []
+                copy.push(lessonNotesFromDB)
                 return copy
             })
         }).catch(err => console.log("Error while loading lessonNotes: ", err))
