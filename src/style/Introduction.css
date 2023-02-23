@@ -5,10 +5,6 @@
     margin-left: 100px;
 }
 
-.Intro .toc-list-outer-cont {
-    /* background-color: var(--primary-color); */
-}
-
 .Intro .toc-sublist-inner-cont {
     padding: 10px 15px;
     border-radius: 5px;

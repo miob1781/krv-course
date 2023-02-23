@@ -7,7 +7,11 @@ import "../style/Welcome.css"
 export default function Welcome() {
     function renderWelcomeTocSections(): ReactElement[] {
         return sectionsData.map((sectionData: SectionData, index: number) => (
-            <WelcomeTocSection key={sectionData.lessonId} sectionData={sectionData} sectionNumber={index + 1} />
+            <WelcomeTocSection
+                key={sectionData.lessonId}
+                sectionData={sectionData}
+                sectionNumber={index + 1}
+            />
         ))
     }
 
@@ -22,9 +26,20 @@ export default function Welcome() {
                     title="Deckblatt der ersten Ausgabe der Kritik der reinen Vernunft von 1781"
                 />
                 <p>
-                    Studiere Immanuel Kants berühmtestes Werk in deiner eigenen Geschwindigkeit - wann und wo immer du willst.
+                    Studiere Immanuel Kants berühmtestes Werk in deiner eigenen Geschwindigkeit – wann und wo immer du willst.
                     Mit detallierten Lektürehinweisen und Quizzes, die dich Stück für Stück durch das schwierige Werk begleiten.
                     Zudem hast du Platz für deine eigenen Notizen und du behältst jederzeit deinen Lernfortschritt im Blick.
+                </p>
+                <p>
+                    Der Kurs richtet sich an alle, die sich intensiv mit der <i>Kritik der reinen Vernunft</i> beschäftigen
+                    wollen – egal, ob sie Philosophie studieren, aber dieses Werk nicht in der Lehre angeboten wird,
+                    oder ob sie immer schon den Traum hatten, sich mit der "Kritik" zu befassen.
+                </p>
+                <p>
+                    Dies ist erst der Anfang. Doch wenn dieses E-Learning-Angebot fertiggestellt ist, dann soll es 18 Kapiteln bestehen,
+                    die einer oder mehreren Lektionen bestehen, die jeweils mit einem Quiz abgeschlossen werden.
+                    Zudem soll jedes Kapitel durch eine Übersicht mit relevanter Primär- und Sekundärliteratur abgeschlosssen werden.
+                    Zu den Kapiteln soll eine Auflistung von Ressourcen und Hilfmitteln und möglicherweuse weitere Materialien hinzukommen.
                 </p>
             </div>
             <h2>Kursinhalt</h2>

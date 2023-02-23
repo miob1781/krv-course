@@ -11,6 +11,10 @@
     text-align: justify;
 }
 
+.welcome-text-cont p {
+    margin-bottom: 15px;
+}
+
 .book-cover-img {
     float: right;
     margin-left: 50px;
