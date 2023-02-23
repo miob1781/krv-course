@@ -1,8 +1,8 @@
 import axios from "axios"
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
-import "../../style/NoteForm.css"
 import { AuthContextTypes, LessonNotes, NoteObject } from "../../types"
+import "../../style/NoteForm.css"
 
 interface Props {
     paragraphId: string
@@ -49,21 +49,12 @@ export default function NoteForm({ paragraphId, note, setNote, setDisplaySnippet
 
     return (
         <form className="NoteForm" onSubmit={(e: FormEvent) => handleSubmit(e)}>
-            <textarea
-                defaultValue={note}
-                rows={8}
-                cols={40}
-                onChange={(e: ChangeEvent) => handleTextAreaChange(e)}
-            />
-            <div className="small-textarea-cont">
                 <textarea
-                    className="small"
                     defaultValue={note}
                     rows={5}
                     cols={25}
                     onChange={(e: ChangeEvent) => handleTextAreaChange(e)}
                 />
-            </div>
             <div>
                 <button
                     type="button"

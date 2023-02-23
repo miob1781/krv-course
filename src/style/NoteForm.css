@@ -8,14 +8,10 @@ textarea {
     border-radius: 5px;
 }
 
-textarea.small {
-    display: none;
-}
-
 .NoteForm button {
-    margin-top: 5px;
+    margin-right: 5px;
+    padding: 4px;
     font-size: 0.9rem;
-    margin-right: 8px;
 }
 
 @media screen and (max-width: 720px) {
@@ -25,10 +21,6 @@ textarea.small {
     }
 
     textarea {
-        display: none;
-    }
-
-    textarea.small {
         display: block;
         margin-bottom: 5px;
         resize: none;
