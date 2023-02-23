@@ -91,8 +91,9 @@ export default function Account() {
     function getText() {
         if (textDisplayed === "login-success") return loginSuccessText
         else if (textDisplayed === "signup-success") return signupSuccessText
-        else if (textDisplayed === "edit-success") return editSuccessText
         else if (textDisplayed === "logout-success") return logOutSuccessText
+        else if (textDisplayed === "edit-success") return editSuccessText
+        else if (textDisplayed === "delete-success") return deleteSuccessText
         else if (textDisplayed === "edit") return editForm
         else if (isLoggedIn) return loggedInText
         else return loggedOutText
@@ -178,7 +179,7 @@ export default function Account() {
     )
 
     const signupSuccessText = (
-        <div>
+        <div className="success-text-cont">
             <p>Du hast dich erfolgreich registriert.</p>
             <div className="button-cont">
                 <Link to={`/${lessonId ? "section-" + lessonId : ""}`}>
@@ -189,7 +190,7 @@ export default function Account() {
     )
 
     const loginSuccessText = (
-        <div>
+        <div className="success-text-cont">
             <p>Du hast dich erfolgreich eingeloggt.</p>
             <div className="button-cont">
                 <Link to={`/${lessonId ? "section-" + lessonId : ""}`}>
@@ -200,7 +201,7 @@ export default function Account() {
     )
 
     const editSuccessText = (
-        <div>
+        <div className="success-text-cont">
             <p>Du hast deine Daten erfolgreich geändert.</p>
             <div className="button-cont">
                 <Link to="/"><button>Zur Startseite</button></Link>
@@ -209,8 +210,17 @@ export default function Account() {
     )
 
     const logOutSuccessText = (
-        <div>
+        <div className="success-text-cont">
             <p>Du hast dich ausgeloggt.</p>
+            <div className="button-cont">
+                <Link to="/"><button>Zur Startseite</button></Link>
+            </div>
+        </div>
+    )
+
+    const deleteSuccessText = (
+        <div className="success-text-cont">
+            <p>Du hast deinen Account gelöscht.</p>
             <div className="button-cont">
                 <Link to="/"><button>Zur Startseite</button></Link>
             </div>
