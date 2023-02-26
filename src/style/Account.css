@@ -92,8 +92,9 @@
     }
 
     .form-grid {
-        grid-template-columns: 110px 130px;
-        gap: 10px;
+        max-width: 84vw;
+        grid-template-columns: 40vw 35vw;
+        gap: 3vw;
     }
 
     .Account .button-cont {
