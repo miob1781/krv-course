@@ -27,6 +27,7 @@
 
 .form-grid label {
     grid-column: 1;
+    hyphens: none;
 }
 
 .form-grid input {

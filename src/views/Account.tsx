@@ -96,8 +96,8 @@ export default function Account() {
             setTextDisplayed(type === "signup" ? "signup-success" : "login-success")
         }).catch(() => {
             type === "signup"
-            ? setErrorMessageSignup("Leider ist etwas schiefgegangen. Du konntest keinen Account einrichten.")
-            : setErrorMessageLogin("Leider ist etwas schiefgegangen. Du konntest dich nicht einloggen.")
+                ? setErrorMessageSignup("Leider ist etwas schiefgegangen. Du konntest keinen Account einrichten.")
+                : setErrorMessageLogin("Leider ist etwas schiefgegangen. Du konntest dich nicht einloggen.")
         })
     }
 
@@ -170,7 +170,7 @@ export default function Account() {
                 <div className="button-cont">
                     <button type="button" onClick={() => registerUser("login")}>Anmelden</button>
                 </div>
-                <p className="error-message" style={{display: errorMessageLogin ? "block" : "none"}}>{errorMessageLogin}</p>
+                <p className="error-message" style={{ display: errorMessageLogin ? "block" : "none" }}>{errorMessageLogin}</p>
             </form>
             <p>Du bist noch nicht registriert? Das einzige, was du brauchst, ist ein Benutzername und ein Passwort - ohne irgendwelche Kosten!</p>
             <div className="button-cont">
@@ -188,7 +188,7 @@ export default function Account() {
                 <div className="button-cont">
                     <button type="button" onClick={() => registerUser("signup")}>Registieren</button>
                 </div>
-                <p className="error-message" style={{display: errorMessageSignup ? "block" : "none"}}>{errorMessageSignup}</p>
+                <p className="error-message" style={{ display: errorMessageSignup ? "block" : "none" }}>{errorMessageSignup}</p>
             </form>
         </div>
     )
@@ -211,7 +211,7 @@ export default function Account() {
                 <div className="button-cont">
                     <button className="delete" type="button" onClick={deleteUser}>Ja, Account löschen</button>
                 </div>
-                <p className="error-message" style={{display: errorMessageDelete ? "block" : "none"}}>{errorMessageDelete}</p>
+                <p className="error-message" style={{ display: errorMessageDelete ? "block" : "none" }}>{errorMessageDelete}</p>
             </div>
         </div>
     )
@@ -231,7 +231,7 @@ export default function Account() {
                     <button type="button" onClick={editUser}>Bearbeiten</button>
                     <button type="button" onClick={() => setTextDisplayed("")}>Zurück</button>
                 </div>
-                <p className="error-message" style={{display: errorMessageEdit ? "block" : "none"}}>{errorMessageEdit}</p>
+                <p className="error-message" style={{ display: errorMessageEdit ? "block" : "none" }}>{errorMessageEdit}</p>
             </form>
         </div>
     )
