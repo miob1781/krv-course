@@ -93,7 +93,7 @@
 
     .form-grid {
         max-width: 84vw;
-        grid-template-columns: 40vw 35vw;
+        grid-template-columns: 35vw 30vw;
         gap: 3vw;
     }
 
