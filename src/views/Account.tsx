@@ -1,3 +1,7 @@
+// ACCOUNT view: renders when users click on the account icon or
+// when they are redirected to it if they try to open a lesson without being logged in
+// contains functionality to login or logout and to create, edit and delete an account
+
 import axios from "axios"
 import { useContext, useState } from "react"
 import { Link, useParams } from "react-router-dom"
@@ -20,8 +24,12 @@ export default function Account() {
     const [signup, setSignup] = useState(false)
     const [deleteAccount, setDeleteAccount] = useState(false)
     const [textDisplayed, setTextDisplayed] = useState<TextDisplayed>("")
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessageSignup, setErrorMessageSignup] = useState("")
+    const [errorMessageLogin, setErrorMessageLogin] = useState("")
+    const [errorMessageEdit, setErrorMessageEdit] = useState("")
+    const [errorMessageDelete, setErrorMessageDelete] = useState("")
 
+    // resets form fields after submitting
     function resetFields() {
         setUsernameSignup("")
         setPasswordSignup("")
@@ -29,47 +37,90 @@ export default function Account() {
         setPasswordLogin("")
         setUsernameEdit("")
         setPasswordEdit("")
-        setErrorMessage("")
+        setErrorMessageSignup("")
+        setErrorMessageLogin("")
+        setErrorMessageEdit("")
+        setErrorMessageDelete("")
     }
 
-    function registerUser(type: string) {
-        const userData = {
-            username: type === "signup" ? usernameSignup : usernameLogin,
-            password: type === "signup" ? passwordSignup : passwordLogin
+    // validates user data
+    function validateUserData(username: string, password: string, type: string): boolean {
+        // regex pattern used for password
+        const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
+        if (!username) {
+            if (type === "signup") {
+                setErrorMessageSignup("Bitte wähle einen Benutzernamen.")
+            } else if (type === "login") {
+                setErrorMessageLogin("Bitte gib deinen Benutzernamen an.")
+            } else {
+                setErrorMessageEdit("Bitte gib entweder deinen alten oder einen neuen Benutzernamen an.")
+            }
+            return false
         }
+        else if (!password) {
+            if (type === "signup") {
+                setErrorMessageSignup("Bitte wähle ein Passwort.")
+            } else if (type === "login") {
+                setErrorMessageLogin("Bitte gib dein Passwort an.")
+            } else {
+                setErrorMessageEdit("Bitte gib entweder dein altes oder ein neues Passwort an.")
+            }
+            return false
+        }
+        else if (!regex.test(password)) {
+            if (type === "signup") {
+                setErrorMessageSignup("Das Passwort muss mindestens acht Zeichen haben. Davon muss eines eine Zahl, eines ein Kleinbuchstabe und eines ein Großbuchstabe sein.")
+            } else if (type === "login") {
+                setErrorMessageLogin("Das Passwort muss mindestens acht Zeichen haben. Davon muss eines eine Zahl, eines ein Kleinbuchstabe und eines ein Großbuchstabe sein.")
+            } else {
+                setErrorMessageEdit("Das Passwort muss mindestens acht Zeichen haben. Davon muss eines eine Zahl, eines ein Kleinbuchstabe und eines ein Großbuchstabe sein.")
+            }
+            return false
+        }
+        return true
+    }
+
+    // signs up or logs in users
+    function registerUser(type: string) {
+        const username: string = type === "signup" ? usernameSignup : usernameLogin
+        const password: string = type === "signup" ? passwordSignup : passwordLogin
+        if (!validateUserData(username, password, type)) return
         axios.post(
             `${import.meta.env.VITE_BASE_URL}/auth/${type === "signup" ? "signup" : "login"}`,
-            userData
+            { username, password }
         ).then(response => {
             storeToken(response.data.authToken)
             authenticateUser()
             resetFields()
             setTextDisplayed(type === "signup" ? "signup-success" : "login-success")
-        }).catch(err => {
-            setErrorMessage(err.message)
+        }).catch(() => {
+            type === "signup"
+            ? setErrorMessageSignup("Leider ist etwas schiefgegangen. Du konntest keinen Account einrichten.")
+            : setErrorMessageLogin("Leider ist etwas schiefgegangen. Du konntest dich nicht einloggen.")
         })
     }
 
+    // edits account
     function editUser() {
-        const userData = {
-            userId,
-            username: usernameEdit,
-            password: passwordEdit
-        }
+        const username: string = usernameEdit
+        const password: string = passwordEdit
+        if (!validateUserData(username, password, "edit")) return
         axios.put(
             `${import.meta.env.VITE_BASE_URL}/auth/`,
-            userData,
+            { userId, username, password },
             { headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` } }
         ).then(response => {
             storeToken(response.data.authToken)
             authenticateUser()
             setTextDisplayed("edit-success")
             resetFields()
-        }).catch(err => {
-            setErrorMessage(err.message)
+        }).catch(() => {
+            setErrorMessageEdit("Leider ist etwas schiefgegangen. Deine Accountdaten konnten nicht geändert werden.")
         })
     }
 
+    // deletes account
     function deleteUser() {
         axios.delete(
             `${import.meta.env.VITE_BASE_URL}/auth/${userId}`,
@@ -78,16 +129,18 @@ export default function Account() {
             logOutUser()
             setTextDisplayed("delete-success")
             resetFields()
-        }).catch(err => {
-            setErrorMessage(err.message)
+        }).catch(() => {
+            setErrorMessageDelete("Leider ist etwas schiefgegangen. Dein Account konnte nicht gelöscht werden.")
         })
     }
 
+    // logs out
     function handleLogOut() {
         logOutUser()
         setTextDisplayed("logout-success")
     }
 
+    // gets the correct text depending on state
     function getText() {
         if (textDisplayed === "login-success") return loginSuccessText
         else if (textDisplayed === "signup-success") return signupSuccessText
@@ -99,25 +152,27 @@ export default function Account() {
         else return loggedOutText
     }
 
+    // text displayed if user is not logged in
     const loggedOutText = (
         <div>
             <h2>Herzlich willkommen!</h2>
             <p>
-                Du bist derzeit nicht eingeloggt. Um die vollen Funktionen nutzen zu können, musst du dich kurz registrieren.
+                Du bist derzeit nicht eingeloggt. Um die vollen Funktionen nutzen zu können, brauchst du einen Account.
                 Deine Daten werden nur für die Verwendung dieses E-Learning-Angebots verwendet und nicht an Dritte weitergegeben.
             </p>
             <form>
                 <div className="form-grid">
                     <label htmlFor="login-username">Benutzername:</label>
-                    <input type="text" name="" id="login-username" onChange={e => setUsernameLogin(e.target.value)} />
+                    <input type="text" id="login-username" autoComplete="username" onChange={e => setUsernameLogin(e.target.value)} />
                     <label htmlFor="login-password">Passwort:</label>
-                    <input type="password" name="" id="login-password" autoComplete="current-password" onChange={e => setPasswordLogin(e.target.value)} />
+                    <input type="password" id="login-password" autoComplete="current-password" onChange={e => setPasswordLogin(e.target.value)} />
                 </div>
                 <div className="button-cont">
                     <button type="button" onClick={() => registerUser("login")}>Anmelden</button>
                 </div>
+                <p className="error-message" style={{display: errorMessageLogin ? "block" : "none"}}>{errorMessageLogin}</p>
             </form>
-            <p>Du bist noch nicht registriert?</p>
+            <p>Du bist noch nicht registriert? Das einzige, was du brauchst, ist ein Benutzername und ein Passwort - ohne irgendwelche Kosten!</p>
             <div className="button-cont">
                 <button type="button" onClick={() => setSignup(true)}>Jetzt registrieren!</button>
             </div>
@@ -126,18 +181,19 @@ export default function Account() {
             <form style={{ display: signup ? "block" : "none" }}>
                 <div className="form-grid">
                     <label htmlFor="signup-username">Benutzername:</label>
-                    <input type="text" name="" id="signup-username" onChange={e => setUsernameSignup(e.target.value)} />
+                    <input type="text" id="signup-username" autoComplete="username" onChange={e => setUsernameSignup(e.target.value)} />
                     <label htmlFor="signup-password">Passwort:</label>
-                    <input type="password" name="" id="signup-password" autoComplete="new-password" onChange={e => setPasswordSignup(e.target.value)} />
+                    <input type="password" id="signup-password" autoComplete="new-password" onChange={e => setPasswordSignup(e.target.value)} />
                 </div>
                 <div className="button-cont">
                     <button type="button" onClick={() => registerUser("signup")}>Registieren</button>
                 </div>
+                <p className="error-message" style={{display: errorMessageSignup ? "block" : "none"}}>{errorMessageSignup}</p>
             </form>
-            <p>{errorMessage}</p>
         </div>
     )
 
+    // text displayed if user is logged in
     const loggedInText = (
         <div>
             <h2>Hi {username}!</h2>
@@ -155,29 +211,32 @@ export default function Account() {
                 <div className="button-cont">
                     <button className="delete" type="button" onClick={deleteUser}>Ja, Account löschen</button>
                 </div>
+                <p className="error-message" style={{display: errorMessageDelete ? "block" : "none"}}>{errorMessageDelete}</p>
             </div>
         </div>
     )
 
+    // text displayed if user wants to edit account
     const editForm = (
         <div>
             <h3>Account bearbeiten</h3>
             <form>
                 <div className="form-grid">
                     <label htmlFor="edit-username">Benutzername:</label>
-                    <input type="text" name="" id="edit-username" defaultValue={username} onChange={e => setUsernameEdit(e.target.value)} />
+                    <input type="text" id="edit-username" defaultValue={username} autoComplete="username" onChange={e => setUsernameEdit(e.target.value)} />
                     <label htmlFor="edit-password">Passwort:</label>
-                    <input type="password" name="" id="edit-password" autoComplete="current-password" onChange={e => setPasswordEdit(e.target.value)} />
+                    <input type="password" id="edit-password" autoComplete="current-password" onChange={e => setPasswordEdit(e.target.value)} />
                 </div>
                 <div className="button-cont">
                     <button type="button" onClick={editUser}>Bearbeiten</button>
                     <button type="button" onClick={() => setTextDisplayed("")}>Zurück</button>
                 </div>
+                <p className="error-message" style={{display: errorMessageEdit ? "block" : "none"}}>{errorMessageEdit}</p>
             </form>
-            <p>{errorMessage}</p>
         </div>
     )
 
+    // text displayed after successful signup
     const signupSuccessText = (
         <div className="success-text-cont">
             <p>Du hast dich erfolgreich registriert.</p>
@@ -189,6 +248,7 @@ export default function Account() {
         </div>
     )
 
+    // text displayed after successful login
     const loginSuccessText = (
         <div className="success-text-cont">
             <p>Du hast dich erfolgreich eingeloggt.</p>
@@ -200,6 +260,7 @@ export default function Account() {
         </div>
     )
 
+    // text displayed after successful edit
     const editSuccessText = (
         <div className="success-text-cont">
             <p>Du hast deine Daten erfolgreich geändert.</p>
@@ -209,6 +270,7 @@ export default function Account() {
         </div>
     )
 
+    // text displayed after successful log out
     const logOutSuccessText = (
         <div className="success-text-cont">
             <p>Du hast dich ausgeloggt.</p>
@@ -218,6 +280,7 @@ export default function Account() {
         </div>
     )
 
+    // text displayed after successful deletion
     const deleteSuccessText = (
         <div className="success-text-cont">
             <p>Du hast deinen Account gelöscht.</p>

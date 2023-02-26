@@ -39,7 +39,7 @@ export default function Welcome() {
                     Dies ist erst der Anfang. Doch wenn dieses E-Learning-Angebot fertiggestellt ist, dann soll es 18 Kapiteln bestehen,
                     die einer oder mehreren Lektionen bestehen, die jeweils mit einem Quiz abgeschlossen werden.
                     Zudem soll jedes Kapitel durch eine Übersicht mit relevanter Primär- und Sekundärliteratur abgeschlosssen werden.
-                    Zu den Kapiteln soll eine Auflistung von Ressourcen und Hilfmitteln und möglicherweuse weitere Materialien hinzukommen.
+                    Zu den Kapiteln sollen eine Auflistung von Ressourcen und Hilfmitteln und möglicherweuse weitere Materialien hinzukommen.
                 </p>
             </div>
             <h2>Kursinhalt</h2>

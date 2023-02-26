@@ -13,9 +13,14 @@
     color: var(--text-on-primary-color);
 }
 
+.Account p {
+    text-align: justify;
+}
+
 .form-grid {
     display: grid;
-    grid-template-columns: 150px 200px;
+    max-width: 300px;
+    grid-template-columns: 150px 120px;
     gap: 10px 20px;
     margin: 25px 0;
 }
@@ -64,6 +69,13 @@
 
 .Account button.delete:active {
     background-color: firebrick;
+}
+
+.error-message {
+    padding: 7px;
+    margin-bottom: 25px;
+    border: 3px red solid;
+    border-radius: 5px;
 }
 
 .success-text-cont p {
