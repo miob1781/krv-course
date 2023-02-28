@@ -2,8 +2,10 @@ import { useState, createContext, PropsWithChildren, useEffect } from "react"
 import axios from "axios"
 import { AuthContextTypes, LessonNotes } from "../types"
 
+/** context for authentication */
 export const AuthContext = createContext<AuthContextTypes | null>(null)
 
+/** component which wraps the provider of AuthContext */
 export function AuthProviderWrapper({ children }: PropsWithChildren) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -12,10 +14,12 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
     const [lessonIds, setLessonIds] = useState<string[]>([])
     const [notes, setNotes] = useState<LessonNotes[]>([])
 
+    /** stores authentication token */
     function storeToken(token: string) {
         localStorage.setItem("authToken", token)
     }
 
+    /** resets values if authentication is unsuccessful */
     function resetValues() {
         setIsLoggedIn(false)
         setIsLoading(false)
@@ -25,6 +29,7 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
         setNotes([])
     }
 
+    /** loads notes of a section */
     function loadNotes(lessonId: string) {
         axios.get(
             `${import.meta.env.VITE_BASE_URL}/notes`,
@@ -43,19 +48,20 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
         }).catch(err => console.log("Error while loading lessonNotes: ", err))
     }
 
+    /** loads ids of all completed lessons */
     function loadLessonIds(userId: string, authToken: string) {
         axios.get(`${import.meta.env.VITE_BASE_URL}/lessons/${userId}`, { headers: { Authorization: `Bearer ${authToken}` }})
             .then(response => setLessonIds(response.data?.lessonIds))
             .catch(err => console.log("An error has occurred while loading lessonIds: ", err))
     }
 
+    /** authenticates user */
     function authenticateUser() {
         const storedToken: string | null = localStorage.getItem("authToken")
         if (storedToken) {
             axios.get(`${import.meta.env.VITE_BASE_URL}/auth/verify`,
                 { headers: { Authorization: `Bearer ${storedToken}` } })
                 .then(response => {
-                    console.log(response.data)
                     setIsLoggedIn(true)
                     setIsLoading(false)
                     setUserId(response.data?.userId)
@@ -71,15 +77,18 @@ export function AuthProviderWrapper({ children }: PropsWithChildren) {
         }
     }
 
+    /** removes authentication token */
     function removeToken() {
         localStorage.removeItem("authToken")
     }
 
+    /** logs out user */
     function logOutUser() {
         removeToken()
         authenticateUser()
     }
 
+    // authenticates user when app mounts
     useEffect(() => {
         authenticateUser()
     }, [])

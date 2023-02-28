@@ -12,18 +12,19 @@ interface Props {
     setNoteInputOpened: Dispatch<SetStateAction<boolean>>
 }
 
+/** form to add or edit note */
 export default function NoteForm({ paragraphId, note, setNote, setDisplaySnippet, setNoteInputOpened }: Props) {
     const { userId, setNotes } = useContext(AuthContext) as AuthContextTypes
 
     const [noteInput, setNoteInput] = useState(note)
 
-    // changes state when user types input
+    /** handles user input for text area element */
     function handleTextAreaChange(e: ChangeEvent) {
         const target = e.target as HTMLTextAreaElement
         setNoteInput(target.value)
     }
 
-    // sends note to server and stores note in state
+    /** sends note to server and stores note in state */
     function handleSubmit(e: FormEvent) {
         e.preventDefault()
         const noteObject: NoteObject = { paragraphId, text: noteInput }

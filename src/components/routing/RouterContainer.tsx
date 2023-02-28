@@ -5,13 +5,19 @@ import Welcome from "../../views/Welcome"
 import Loading from "./Loading"
 import IsPrivate from "./IsPrivate"
 import { sectionsData } from "../../consts/sections-data"
-import { SectionData, SubSectionData } from "../../types"
+import { SectionData, LessonData } from "../../types"
 
-// create routes of sections for lazy imports
+// creates routes of sections for lazy imports
+
+/** array with routes of sections */
 const sectionRoutes: ReactElement[] = []
 
-function getRoute(sectionData: SectionData | SubSectionData): ReactElement {
+/** gets a specific route */
+function getRoute(sectionData: SectionData | LessonData): ReactElement {
+
+    /** lazily imported component */
     const Component = lazy(() => import(`../sections/Section-${sectionData.lessonId}.tsx`))
+
     return (
         <Route
             key={sectionData.lessonId}
@@ -25,17 +31,20 @@ function getRoute(sectionData: SectionData | SubSectionData): ReactElement {
     )
 }
 
+// gets all routes of sections and lessons, depending on the metadata
 sectionsData.forEach((sectionData: SectionData) => {
     const route: ReactElement = getRoute(sectionData)
     sectionRoutes.push(route)
-    sectionData.subSections!.forEach((subSectionData: SubSectionData) => {
-        const subRoute: ReactElement = getRoute(subSectionData)
+    sectionData.lessons!.forEach((lesson: LessonData) => {
+        const subRoute: ReactElement = getRoute(lesson)
         sectionRoutes.push(subRoute)
     })
 })
 
+/** component in which routes are rendered */
 export default function RouterContainer() {
     return (
+        // renders routes with loading screen as fallback value
         <Suspense fallback={<Loading />}>
             <Routes>
                 <Route path="/" element={<Welcome />} />

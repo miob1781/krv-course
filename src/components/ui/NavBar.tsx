@@ -7,6 +7,7 @@ interface Props {
     smallScreen?: boolean
 }
 
+/** navbar with icons linking to start page and account page */
 export default function NavBar({smallScreen = false}: Props) {
     return (
         <nav className={smallScreen ? "NavBar small" : "NavBar"}>

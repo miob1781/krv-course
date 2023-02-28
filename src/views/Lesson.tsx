@@ -10,12 +10,14 @@ interface Props {
     pages: string
 }
 
+/** displays lesson. The content is ordered as a grid with paragraphs and page numbers, texts and notes.
+If the user clicks the quiz button at the end of the lesson, the quiz is rendered. */
 export default function Lesson({ children, lessonId, quiz, title, pages }: PropsWithChildren<Props>) {
     const { loadNotes } = useContext(AuthContext) as AuthContextTypes
 
     const [quizOn, setQuizOn] = useState(false)
 
-    // loads notes after loading the lesson
+    // loads notes after mount
     useEffect(() => {
         loadNotes(lessonId)
     }, [])

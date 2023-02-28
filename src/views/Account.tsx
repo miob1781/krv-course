@@ -1,7 +1,3 @@
-// ACCOUNT view: renders when users click on the account icon or
-// when they are redirected to it if they try to open a lesson without being logged in
-// contains functionality to login or logout and to create, edit and delete an account
-
 import axios from "axios"
 import { useContext, useState } from "react"
 import { Link, useParams } from "react-router-dom"
@@ -11,6 +7,7 @@ import "../style/Account.css"
 
 type TextDisplayed = "" | "edit" | "login-success" | "signup-success" | "logout-success" | "edit-success" | "delete-success"
 
+/** view for signup, login, and for editing and deleting an account */
 export default function Account() {
     const { isLoggedIn, userId, username, storeToken, authenticateUser, logOutUser } = useContext(AuthContext) as AuthContextTypes
     const { lessonId } = useParams()
@@ -29,7 +26,7 @@ export default function Account() {
     const [errorMessageEdit, setErrorMessageEdit] = useState("")
     const [errorMessageDelete, setErrorMessageDelete] = useState("")
 
-    // resets form fields after submitting
+    /** resets form fields after submitting */
     function resetFields() {
         setUsernameSignup("")
         setPasswordSignup("")
@@ -43,7 +40,7 @@ export default function Account() {
         setErrorMessageDelete("")
     }
 
-    // validates user data
+    /** validates user data */
     function validateUserData(username: string, password: string, type: string): boolean {
         // regex pattern used for password
         const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
@@ -81,7 +78,7 @@ export default function Account() {
         return true
     }
 
-    // signs up or logs in users
+    /** signs up or logs in users */
     function registerUser(type: string) {
         const username: string = type === "signup" ? usernameSignup : usernameLogin
         const password: string = type === "signup" ? passwordSignup : passwordLogin
@@ -101,7 +98,7 @@ export default function Account() {
         })
     }
 
-    // edits account
+    /** edits account */
     function editUser() {
         const username: string = usernameEdit
         const password: string = passwordEdit
@@ -120,7 +117,7 @@ export default function Account() {
         })
     }
 
-    // deletes account
+    /** deletes account */
     function deleteUser() {
         axios.delete(
             `${import.meta.env.VITE_BASE_URL}/auth/${userId}`,
@@ -134,13 +131,13 @@ export default function Account() {
         })
     }
 
-    // logs out
+    /** logs user out */
     function handleLogOut() {
         logOutUser()
         setTextDisplayed("logout-success")
     }
 
-    // gets the correct text depending on state
+    /** gets the correct text depending on state */
     function getText() {
         if (textDisplayed === "login-success") return loginSuccessText
         else if (textDisplayed === "signup-success") return signupSuccessText
@@ -152,7 +149,7 @@ export default function Account() {
         else return loggedOutText
     }
 
-    // text displayed if user is not logged in
+    /** text displayed if user is not logged in */
     const loggedOutText = (
         <div>
             <h2>Herzlich willkommen!</h2>
@@ -193,7 +190,7 @@ export default function Account() {
         </div>
     )
 
-    // text displayed if user is logged in
+    /** text displayed if user is logged in */
     const loggedInText = (
         <div>
             <h2>Hi {username}!</h2>
@@ -216,7 +213,7 @@ export default function Account() {
         </div>
     )
 
-    // text displayed if user wants to edit account
+    /** text displayed if user wants to edit account */
     const editForm = (
         <div>
             <h3>Account bearbeiten</h3>
@@ -236,7 +233,7 @@ export default function Account() {
         </div>
     )
 
-    // text displayed after successful signup
+    /** text displayed after successful signup */
     const signupSuccessText = (
         <div className="success-text-cont">
             <p>Du hast dich erfolgreich registriert.</p>
@@ -248,7 +245,7 @@ export default function Account() {
         </div>
     )
 
-    // text displayed after successful login
+    /** text displayed after successful login */
     const loginSuccessText = (
         <div className="success-text-cont">
             <p>Du hast dich erfolgreich eingeloggt.</p>
@@ -260,7 +257,7 @@ export default function Account() {
         </div>
     )
 
-    // text displayed after successful edit
+    /** text displayed after successful edit */
     const editSuccessText = (
         <div className="success-text-cont">
             <p>Du hast deine Daten erfolgreich geändert.</p>
@@ -270,7 +267,7 @@ export default function Account() {
         </div>
     )
 
-    // text displayed after successful log out
+    /** text displayed after successful log out */
     const logOutSuccessText = (
         <div className="success-text-cont">
             <p>Du hast dich ausgeloggt.</p>
@@ -280,7 +277,7 @@ export default function Account() {
         </div>
     )
 
-    // text displayed after successful deletion
+    /** text displayed after successful deletion */
     const deleteSuccessText = (
         <div className="success-text-cont">
             <p>Du hast deinen Account gelöscht.</p>

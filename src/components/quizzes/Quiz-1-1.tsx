@@ -179,6 +179,6 @@ export default function Quiz_1_1() {
         title="Einleitung"
         quiz={quiz}
         lessonId="1-1"
-        path="/section-1"
+        pathBackToSection="/section-1"
     />
 }

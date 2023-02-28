@@ -12,6 +12,7 @@ interface Props {
     title: string
 }
 
+/** title element of table of content in Introduction view */
 export default function IntroTocEl({ lessonId, numberOfSection, title }: Props) {
     const { lessonIds } = useContext(AuthContext) as AuthContextTypes
 
@@ -41,7 +42,7 @@ export default function IntroTocEl({ lessonId, numberOfSection, title }: Props) 
         return disabled
     }, [lessonIds])
 
-    // checkmark at the end of element if lesson has been completed
+    /** checkmark at the end of element if lesson has been completed */
     const checkmark: JSX.Element = <FontAwesomeIcon className="intro-checkmark" icon={faCircleCheck} />
 
     return (

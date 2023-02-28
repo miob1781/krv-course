@@ -14,11 +14,14 @@ interface Props {
     setNoteInputOpened: Dispatch<SetStateAction<boolean>>
 }
 
+/** length of snippet */
 const snippetLength: number = 10
 
+/** note of paragraph */
 export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, noteInputOpened, setNoteInputOpened }: Props) {
     const [displaySnippet, setDisplaySnippet] = useState(false)
 
+    /** icon to edit note */
     const editIcon = (
         <FontAwesomeIcon
             icon={faEdit}
@@ -28,6 +31,7 @@ export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, no
         />
     )
 
+    /** icon to open note when only a snippet is displayed */
     const openIcon = (
         <FontAwesomeIcon
             icon={faAngleDown}
@@ -37,6 +41,7 @@ export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, no
         />
     )
 
+    /** icon to close note and display snippet instead */
     const closeIcon = (
         <FontAwesomeIcon
             icon={faAngleUp}
@@ -46,6 +51,7 @@ export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, no
         />
     )
 
+    /** snippet which abbreviates note */
     const snippet: string = useMemo(() => {
         const separatorRegex: RegExp = / |,|\.|;|:|\?|!/
         const splittedNote: string[] = note.split(" ")
@@ -63,8 +69,10 @@ export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, no
         }
     }, [note])
 
+    /** introductory span for inline notes on small screens */
     const noteIntro: ReactElement = <span className="small-note-intro">Notiz:</span>
 
+    /** renders content of note container dependent on state */
     function renderNoteContainerContent() {
         if (!noteInputOpened) {
             if (displaySnippet && snippet.length > 0) {

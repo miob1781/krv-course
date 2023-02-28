@@ -4,7 +4,10 @@ import { sectionsData } from "../../consts/sections-data"
 import { SectionData } from "../../types"
 import "../../style/Sidebar.css"
 
+/** sidebar with navbar, Kant image and table of content */
 export default function Sidebar() {
+
+    /** returns title of table of content in Sidebar */
     function renderTitles(): ReactElement[] {
         return sectionsData.map((sectionData: SectionData, index: number) => (
             <p key={sectionData.lessonId} className="sidebar-title-cont">

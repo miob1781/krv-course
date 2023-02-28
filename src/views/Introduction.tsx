@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from "react";
 import IntroTocEl from "../components/ui/IntroTocEl";
-import { SectionData, SubSectionData } from "../types";
+import { SectionData, LessonData } from "../types";
 import "../style/Introduction.css"
 
 interface Props {
@@ -8,16 +8,19 @@ interface Props {
     sectionData: SectionData
 }
 
+/** displays introductory text and table of content for sections */
 export default function Introduction({ children, sectionData }: Props) {
+
+    /** renders table of content of lessons of the section */
     function renderLessonTitles(): ReactElement {
         return (
             <>
-                {sectionData.subSections.map((subSectionData: SubSectionData, index: number) => (
+                {sectionData.lessons.map((lesson: LessonData, index: number) => (
                     <IntroTocEl
-                        key={subSectionData.lessonId}
-                        lessonId={subSectionData.lessonId}
+                        key={lesson.lessonId}
+                        lessonId={lesson.lessonId}
                         numberOfSection={index + 1}
-                        title={subSectionData.title}
+                        title={lesson.title}
                     />
                 ))}
             </>

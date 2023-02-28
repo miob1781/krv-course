@@ -1,11 +1,12 @@
 import { SectionData } from "../types"
 
+/** metadata of sections */
 export const sectionsData: SectionData[] = [
     {
         title: "Einleitung",
         lessonId: "1",
         description: "In der Einleitung beschäftigt sich Kant mit dem Projekt einer Kritik der reinen Vernunft und unterscheidet zwischen analytischen und synthetischen Urteilen sowie zwischen Urteilen a priori und a posteriori.",
-        subSections: [
+        lessons: [
             {
                 title: "Einleitung",
                 lessonId: "1-1",
@@ -17,7 +18,7 @@ export const sectionsData: SectionData[] = [
         title: "Transzendentale Ästhetik",
         lessonId: "2",
         description: "Die Transzendentale Ästhetik befasst sich mit der Sinnlichkeit. Sie legt dar, dass Raum und Zeit die Formen der Anschauung sind und diese nur die Formen der Erscheinungen, nicht aber der Dinge an sich sind.",
-        subSections: [
+        lessons: [
             {
                 title: "Transzendentale Ästhetik, § 1",
                 lessonId: "2-1",

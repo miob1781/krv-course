@@ -4,7 +4,10 @@ import { sectionsData } from "../consts/sections-data"
 import { SectionData } from "../types"
 import "../style/Welcome.css"
 
+/** rendered as start screen with table of content */
 export default function Welcome() {
+
+    /** function to render the table of content */
     function renderWelcomeTocSections(): ReactElement[] {
         return sectionsData.map((sectionData: SectionData, index: number) => (
             <WelcomeTocSection

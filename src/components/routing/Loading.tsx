@@ -1,5 +1,6 @@
 import "../../style/Loading.css"
 
+/** loading screen */
 export default function Loading() {
     return (
         <div className="Loading">

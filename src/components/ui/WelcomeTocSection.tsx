@@ -10,10 +10,11 @@ interface Props {
     sectionNumber: number
 }
 
+/** title element in table of content of Welcome view */
 export default function WelcomeTocSection({sectionData, sectionNumber}: Props) {
     const [expand, setExpand] = useState(false)
 
-    // icon to expand or collapse details
+    /** icon to expand or collapse details */
     const icon: ReactElement = <FontAwesomeIcon icon={expand ? faAngleUp : faAngleDown} />
 
     return (

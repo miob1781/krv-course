@@ -12,6 +12,7 @@ interface Props {
     isQuestion?: boolean
 }
 
+/** paragraph of lesson */
 export default function LessonListEl({ children, paragraphId, pageNumber, isQuestion = false }: PropsWithChildren<Props>) {
     const { notes } = useContext(AuthContext) as AuthContextTypes
 
@@ -19,10 +20,10 @@ export default function LessonListEl({ children, paragraphId, pageNumber, isQues
     const [noteInputOpened, setNoteInputOpened] = useState(false)
     const [notesLoaded, setNotesLoaded] = useState(false)
 
-    // gets class of paragraph, dependent on whether the paragraph is a question to the user
+    /** class of paragraph, dependent on whether the paragraph is a question to the user */
     const textContainerClass: string = isQuestion ? "lesson-list-text lesson-question" : "lesson-list-text"
 
-    // gets notes of lesson
+    /** gets notes of lesson */
     function getLessonNotes(): LessonNotes | undefined {
         // get lessonId from paragraphId
         const lessonId: string = paragraphId.split("-").slice(0, 2).join("-")
@@ -32,7 +33,7 @@ export default function LessonListEl({ children, paragraphId, pageNumber, isQues
         return lessonNotes
     }
 
-    // returns note of paragraph from notes from DB if note exists or empty string
+    /** returns note of paragraph from notes from DB if note exists or else empty string */
     function getNote(lessonNotes: LessonNotes): string {
         const note: string = lessonNotes.notes.find(note => note.paragraphId === paragraphId)?.text || ""
         setNotesLoaded(true)
@@ -44,6 +45,7 @@ export default function LessonListEl({ children, paragraphId, pageNumber, isQues
         lessonNotes && !notesLoaded && setNote(getNote(lessonNotes))
     }, [notes])
 
+    /** returns plus icon to add note */
     function getPlusIcon(className: string): ReactElement {
         return (
             <FontAwesomeIcon
@@ -55,7 +57,7 @@ export default function LessonListEl({ children, paragraphId, pageNumber, isQues
         )
     }
 
-    // gets grid-row value of paragraph
+    /** gets grid-row value of paragraph */
     function getGridRow(): string {
         const paragraphNumber: number = Number(paragraphId.split("-")[2])
         const gridRow: string = String(paragraphNumber + 1)
