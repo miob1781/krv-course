@@ -30,7 +30,7 @@ export default function Welcome() {
                 />
                 <p>
                     Studiere Immanuel Kants berühmtestes Werk in deiner eigenen Geschwindigkeit – wann und wo immer du willst.
-                    Mit detallierten Lektürehinweisen und Quizzes, die dich Stück für Stück durch das schwierige Werk begleiten.
+                    Mit detaillierten Lektürehinweisen und Quizzes, die dich Stück für Stück durch das schwierige Werk begleiten.
                     Zudem hast du Platz für deine eigenen Notizen und du behältst jederzeit deinen Lernfortschritt im Blick.
                 </p>
                 <p>
