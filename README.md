@@ -13,6 +13,6 @@ Go to the [backend](https://github.com/miob1781/krv-course-server) here.
 
 ## Website
 
-This is the website: https://kritik-der-reinen-vernunft.netlify.app.
+The website is deployed on Netlify: https://kritik-der-reinen-vernunft.netlify.app.
 
 I am looking forward to your feedback!
