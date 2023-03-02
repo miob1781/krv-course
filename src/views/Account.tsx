@@ -42,7 +42,7 @@ export default function Account() {
 
     /** validates user data */
     function validateUserData(username: string, password: string, type: string): boolean {
-        // regex pattern used for password
+        /** regex pattern used for password */
         const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
         if (!username) {
@@ -91,10 +91,10 @@ export default function Account() {
             authenticateUser()
             resetFields()
             setTextDisplayed(type === "signup" ? "signup-success" : "login-success")
-        }).catch(() => {
+        }).catch(err => {
             type === "signup"
-                ? setErrorMessageSignup("Leider ist etwas schiefgegangen. Du konntest keinen Account einrichten.")
-                : setErrorMessageLogin("Leider ist etwas schiefgegangen. Du konntest dich nicht einloggen.")
+                ? setErrorMessageSignup("Leider konntest du dich nicht registrieren. Fehlermeldung: "  + err.response.data.errorMessage)
+                : setErrorMessageLogin("Leider konntest du dich nicht einloggen. Fehlermeldung: " +  err.response.data.errorMessage)
         })
     }
 
@@ -112,8 +112,8 @@ export default function Account() {
             authenticateUser()
             setTextDisplayed("edit-success")
             resetFields()
-        }).catch(() => {
-            setErrorMessageEdit("Leider ist etwas schiefgegangen. Deine Accountdaten konnten nicht geändert werden.")
+        }).catch(err => {
+            setErrorMessageEdit("Deine Accountdaten konnten leider nicht geändert werden. Fehlermeldung: " + err.response.data.errorMessage)
         })
     }
 
