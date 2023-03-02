@@ -2,11 +2,11 @@
 
 .Welcome {
     max-width: min(100%, 700px);
-    margin-left: 80px;
+    margin-left: 90px;
 }
 
 .welcome-text-cont {
-    max-width: 800px;
+    max-width: min(800px, 100%);
     min-height: 190px;
     text-align: justify;
 }
@@ -21,6 +21,16 @@
     margin-bottom: 20px;
 }
 
+.book-cover-img.small {
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .Welcome {
+        margin-left: 50px;
+    }
+}
+
 @media screen and (max-width: 720px) {
     .Welcome {
         margin-left: 0;
@@ -28,5 +38,11 @@
 
     .book-cover-img {
         display: none;
+    }
+
+    .book-cover-img.small {
+        display: block;
+        margin-left: 20px;
+        margin-bottom: 10px;
     }
 }

@@ -4,6 +4,7 @@
     margin-bottom: 30px;
     padding: 15px;
     background-color: var(--primary-color);
+    border-radius: 5px;
 }
 
 .home-icon, .account-icon {
@@ -18,13 +19,25 @@
     transition: 0.3s linear;
 }
 
-.NavBar.small {
+.NavBar.small, .kant-image.small {
     display: none;
 }
 
 @media screen and (max-width: 720px) {
+    .nav-cont {
+        height: 125px;
+    }
+
     .NavBar.small {
+        display: inline-block;
+        width: calc(100% - (min(35vw, 80px) + 2.5vw));
+        margin-bottom: 15px;
+    }
+
+    .kant-image.small {
         display: block;
-        max-width: 100%;
+        max-width: min(35vw, 80px);
+        float: right;
+        border-radius: 5px;
     }
 }

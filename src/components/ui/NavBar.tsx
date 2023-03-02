@@ -4,19 +4,27 @@ import { Link } from "react-router-dom"
 import "../../style/NavBar.css"
 
 interface Props {
-    smallScreen?: boolean
+    small?: boolean
 }
 
 /** navbar with icons linking to start page and account page */
-export default function NavBar({smallScreen = false}: Props) {
+export default function NavBar({ small = false }: Props) {
     return (
-        <nav className={smallScreen ? "NavBar small" : "NavBar"}>
-            <Link to="/" title="Zur Startseite">
-                <FontAwesomeIcon className="home-icon" icon={faHouse} />
-            </Link>
-            <Link to="/account" title="Zum Account">
-                <FontAwesomeIcon className="account-icon" icon={faUser} />
-            </Link>
-        </nav>
+        <div className="nav-cont">
+            <nav className={small ? "NavBar small" : "NavBar"}>
+                <Link to="/" title="Zur Startseite">
+                    <FontAwesomeIcon className="home-icon" icon={faHouse} />
+                </Link>
+                <Link to="/account" title="Zum Account">
+                    <FontAwesomeIcon className="account-icon" icon={faUser} />
+                </Link>
+            </nav>
+            {small && <img
+                className="kant-image small"
+                src="../../assets/images/Kant-image.jpg"
+                alt="Immanuel Kant"
+                title="Immanuel Kant"
+            />}
+        </div>
     )
 }

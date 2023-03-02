@@ -18,16 +18,21 @@ export default function Welcome() {
         ))
     }
 
+    /** gets image of cover of the first edition of the Critique of Pure Reason depending on screen size */
+    function getImage(small: boolean): ReactElement {
+        return <img
+            className={small ? "book-cover-img small" : "book-cover-img"}
+            src="../../assets/images/cpr_image.jpg"
+            alt="Deckblatt der ersten Ausgabe der Kritik der reinen Vernunft von 1781"
+            title="Deckblatt der ersten Ausgabe der Kritik der reinen Vernunft von 1781"
+        />
+    }
+
     return (
         <div className="Welcome">
             <h1>Lies die Kritik der reinen Vernunft!</h1>
             <div className="welcome-text-cont">
-                <img
-                    className="book-cover-img"
-                    src="../../assets/images/cpr_image.jpg"
-                    alt="Deckblatt der ersten Ausgabe der Kritik der reinen Vernunft von 1781"
-                    title="Deckblatt der ersten Ausgabe der Kritik der reinen Vernunft von 1781"
-                />
+                {getImage(false)}
                 <p>
                     Studiere Immanuel Kants berühmtestes Werk in deiner eigenen Geschwindigkeit – wann und wo immer du willst.
                     Mit detaillierten Lektürehinweisen und Quizzes, die dich Stück für Stück durch das schwierige Werk begleiten.
@@ -38,6 +43,9 @@ export default function Welcome() {
                     wollen – egal, ob sie Philosophie studieren, aber dieses Werk nicht in der Lehre angeboten wird,
                     oder ob sie immer schon den Traum hatten, sich mit der "Kritik" zu befassen.
                 </p>
+                <div>
+                    {getImage(true)}
+                </div>
                 <p>
                     Dies ist erst der Anfang. Doch wenn dieses E-Learning-Angebot fertiggestellt ist, dann soll es 18 Kapiteln bestehen,
                     die einer oder mehreren Lektionen bestehen, die jeweils mit einem Quiz abgeschlossen werden.

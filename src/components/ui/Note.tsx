@@ -12,13 +12,14 @@ interface Props {
     setNote: Dispatch<SetStateAction<string>>
     noteInputOpened: boolean
     setNoteInputOpened: Dispatch<SetStateAction<boolean>>
+    small: boolean
 }
 
 /** length of snippet */
 const snippetLength: number = 10
 
 /** note of paragraph */
-export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, noteInputOpened, setNoteInputOpened }: Props) {
+export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, noteInputOpened, setNoteInputOpened, small }: Props) {
     const [displaySnippet, setDisplaySnippet] = useState(false)
 
     /** icon to edit note */
@@ -95,7 +96,7 @@ export default function Note({ paragraphId, gridRow, plusIcon, note, setNote, no
     }
 
     return (
-        <div className="Note" style={{ gridRow: gridRow }}>
+        <div className={small ? "Note small" : "Note"} style={{ gridRow: gridRow }}>
             {renderNoteContainerContent()}
         </div>
     )

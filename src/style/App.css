@@ -10,7 +10,9 @@
     font-size: 21px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -51,7 +53,9 @@ button:active {
     transition: 0.2s ease-in;
 }
 
-ul, ol, blockquote {
+ul,
+ol,
+blockquote {
     margin-left: min(50px, 10vw);
     margin-bottom: 15px;
     line-height: 1.1;
@@ -65,32 +69,45 @@ li {
     margin-bottom: 5px;
 }
 
-b, i, li {
+b,
+i,
+li {
     line-height: inherit;
 }
 
 .App {
     display: flex;
-    margin: 40px;
-    width: 100%;
-    max-width: min(95vw, 1100px);
-    min-height: 700px;
+    max-width: min(94vw, 1200px);
+    margin: min(3vw, 40px);
 }
 
 .side-cont {
-    width: 250px;
-}
-
-.side-cont > * {
-    border-radius: 5px;
-}
-
-.kant-image {
+    width: 25%;
+    min-width: 190px;
     max-width: 250px;
 }
 
+.kant-image {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
 .app-inner-cont {
-    min-width: 100%;
+    width: 75%;
+}
+
+@media screen and (max-width: 960px) {
+    * {
+        font-size: 20px;
+    }
+
+    .App {
+        margin: min(3vw, 20px);
+    }
+
+    .app-inner-cont {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 720px) {

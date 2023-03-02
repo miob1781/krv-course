@@ -2,9 +2,10 @@
 
 .lesson-cont {
     display: grid;
-    grid-template-columns: 110px minmax(400px, 700px) minmax(auto, 500px);
+    grid-template-columns: 110px minmax(400px, 60%) auto;
     gap: 25px 20px;
-    width: 100%;
+    max-width: 100%;
+    margin-left: 30px;
 }
 
 .lesson-header {
@@ -18,9 +19,16 @@
     justify-self: center;
 }
 
+@media screen and (max-width: 960px) {
+    .lesson-cont {
+        grid-template-columns: minmax(50px, 110px) minmax(350px, 500px);
+    }
+}
+
 @media screen and (max-width: 720px) {
     .lesson-cont {
         display: block;
+        margin-left: 0;
     }
 
     .lesson-end-button-cont {
