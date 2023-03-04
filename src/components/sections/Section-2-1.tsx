@@ -19,11 +19,11 @@ export default function Lesson_2_1() {
                 Inwiefern sich der Verstand immer auf Anschauungen „beziehen“ muss, wird in der nächsten Lektion erörtert.
             </LessonListEl>
             <LessonListEl paragraphId="2-1-3" pageNumber="A19f./B34">
-                „Affektion“ ist der Vorgang, wodurch ein Gegenstand eine Anschauung erzeugt.
+                <i>„Affektion“</i> ist der Vorgang, wodurch ein Gegenstand eine Anschauung erzeugt.
                 Nach Auffassung der meisten Interpret:innen ist Affektion kausal – der affizierende Gegenstand ist also die Ursache einer Anschauung als Wirkung im Subjekt.
             </LessonListEl>
             <LessonListEl paragraphId="2-1-4">
-                „Empfindung“ ist die Materie der Anschauung: „Undurchdringlichkeit, Härte, Farbe etc.“ (A20f./B35).
+                <i>„Empfindung“</i> ist die Materie der Anschauung: „Undurchdringlichkeit, Härte, Farbe etc.“ (A20f./B35).
                 Empfindungen sind der Gehalt dessen, was in den einzelnen Sinnen (Sehsinn, Gehör, Geruch, Geschmack, Tastsinn) empfunden wird.
                 Eine Anschauung mit Empfindung ist deswegen empirisch,
                 weil zur Affektion immer Empfindungen gehören und es ohne Affektion keine empirische Anschauung gibt.
@@ -32,7 +32,7 @@ export default function Lesson_2_1() {
                 Kannst du weitere Empfindungen benennen?
             </LessonListEl>
             <LessonListEl paragraphId="2-1-6">
-                „Der unbestimmte Gegenstand einer empirischen Anschauung heißt <b>Erscheinung</b>.“ – Wir werden später sehen,
+                <i>„Der unbestimmte Gegenstand einer empirischen Anschauung heißt <b>Erscheinung</b>.“</i> – Wir werden später sehen,
                 dass es verschiedene Arten von Erscheinungen gibt.
                 Hier ist der Gegenstand „unbestimmt“, weil der Gegenstand zwar angeschaut, aber noch nicht gedacht wird.
             </LessonListEl>

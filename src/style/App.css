@@ -56,6 +56,7 @@ button:active {
 ul,
 ol,
 blockquote {
+    margin-top: 15px;
     margin-left: min(50px, 10vw);
     margin-bottom: 15px;
     line-height: 1.1;
@@ -66,14 +67,17 @@ ol {
 }
 
 li {
-    margin-bottom: 5px;
+    margin: 10px 0;
 }
 
 b,
 i,
+u,
 li {
     line-height: inherit;
 }
+
+
 
 .App {
     display: flex;

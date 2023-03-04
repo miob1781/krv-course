@@ -118,7 +118,7 @@ const quiz: QuizPart[] = [
         ]
     },
     {
-        question: <span>Wovon muss ich NICHT abstrahieren, um reine Anschauungen zu erhalten?</span>,
+        question: <span>Wovon muss ich <b>nicht</b> abstrahieren, um reine Anschauungen zu erhalten?</span>,
         answers: [
             {
                 suggestion: <span>Verstandesbegriffe</span>,
