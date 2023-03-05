@@ -36,4 +36,26 @@ export const sectionsData: SectionData[] = [
             }
         ]
     },
+    {
+        title: "Urteilsformen und Kategorien",
+        lessonId: "3",
+        description: "Die Transzendentale Logik befasst dich mit dem Denkvermögen und nimmt den weitaus größten Teil des Werks ein. In diesem Kapitel werden die Einleitung zur Transzendentalen Logik, die Urteilsformen und die Kategorien behandelt.",
+        lessons: [
+            {
+                title: "Transzendentale Logik, Einleitung",
+                lessonId: "3-1",
+                pageNumbers: "A/B"
+            },
+            {
+                title: "Transzendentale Logik, Urteilsformen",
+                lessonId: "3-2",
+                pageNumbers: "A/B"
+            },
+            {
+                title: "Transzendentale Logik, Kategorien",
+                lessonId: "3-3",
+                pageNumbers: "A/B"
+            },
+        ]
+    }
 ]
