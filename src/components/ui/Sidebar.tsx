@@ -10,13 +10,13 @@ export default function Sidebar() {
     /** returns title of table of content in Sidebar */
     function renderTitles(): ReactElement[] {
         return sectionsData.map((sectionData: SectionData, index: number) => (
-            <p key={sectionData.lessonId} className="sidebar-title-cont">
+            <div key={sectionData.lessonId} className="sidebar-title-cont">
                 <span className="sidebar-num">{`${index + 1}. `}</span>
                 <Link
                     to={`/section-${sectionData.lessonId}`}
                     className="sidebar-title"
                 >{sectionData.title}</Link>
-            </p>
+            </div>
         ))
     }
 

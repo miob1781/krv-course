@@ -11,7 +11,6 @@ interface Props {
     title: string
     quiz: QuizPart[]
     lessonId: string
-    pathBackToSection: string
 }
 
 /** shuffles array by the Fisher-Yates algorithm */
@@ -29,7 +28,7 @@ function shuffleArray(arr: QuizPart[] | Answer[]): QuizPart[] | Answer[] {
 const answerIndexes: string[] = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 /** displays quiz at the end of lessons */
-export default function Quiz({ title, quiz, lessonId, pathBackToSection }: Props) {
+export default function Quiz({ title, quiz, lessonId }: Props) {
     const { userId, setLessonIds } = useContext(AuthContext) as AuthContextTypes
 
     const [shuffledQuiz, setShuffledQuiz] = useState<QuizPart[] | null>(null)
@@ -90,6 +89,13 @@ export default function Quiz({ title, quiz, lessonId, pathBackToSection }: Props
             border: answerIndex === index ? `${correct ? "whitesmoke" : "red"} 3.5px solid` : "",
             borderRadius: answerIndex === index ? "10px" : ""
         }
+    }
+
+    /** gets path back to introduction of section by lessonId */
+    function getPathBackToSection(): string {
+        const sectionNumber: string = lessonId.split("-")[0]
+        const path: string = `/section-${sectionNumber}`
+        return path
     }
 
     /** sends id of lesson to server when the quiz has been completed */
@@ -176,7 +182,7 @@ export default function Quiz({ title, quiz, lessonId, pathBackToSection }: Props
         const textAllAnswersCorrect: JSX.Element = (
             <div className="quiz-result">
                 <p>Du hast alle Fragen im ersten Versuch richtig beantwortet. Fantastisch!</p>
-                <Link to={pathBackToSection}>
+                <Link to={getPathBackToSection()}>
                     <button className="selectable-button" onClick={postLessonId}>Zurück zur Lektion</button>
                 </Link>
             </div>
@@ -204,7 +210,7 @@ export default function Quiz({ title, quiz, lessonId, pathBackToSection }: Props
         <div className="quiz-result">
             <p>Gut gemacht!</p>
             <div>
-                <Link to={pathBackToSection}>
+                <Link to={getPathBackToSection()}>
                     <button className="selectable-button" onClick={postLessonId}>Zurück zu den Lektionen</button>
                 </Link>
             </div>

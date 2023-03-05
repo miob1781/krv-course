@@ -53,12 +53,16 @@ button:active {
     transition: 0.2s ease-in;
 }
 
+p {
+    margin-bottom: 20px;
+}
+
 ul,
 ol,
 blockquote {
     margin-top: 15px;
     margin-left: min(50px, 10vw);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 1.1;
 }
 

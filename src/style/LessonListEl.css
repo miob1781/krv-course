@@ -12,14 +12,19 @@
 .lesson-list-text {
     grid-column: 2;
     text-align: justify;
-    margin: 0 15px;
 }
 
 .lesson-list-text.lesson-question {
     padding: 15px;
-    background-color: var(--accent-color);
+    margin-top: -5px;
+    margin-bottom: 20px;
     border-radius: 7px;
+    background-color: var(--accent-color);
     box-shadow: 4px 6px 4px gray;
+}
+
+.lesson-list-text.lesson-question p {
+    margin-bottom: 0;
 }
 
 .small-page-number-cont {

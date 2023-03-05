@@ -219,6 +219,5 @@ export default function Quiz_2_2() {
         title="Transzendentale Ästhetik, §§ 2-3"
         quiz={quiz}
         lessonId="2-2"
-        pathBackToSection="/section-2"
     />
 }
