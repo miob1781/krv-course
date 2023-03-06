@@ -44,15 +44,15 @@ export const sectionsData: SectionData[] = [
             {
                 title: "Transzendentale Logik, Einleitung",
                 lessonId: "3-1",
-                pageNumbers: "A/B"
+                pageNumbers: "A50/B74–A64/B88"
             },
             {
-                title: "Transzendentale Logik, Urteilsformen",
+                title: "Urteilsformen",
                 lessonId: "3-2",
-                pageNumbers: "A/B"
+                pageNumbers: "A64/B89–A76/B101"
             },
             {
-                title: "Transzendentale Logik, Kategorien",
+                title: "Kategorien",
                 lessonId: "3-3",
                 pageNumbers: "A/B"
             },

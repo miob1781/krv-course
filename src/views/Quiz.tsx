@@ -191,7 +191,7 @@ export default function Quiz({ title, quiz, lessonId }: Props) {
         /** text when some answer has been wrong */
         const textBeforeRepeating: JSX.Element = (
             <div className="quiz-result">
-                <p>Du hast {totalQuestions - totalWrongAnswers} von {totalQuestions} richtig beantwortet.</p>
+                <p>Du hast {totalQuestions - totalWrongAnswers} von {totalQuestions} Fragen richtig beantwortet.</p>
                 <p>Jetzt wiederholen wir die Fragen, die du noch nicht richtig beantwortet hast.</p>
                 <div>
                     <button
