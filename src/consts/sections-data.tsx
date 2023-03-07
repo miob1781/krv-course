@@ -54,7 +54,7 @@ export const sectionsData: SectionData[] = [
             {
                 title: "Kategorien",
                 lessonId: "3-3",
-                pageNumbers: "A/B"
+                pageNumbers: "A76/B102–B113, optional: B113–116"
             },
         ]
     }
