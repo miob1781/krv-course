@@ -10,7 +10,7 @@ export const sectionsData: SectionData[] = [
             {
                 title: "Einleitung",
                 lessonId: "1-1",
-                pageNumbers: "A1/B1–A16/B29"
+                pages: "A1/B1–A16/B29"
             }
         ]
     },
@@ -22,17 +22,17 @@ export const sectionsData: SectionData[] = [
             {
                 title: "Transzendentale Ästhetik, § 1",
                 lessonId: "2-1",
-                pageNumbers: "A19/B33–A22/B36"
+                pages: "A19/B33–A22/B36"
             },
             {
                 title: "Transzendentale Ästhetik, §§ 2–3",
                 lessonId: "2-2",
-                pageNumbers: "A22/B37–A30/B45"
+                pages: "A22/B37–A30/B45"
             },
             {
                 title: "Transzendentale Ästhetik, §§ 4–8",
                 lessonId: "2-3",
-                pageNumbers: "A30/B46–A49/B66, B66–69, B71–73"
+                pages: "A30/B46–A49/B66, B66–69, B71–73"
             }
         ]
     },
@@ -44,17 +44,17 @@ export const sectionsData: SectionData[] = [
             {
                 title: "Transzendentale Logik, Einleitung",
                 lessonId: "3-1",
-                pageNumbers: "A50/B74–A64/B88"
+                pages: "A50/B74–A64/B88"
             },
             {
                 title: "Urteilsformen",
                 lessonId: "3-2",
-                pageNumbers: "A64/B89–A76/B101"
+                pages: "A64/B89–A76/B101"
             },
             {
                 title: "Kategorien",
                 lessonId: "3-3",
-                pageNumbers: "A76/B102–B113, optional: B113–116"
+                pages: "A76/B102–B113, optional: B113–116"
             },
         ]
     }

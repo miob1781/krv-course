@@ -7,7 +7,7 @@ export interface LessonData {
     /** lesson id */
     lessonId: string
     /** page numbers od lesson */
-    pageNumbers: string
+    pages: string
 }
 
 /** metadata of section */
@@ -22,10 +22,17 @@ export interface SectionData {
     lessons: LessonData[]
 }
 
-/** props of Section view */
+/** props of sections */
 export interface SectionProps {
     /** metadata of section */
     sectionData: SectionData
+}
+
+/** props of lessons */
+export interface LessonProps {
+    /** metadata of lesson */
+    lessonData: LessonData
+    quiz: QuizPart[]
 }
 
 /** quiz answer */

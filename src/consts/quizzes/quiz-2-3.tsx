@@ -1,7 +1,6 @@
 import { QuizPart } from "../../types";
-import Quiz from "../../views/Quiz";
 
-const quiz: QuizPart[] = [
+export const quiz_2_3: QuizPart[] = [
     {
         question: <span>Woraus folgt laut Kant die Apriorität der Zeit?</span>,
         answers: [
@@ -188,11 +187,3 @@ const quiz: QuizPart[] = [
         ]
     }
 ]
-
-export default function Quiz_2_3() {
-    return <Quiz
-        lessonId="2-3"
-        quiz={quiz}
-        title="Transzendentale Ästhetik, §§ 4–8"
-    />
-}

@@ -1,7 +1,6 @@
 import { QuizPart } from "../../types";
-import Quiz from "../../views/Quiz";
 
-const quiz: QuizPart[] = [
+export const quiz_3_2: QuizPart[] = [
     {
         question: <span>Was ist <b>keine</b> Eigenschaft von reinen Verstandesbegriffen?</span>,
         answers: [
@@ -218,11 +217,3 @@ const quiz: QuizPart[] = [
         ]
     },
 ]
-
-export default function Quiz_3_2() {
-    return <Quiz
-        lessonId="3-2"
-        quiz={quiz}
-        title="Urteilsformen"
-    />
-}

@@ -1,9 +1,10 @@
+import { quiz_3_2 } from "../../consts/quizzes/quiz-3-2";
+import { LessonProps } from "../../types";
 import Lesson from "../../views/Lesson";
-import Quiz_3_2 from "../quizzes/Quiz-3-2";
 import LessonListEl from "../ui/LessonListEl";
 
-export default function Section_3_2() {
-    return <Lesson lessonId="3-2" title="Urteilsformen" pages="A64/B89–A76/B101" quiz={<Quiz_3_2 />}>
+export default function Section_3_2({lessonData}: LessonProps) {
+    return <Lesson lessonData={lessonData} quiz={quiz_3_2}>
         <LessonListEl paragraphId="3-2-1" pageNumber="A64f./B89f.">
             Kant formuliert vier Erfordernisse, die die transzendentale Analytik erfüllen muss:
             <ol>

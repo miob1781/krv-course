@@ -1,9 +1,10 @@
+import { quiz_3_3 } from "../../consts/quizzes/quiz-3-3";
+import { LessonProps } from "../../types";
 import Lesson from "../../views/Lesson";
-import Quiz_3_3 from "../quizzes/Quiz-3-3";
 import LessonListEl from "../ui/LessonListEl";
 
-export default function Section_3_3() {
-    return <Lesson lessonId="3-3" title="Kategorien" pages="A76/B102-B113, optional: B113-116" quiz={<Quiz_3_3 />}>
+export default function Section_3_3({ lessonData }: LessonProps) {
+    return <Lesson lessonData={lessonData} quiz={quiz_3_3}>
         <LessonListEl paragraphId="3-3-1" pageNumber="A76f./B102">
             Die transzendentale Logik hat deswegen das Mannigfaltige der reinen Sinnlichkeit „vor sich liegen“,
             weil sie sich mit den Quellen der Möglichkeit der Verstandeserkenntnisse befasst

@@ -1,9 +1,10 @@
 import Lesson from "../../views/Lesson";
-import Quiz_2_3 from "../quizzes/Quiz-2-3";
+import { quiz_2_3 } from "../../consts/quizzes/quiz-2-3";
 import LessonListEl from "../ui/LessonListEl";
+import { LessonProps } from "../../types";
 
-export default function Section_2_3() {
-    return <Lesson lessonId="2-3" quiz={<Quiz_2_3 />} title="Transzendentale Ästhetik, §§ 4-8" pages="A30/B46-A49/B66, B66-69, B71-73">
+export default function Section_2_3({lessonData}: LessonProps) {
+    return <Lesson lessonData={lessonData} quiz={quiz_2_3}>
         <LessonListEl paragraphId="2-3-1" pageNumber="A40/B46">
             Ebenso, wie die erste Auflage fünf Raumargumente enthält, hat sie fünf Zeitargumente,
             die allerdings in der zweiten Auflage kaum verändert werden.

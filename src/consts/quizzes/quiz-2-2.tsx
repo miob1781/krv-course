@@ -1,7 +1,6 @@
 import { QuizPart } from "../../types";
-import Quiz from "../../views/Quiz";
 
-const quiz: QuizPart[] = [
+export const quiz_2_2: QuizPart[] = [
     {
         question: <span>Welcher Satz trifft zu?</span>,
         answers: [
@@ -213,11 +212,3 @@ const quiz: QuizPart[] = [
         ]
     },
 ]
-
-export default function Quiz_2_2() {
-    return <Quiz
-        title="Transzendentale Ästhetik, §§ 2-3"
-        quiz={quiz}
-        lessonId="2-2"
-    />
-}

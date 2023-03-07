@@ -1,10 +1,11 @@
 import Lesson from "../../views/Lesson";
 import LessonListEl from "../ui/LessonListEl";
-import Quiz_2_2 from "../quizzes/Quiz-2-2"
+import { quiz_2_2 } from "../../consts/quizzes/quiz-2-2"
+import { LessonProps } from "../../types";
 
-export default function Lesson_2_2() {
+export default function Lesson_2_2({lessonData}: LessonProps) {
     return (
-        <Lesson lessonId="2-2" quiz={<Quiz_2_2 />} title="Transzendentale Ästhetik, §§ 2-3" pages="A22/B37-A30/B45">
+        <Lesson lessonData={lessonData} quiz={quiz_2_2}>
             <LessonListEl paragraphId="2-2-1" pageNumber="A22/B37">
                 <i>„Metaphysische Erörterung dieses Begriffs“</i> – Der Titel bedeutet,
                 dass Kant in §2 eine metaphysische Erörterung des Begriffs des Raums anstrebt.

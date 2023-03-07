@@ -1,10 +1,11 @@
 import Lesson from "../../views/Lesson";
 import LessonListEl from "../ui/LessonListEl";
-import Quiz_1_1 from "../quizzes/Quiz-1-1";
+import { LessonProps } from "../../types";
+import { quiz_1_1 } from "../../consts/quizzes/quiz-1-1";
 
-export default function Section_1_1() {
+export default function Section_1_1({ lessonData }: LessonProps) {
     return (
-        <Lesson lessonId="1-1" quiz={<Quiz_1_1 />} title="Einleitung" pages="A1/B1-A16/B29">
+        <Lesson lessonData={lessonData} quiz={quiz_1_1}>
             <LessonListEl paragraphId="1-1-1">
                 In vielen Ausgaben ist der Text der ersten Auflage links und der Text der zweiten Auflage rechts abgedruckt.
                 Das liegt daran, dass Kant die Einleitung bei der zweiten Auflage gründlich überarbeitet und ergänzt hat.

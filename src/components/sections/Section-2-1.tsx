@@ -1,10 +1,11 @@
 import Lesson from "../../views/Lesson";
 import LessonListEl from "../ui/LessonListEl";
-import Quiz_2_1 from "../quizzes/Quiz-2-1"
+import { quiz_2_1 } from "../../consts/quizzes/quiz-2-1"
+import { LessonProps } from "../../types";
 
-export default function Lesson_2_1() {
+export default function Lesson_2_1({ lessonData }: LessonProps) {
     return (
-        <Lesson lessonId="2-1" quiz={<Quiz_2_1 />} title="Transzendentale Ästhetik, § 1" pages="A19/B33-A22/B36">
+        <Lesson lessonData={ lessonData } quiz={quiz_2_1}>
             <LessonListEl paragraphId="2-1-1" pageNumber="A19/B33">
                 Hier führt Kant die Lehre von den „zwei Stämmen“ der menschlichen Erkenntnis, die er in A15/B29 erstmals einführt, weiter aus.
                 Durch Sinnlichkeit werden Gegenstände „gegeben“, durch den Verstand werden sie „gedacht“.

@@ -1,7 +1,6 @@
 import { QuizPart } from "../../types";
-import Quiz from "../../views/Quiz";
 
-const quiz: QuizPart[] = [
+export const quiz_1_1: QuizPart[] = [
     {
         question: <span>Wie sollte folgender Satz am besten zitiert werden: „Ein großer Teil, und vielleicht der größte, von dem Geschäfte unserer Vernunft, besteht in Zergliederungen von Begriffen, die wir schon von Gegenständen haben“?</span>,
         answers: [
@@ -173,11 +172,3 @@ const quiz: QuizPart[] = [
         ]
     }
 ]
-
-export default function Quiz_1_1() {
-    return <Quiz
-        title="Einleitung"
-        quiz={quiz}
-        lessonId="1-1"
-    />
-}

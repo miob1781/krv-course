@@ -1,7 +1,6 @@
 import { QuizPart } from "../../types";
-import Quiz from "../../views/Quiz";
 
-const quiz: QuizPart[] = [
+export const quiz_3_1: QuizPart[] = [
     {
         question: <span>Welchen Satz vertritt Kant?</span>,
         answers: [
@@ -158,11 +157,3 @@ const quiz: QuizPart[] = [
         ]
     },
 ]
-
-export default function Quiz_3_1() {
-    return <Quiz
-        lessonId="3-1"
-        quiz={quiz}
-        title="Einleitung zur Transzendentalen Logik"
-    />
-}

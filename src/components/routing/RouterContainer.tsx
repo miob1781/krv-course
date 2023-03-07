@@ -13,18 +13,18 @@ import { SectionData, LessonData } from "../../types"
 const sectionRoutes: ReactElement[] = []
 
 /** gets a specific route */
-function getRoute(sectionData: SectionData | LessonData): ReactElement {
+function getRoute(data: SectionData | LessonData, isLesson: boolean): ReactElement {
 
     /** lazily imported component */
-    const Component = lazy(() => import(`../sections/Section-${sectionData.lessonId}.tsx`))
+    const Component = lazy(() => import(`../sections/Section-${data.lessonId}.tsx`))
 
     return (
         <Route
-            key={sectionData.lessonId}
-            path={`section-${sectionData.lessonId}`}
+            key={data.lessonId}
+            path={`section-${data.lessonId}`}
             element={
-                <IsPrivate lessonId={sectionData.lessonId}>
-                    <Component sectionData={sectionData} />
+                <IsPrivate lessonId={data.lessonId}>
+                    {isLesson ? <Component lessonData={data} /> : <Component sectionData={data} />}
                 </IsPrivate>
             }
         />
@@ -33,10 +33,10 @@ function getRoute(sectionData: SectionData | LessonData): ReactElement {
 
 // gets all routes of sections and lessons, depending on the metadata
 sectionsData.forEach((sectionData: SectionData) => {
-    const route: ReactElement = getRoute(sectionData)
+    const route: ReactElement = getRoute(sectionData, false)
     sectionRoutes.push(route)
-    sectionData.lessons!.forEach((lesson: LessonData) => {
-        const subRoute: ReactElement = getRoute(lesson)
+    sectionData.lessons.forEach((lesson: LessonData) => {
+        const subRoute: ReactElement = getRoute(lesson, true)
         sectionRoutes.push(subRoute)
     })
 })

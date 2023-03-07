@@ -1,9 +1,10 @@
 import Lesson from "../../views/Lesson";
-import Quiz_3_1 from "../quizzes/Quiz-3-1";
+import { quiz_3_1 } from "../../consts/quizzes/quiz-3-1";
 import LessonListEl from "../ui/LessonListEl";
+import { LessonProps } from "../../types";
 
-export default function Section_3_1() {
-    return <Lesson lessonId="3-1" title="Urteilsformen und Kategorien" pages="A50/B74-A64/B88" quiz={<Quiz_3_1 />}>
+export default function Section_3_1({ lessonData }: LessonProps) {
+    return <Lesson lessonData={lessonData} quiz={quiz_3_1}>
         <LessonListEl paragraphId="3-1-1" pageNumber="A50/B74-A52/B76">
             Hier beginnt der zweite Teil der Transzendentalen Elementarlehre,
             in welcher sich Kant mit der Transzendentalen Logik beschäftigt.
@@ -78,9 +79,9 @@ export default function Section_3_1() {
             denn eine Erkenntnis ist falsch, wenn sie sich widerspricht.
         </LessonListEl>
         <LessonListEl paragraphId="3-1-14" isQuestion>
-        Überlege, warum Kant in der Einleitung in die allgemeine Logik
-        die Frage nach der Möglichkeit eines allgemeinen Wahrheitskriteriums stellt.
-        Was ist der thematische Bezug zur allgemeinen Logik?
+            Überlege, warum Kant in der Einleitung in die allgemeine Logik
+            die Frage nach der Möglichkeit eines allgemeinen Wahrheitskriteriums stellt.
+            Was ist der thematische Bezug zur allgemeinen Logik?
         </LessonListEl>
         <LessonListEl paragraphId="3-1-15" pageNumber="A60/B84-A62/B86">
             Sofern die allgemeine Logik als Kanon und nicht als Organon betrieben wird, ist sie analytisch.
