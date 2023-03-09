@@ -76,7 +76,7 @@ export const sectionsData: SectionData[] = [
             {
                 title: "Die transzendentale Deduktion der Kategorien, §§ 21–27",
                 lessonId: "4-3",
-                pages: ""
+                pages: "B144–169"
             },
         ]
     },
