@@ -61,20 +61,20 @@ export const sectionsData: SectionData[] = [
     {
         title: "Die transzendentale Deduktion der Kategorien",
         lessonId: "4",
-        description: "Die Transzendentale Deduktion der Kategorien ist das schwierige Lehrstück, in welchem Kant Kant nachzuweisen versucht, dass die Katetorien nicht nur auf die Erfahrung anwendbar sind, sondern sogar Bedingungen der Möglichkeit der Erfahrung sind.",
+        description: "Die Transzendentale Deduktion der Kategorien ist das schwierige Lehrstück, in welchem Kant nachzuweisen versucht, dass die Kategorien auf Erfahrung anwendbar sind. Dies tut er daduch, dass er die Kategorien als Bedingungen der Möglichkeit der Erfahrung aufweist.",
         lessons: [
             {
-                title: "Die transzendentale Deduktion der Kategorien, §§ 13-14",
+                title: "Die transzendentale Deduktion der Kategorien, §§ 13–14",
                 lessonId: "4-1",
-                pages: ""
+                pages: "A84/B116–B129"
             },
             {
-                title: "Die transzendentale Deduktion der Kategorien, §§ 15-20",
+                title: "Die transzendentale Deduktion der Kategorien, §§ 15–20",
                 lessonId: "4-2",
                 pages: ""
             },
             {
-                title: "Die transzendentale Deduktion der Kategorien, §§ 21-27",
+                title: "Die transzendentale Deduktion der Kategorien, §§ 21–27",
                 lessonId: "4-3",
                 pages: ""
             },
