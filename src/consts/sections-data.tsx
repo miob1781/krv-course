@@ -80,4 +80,16 @@ export const sectionsData: SectionData[] = [
             },
         ]
     },
+    {
+        title: "Urteilskraft und Schematismus",
+        lessonId: "5",
+        description: "Die Analytik der Grundsätze handelt von den Urteilen, die der Verstand a priori von Erscheinungen machen kann. Hier werden zunächst die Urteilskraft und das transzendentale Schema als Bedingung der Anwendung der Kategorien auf Erscheinungen diskutiert.",
+        lessons: [
+            {
+                title: "Urteilskraft und Schematismus",
+                lessonId: "5-1",
+                pages: "A130/B169–A147/B187"
+            }
+        ]
+    },
 ]
