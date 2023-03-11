@@ -92,4 +92,26 @@ export const sectionsData: SectionData[] = [
             }
         ]
     },
+    {
+        title: "Axiome der Anschauung und Antizipationen der Wahrnehmung",
+        lessonId: "6",
+        description: "Die Grundsätze des reinen Verstandes handeln von den metaphysischen Grundsätzen für den Bereich der Erscheinungen. Hier werden die Einleitung, die Axiome der Anschauung und die Antizipationen der Wahrnehmung behandelt.",
+        lessons: [
+            {
+                title: "Grundsätze des reinen Verstandes, Einleitung",
+                lessonId: "6-1",
+                pages: "A148/B187–A162/B202"
+            },
+            {
+                title: "Axiome der Anschauung",
+                lessonId: "6-2",
+                pages: "A162/B202–A166/B207"
+            },
+            {
+                title: "Antizipationen der Wahrnehmung",
+                lessonId: "6-3",
+                pages: "A166/B207–A176/B218"
+            },
+        ]
+    },
 ]
