@@ -6,11 +6,13 @@ import LessonListEl from "../ui/LessonListEl";
 export default function Section_3_3({ lessonData }: LessonProps) {
     return <Lesson lessonData={lessonData} quiz={quiz_3_3}>
         <LessonListEl paragraphId="3-3-1" pageNumber="A76f./B102">
-            Die transzendentale Logik hat deswegen das Mannigfaltige der reinen Sinnlichkeit „vor sich liegen“,
+            <i>„Die allgemeine Logik abstrahiert...“</i> – Die transzendentale Logik hat deswegen
+            das Mannigfaltige der reinen Sinnlichkeit „vor sich liegen“,
             weil sie sich mit den Quellen der Möglichkeit der Verstandeserkenntnisse befasst
             und Gegenstände nur durch Sinnlichkeit gegeben werden können.
             Der Verstand muss das Mannigfaltige durchgehen, aufnehmen und verbinden,
-            um von dem Gegebenen der Sinnlichkeit ausgehend Erkenntnis zu erzeugen – ein Vorgang, den Kant als <b>Synthesis</b> bezeichnet.
+            um von dem Gegebenen der Sinnlichkeit ausgehend Erkenntnis
+            zu erzeugen – ein Vorgang, den Kant als <b>Synthesis</b> bezeichnet.
         </LessonListEl>
         <LessonListEl paragraphId="3-3-2">
             Es sei gleich betont, dass die Rolle der Synthesis in der Forschung umstritten ist.
@@ -19,24 +21,30 @@ export default function Section_3_3({ lessonData }: LessonProps) {
             auch wenn die Synthesis die Sinnlichkeit als Stoff nehme.
         </LessonListEl>
         <LessonListEl paragraphId="3-3-3" pageNumber="A77f./B103">
-            Man kann Synthesis als den Prozess begreifen, bei dem wir uns des Mannigfaltigen der Anschauung bewusst werden
-            und dadurch eine Erkenntnis hervorbringen.
+            <i>„Ich verstehe aber unter <b>Synthesis</b> in der allgemeinen Bedeutung...“</i> – Man kann Synthesis
+            als den Prozess begreifen,
+            bei dem wir uns des Mannigfaltigen der Anschauung bewusst werden und dadurch eine Erkenntnis hervorbringen.
             Die Synthesis ist empirisch, wenn wir uns auch mit dem Stoff der Erscheinungen befassen, aber rein,
             wenn wir nur die reine Anschauung zum Gegenstand haben.
             Zum Beispiel ist es eine empirische Synthesis, wenn wir auf den Bildschirm schauen
-            und durch Reflexion auf diese Anschauungen die Erkenntnis gewinnen, dass dort ein Text zur Kritik der reinen Vernunft steht.
+            und durch Reflexion auf diese Anschauungen die Erkenntnis gewinnen,
+            dass dort ein Text zur <i>Kritik der reinen Vernunft</i> steht.
         </LessonListEl>
         <LessonListEl paragraphId="3-3-4" pageNumber="A78/B103">
-            Die Synthesis wird durch die <b>Einbildungskraft</b> bewerkstelligt – ein Vermögen, das wir noch genauer betrachten werden.
+            <i>„Die Synthesis überhaupt...“</i> – Die Synthesis wird durch die <b>Einbildungskraft</b> bewerkstelligt – ein Vermögen,
+            das wir noch genauer betrachten werden.
             Vorläufig lässt sich sagen, dass die Einbildungskraft auf die Sinnlichkeit angewandt und durch den Verstand ausgeübt wird.
-            Doch ist es Aufgabe des Verstandes, die Synthesis „auf Begriffe“ zu bringen. Was das heißen soll, ist schwierig zu verstehen;
+            Doch ist es Aufgabe des Verstandes, die Synthesis „auf Begriffe“ zu bringen.
+            Was das heißen soll, ist schwierig zu verstehen;
             wir werden darauf in den nächsten Absätzen achten.
         </LessonListEl>
         <LessonListEl paragraphId="3-3-5" pageNumber="A78f./B104">
-            <b>Synthetische Einheit</b> ist die Einheit der Erkenntnis, die durch eine Synthesis bewirkt wird.
-            Denn, wie zuvor gezeigt, macht jede Erkenntnis eine Einheit aus, unter der ein Mannigfaltiges der Vorstellungen geordnet wird.
-            Der Unterschied zur <b>analytischen Einheit</b> der Begriffe besteht darin, dass bei dieser die Einheit nur in dem besteht,
-            was durch den Begriff gedacht wird,
+            <i>„Die <b>reine Synthesis</b>...“</i> – <b>Synthetische Einheit</b> ist die Einheit der Erkenntnis,
+            die durch eine Synthesis bewirkt wird.
+            Denn, wie zuvor gezeigt, macht jede Erkenntnis eine Einheit aus,
+            unter der ein Mannigfaltiges der Vorstellungen geordnet wird.
+            Der Unterschied zur <b>analytischen Einheit</b> der Begriffe besteht darin,
+            dass bei dieser die Einheit nur in dem besteht, was durch den Begriff gedacht wird,
             während bei der synthetischen Einheit die Erkenntnis über bestehende Begriffe hinaus erweitert wird.
         </LessonListEl>
         <LessonListEl paragraphId="3-3-6">
@@ -46,7 +54,8 @@ export default function Section_3_3({ lessonData }: LessonProps) {
             Es ist hier auch nicht klar, ob für die Synthesis ein Begriff vorhergeht oder der Begriff erst durch die Synthesis gebildet wird.
         </LessonListEl>
         <LessonListEl paragraphId="3-3-7" pageNumber="A79/B104f.">
-            Bisher ist gezeigt worden, dass ein reiner Verstandesbegriff einer reinen Synthesis entspricht, wenn man sie auf Begriffe bringt.
+            <i>„Dieselbe Funktion...“</i> – Bisher ist gezeigt worden,
+            dass ein reiner Verstandesbegriff einer reinen Synthesis entspricht, wenn man sie auf Begriffe bringt.
             Nun fügt Kant hinzu, dass die Handlungen der reinen Synthesis den Funktionen in Urteilen entsprechen,
             sodass die Tafel der Kategorien durch die Urteilstafel gewonnen werden und damit ihre Vollständigkeit gezeigt werden kann.
             Der Ausdruck „durch eben dieselben Handlungen“ ist freilich schwer zu verstehen.
@@ -67,8 +76,8 @@ export default function Section_3_3({ lessonData }: LessonProps) {
             Quantität, Qualität, Relation und Modalität.
         </LessonListEl>
         <LessonListEl paragraphId="3-3-10" pageNumber="A81f./B107f.">
-            Kategorien sind Verstandesbegriffe, die zugleich Stammbegriffe sind. <b>Prädikabilien</b> hingegen
-            sind aus den Kategorien abgeleitete Verstandesbegriffe.
+            <i>„Um der letztern willen...“</i> – Kategorien sind Verstandesbegriffe,
+            die zugleich Stammbegriffe sind. <b>Prädikabilien</b> hingegen sind aus den Kategorien abgeleitete Verstandesbegriffe.
             Kant sagt nicht, inwiefern Prädikabilien abgeleitet sind;
             man kann das wohl so verstehen, dass Prädikabilien Kategorien in ihrer Definition enthalten.
             So ist zum Beispiel <b>Kraft</b> die <b>Kausalität</b> einer <b>Substanz</b>.

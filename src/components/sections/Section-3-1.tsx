@@ -21,10 +21,11 @@ export default function Section_3_1({ lessonData }: LessonProps) {
         </LessonListEl>
         <LessonListEl paragraphId="3-1-3" pageNumber="A52/B76-A55/B79">
             Logik ist entweder <b>allgemeine</b> oder <b>besondere</b> Logik.
-            Die allgemeine Logik handelt vom allgemeinen Verstandesgebrauch, die besondere Logik von der Logik besonderer Wissenschaften.
+            Die allgemeine Logik handelt vom allgemeinen Verstandesgebrauch,
+            die besondere Logik von der Logik besonderer Wissenschaften.
             Die allgemeine Logik ist zugleich <b>reine</b> Logik, weil sie a priori ist.
             Sie ist kein „Organon“, aus welchem sich neue Erkenntnisse ableiten lassen,
-            sondern nur ein „Kanon“, das Grundsätze zum richtigen Gebrauch des Verstandes enthält.
+            sondern nur ein „Kanon“, welcher Grundsätze zum richtigen Gebrauch des Verstandes enthält.
             Was Kant über <b>angewandte</b> Logik sagt, ist nicht sonderlich erheblich.
         </LessonListEl>
         <LessonListEl paragraphId="3-1-4" isQuestion>

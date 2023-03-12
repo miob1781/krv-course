@@ -10,7 +10,7 @@ export default function Section_3({ sectionData }: SectionProps) {
                 Die Transzendentale Logik macht etwa drei Viertel der gesamten <i>Kritik der reinen Vernunft</i> aus.
             </p>
             <p>
-                In der Einleitung zu diesem Teil erläutert Kant das besondere an der <b>transzendentalen Logik</b>.
+                In der Einleitung zu diesem Teil erläutert Kant das Besondere an der <b>transzendentalen Logik</b>.
                 Man darf Logik in Kants Sinn nicht mit dem verwechseln, was man heute als „formale Logik“
                 im ersten Semester eines Philosophiestudiums lernt.
                 Zu Kants Zeit war Logik ganz allgemein die Lehre vom (richtigen) Denken.

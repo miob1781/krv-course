@@ -86,7 +86,7 @@ export default function Section_3_2({lessonData}: LessonProps) {
             „Alle Rosen sind rot“ und „Diese Rose ist rot“ zwischen diesen Funktionen unterschieden.
         </LessonListEl>
         <LessonListEl paragraphId="3-2-14" pageNumber="A71/B97-A73/B98">
-            Beispiele für die <b>Qualität</b> der Urteile sind „Dies Seele ist sterblich“,
+            Beispiele für die <b>Qualität</b> der Urteile sind „Die Seele ist sterblich“,
             „Die Seele ist nicht sterblich“ und „Die Seele ist nicht-sterblich“.
             In der allgemeinen Logik werden <b>bejahende</b> und <b>unendliche</b> Urteile gleichbehandelt.
             In der transzendentalen Logik wird jedoch wegen der verschiedenartigen Prädikate ein Unterschied gemacht.
@@ -96,7 +96,8 @@ export default function Section_3_2({lessonData}: LessonProps) {
             dass der Seele aus der (potentiell) unendlichen Menge der Prädikate, die dem Prädikat „sterblich“ widersprechen, eines zukommt.
         </LessonListEl>
         <LessonListEl paragraphId="3-2-15" isQuestion>
-            An dem Beispiel ist ungünstig, dass „unsterblich“ lediglich die Verneinung von „sterblich“ zu sein scheint.
+            An dem Beispiel ist ungünstig, dass das Wort „unsterblich“ den Eindruck erweckt,
+            lediglich die Verneinung von „sterblich“ zu sein.
             Doch bilde ein unendliches Urteil mit „nicht-rot“ – welche positiven Prädikate fallen unter diesen Begriff?
         </LessonListEl>
         <LessonListEl paragraphId="3-2-16" pageNumber="A73f./B98f.">
@@ -130,8 +131,8 @@ export default function Section_3_2({lessonData}: LessonProps) {
         </LessonListEl>
         <LessonListEl paragraphId="3-2-21">
             Man sieht, dass kategorische Urteile hinsichtlich aller vier Titel (Quantität, Qualität, Relation, Modalität)
-            genau eines der drei Momente hat.
-            Zum Beispiel, wenn ich den Satz „Sokrates ist ein Grieche“, dann ist er der Quantität nach einzeln,
+            genau eines der drei Momente haben.
+            Wenn ich zum Beispiel den Satz „Sokrates ist ein Grieche“ bilde, dann ist er der Quantität nach einzeln,
             der Qualität nach bejahend, der Relation nach kategorisch und der Modalität nach assertorisch.
             Hypothetische und disjunktive Urteile sind jedoch nur hinsichtlich der Relation und der Modalität bestimmbar,
             da sie nicht Begriffe, sondern Urteile verbinden.

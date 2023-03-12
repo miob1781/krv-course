@@ -3,7 +3,7 @@ import LessonListEl from "../ui/LessonListEl";
 import { quiz_2_2 } from "../../consts/quizzes/quiz-2-2"
 import { LessonProps } from "../../types";
 
-export default function Lesson_2_2({lessonData}: LessonProps) {
+export default function Lesson_2_2({ lessonData }: LessonProps) {
     return (
         <Lesson lessonData={lessonData} quiz={quiz_2_2}>
             <LessonListEl paragraphId="2-2-1" pageNumber="A22/B37">
@@ -32,7 +32,7 @@ export default function Lesson_2_2({lessonData}: LessonProps) {
                 damit weder Quasi-Dinge noch Verhältnisse der Dinge zueinander.
             </LessonListEl>
             <LessonListEl paragraphId="2-2-5" pageNumber="A23/B38">
-                <i>„Der Raum ist kein empirischer Begriff…“</i> - Kant will zeigen,
+                <i>„Der Raum ist kein empirischer Begriff…“</i> – Kant will zeigen,
                 dass räumliche Verhältnisse nicht empirisch durch Affektion gegeben werden und der Raum daher nicht empirisch ist.
                 Damit wiederholt er im Wesentlichen das Argument aus §1.
             </LessonListEl>
@@ -85,7 +85,8 @@ export default function Lesson_2_2({lessonData}: LessonProps) {
             </LessonListEl>
             <LessonListEl paragraphId="2-2-14">
                 <i>„Der Raum stellet gar keine Eigenschaft irgend einiger Dinge an sich, oder sie in ihrem Verhältnis auf einander
-                    vor…“</i> – Hier formuliert Kant die berühmte These, dass der Raum keine Form der Dinge an sich, sondern nur der Erscheinungen ist.
+                    vor…“</i> – Hier formuliert Kant die berühmte These,
+                dass der Raum keine Form der <b>Dinge an sich</b>, sondern nur der <b>Erscheinungen</b> ist.
                 Der Begriff des Dings an sich bedeutet das Ding, wie es an sich selbst beschaffen ist,
                 unabhängig von seiner Beziehung zu einem erkennenden Subjekt. Es ist also das Ding selbst.
                 Erscheinung hingegen ist die manifeste Vorstellung eines Dings, im Gegensatz zum Ding selbst.
@@ -129,7 +130,8 @@ export default function Lesson_2_2({lessonData}: LessonProps) {
             <LessonListEl paragraphId="2-2-18" pageNumber="A27f./B43f.">
                 Hier zeigt sich der zweifacher Charakter des Raums:
                 Einerseits hat er „transzendentale Idealität“, was heißt, dass er nicht den Dingen an sich zukommt.
-                Zugleich aber verfügt er über „empirische Realität“, was bedeutet, dass die Dinge, die im Raum erscheinen, wirklich existieren.
+                Zugleich aber verfügt er über „empirische Realität“, was bedeutet,
+                dass die Dinge, die im Raum erscheinen, wirklich existieren.
                 Generell bedeutet „Idealität“, dass etwas nur in den Vorstellungen existiert (nur in der „Idee“), und „Realität“,
                 dass es ein Objekt gibt, dass der Vorstellung entspricht.
             </LessonListEl>
@@ -155,6 +157,6 @@ export default function Lesson_2_2({lessonData}: LessonProps) {
             <LessonListEl paragraphId="2-2-21" isQuestion>
                 Welche sekundären Qualitäten benennt Kant? Kannst du welche hinzufügen?
             </LessonListEl>
-        </Lesson>
+        </Lesson >
     )
 }

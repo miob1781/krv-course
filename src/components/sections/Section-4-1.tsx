@@ -3,10 +3,10 @@ import { LessonProps } from "../../types";
 import Lesson from "../../views/Lesson";
 import LessonListEl from "../ui/LessonListEl";
 
-export default function Section_4_1({lessonData}: LessonProps) {
+export default function Section_4_1({ lessonData }: LessonProps) {
     return <Lesson lessonData={lessonData} quiz={quiz_4_1}>
         <LessonListEl paragraphId="4-1-1" pageNumber="A84f./B116f.">
-            Der Begriff <b>Deduktion</b> ist aus der Rechtswissenschaft übernommen,
+            <i>„Die Rechtslehrer...“</i> – Der Begriff <b>Deduktion</b> ist aus der Rechtswissenschaft übernommen,
             ebenso wie die Unterscheidung zwischen „quid facti“ und „quid juris“.
             Ersteres betrifft bei einem Rechtsstreit die Frage, was vorgefallen ist, letzteres die Frage, was rechtens ist.
             Die Begriffe, die wir haben, entsprechen dem quid facti,
@@ -23,12 +23,13 @@ export default function Section_4_1({lessonData}: LessonProps) {
             Doch bei Begriffen wie „Glück“ oder „Schicksal“, die nicht aus der Erfahrung abgeleitet werden können, sieht das anders aus.
         </LessonListEl>
         <LessonListEl paragraphId="4-1-3" pageNumber="A85/B117">
-            Eine <b>transzendentale Deduktion</b> beweist die objektive Realität von Begriffen a priori.
+            <i>„Unter den mancherlei Begriffen aber...“</i> – Eine <b>transzendentale Deduktion</b> beweist
+            die objektive Realität von Begriffen a priori.
             Eine <b>empirische Deduktion</b> hingegen ist keine Deduktion im oben definierten Sinn,
             da sie nicht die Rechtmäßigkeit des Gebrauchs des Begriffs, sondern das „Factum“ (mithin das quid facti) betrifft.
             Bei empirischen Begriffen wird jedoch durch die empirische Deduktion zugleich die Rechtmäßigkeit gezeigt.
         </LessonListEl>
-        <LessonListEl paragraphId="4-1-4" pageNumber="A85f./B118-A87/B119">
+        <LessonListEl paragraphId="4-1-4" pageNumber="A85/B118-A87/B119">
             Eine empirische Deduktion von Begriffen a priori ist nicht möglich, weil sie nicht empirisch gebildet werden können.
             Daher muss von diesen Begriffen eine transzendentale Deduktion geführt werden.
         </LessonListEl>
@@ -55,13 +56,14 @@ export default function Section_4_1({lessonData}: LessonProps) {
             Doch Erfahrung ist eine Erkenntnis der empirisch gegebenen Gegenstände, die vom Verstand bewirkt wird.
         </LessonListEl>
         <LessonListEl paragraphId="4-1-8" pageNumber="A91f./B123f.">
-            Kant betont nochmals am Beispiel des Begriffs der Ursache, dass bei Kategorien keine empirische Deduktion möglich ist.
+            <i>„Gedächte man sich von der Mühsamkeit dieser Untersuchungen...“</i> – Kant betont nochmals
+            am Beispiel des Begriffs der Ursache, dass bei Kategorien keine empirische Deduktion möglich ist.
             Denn durch Erfahrung lässt sich zwar feststellen, dass faktisch immer B auf A folgt, aber nicht, dass das notwendig geschieht,
             wie es für die Kategorie der Ursache und Wirkung erforderlich wäre.
             Wie wir unten sehen werden, ist dies eine Anspielung auf Humes kausalen Skeptizismus.
         </LessonListEl>
         <LessonListEl paragraphId="4-1-9" pageNumber="A92/B124-A94/B127">
-            Die Möglichkeit der Anschauungen beruht auf zwei Bedingungen:
+            <i>„Es sind nur zwei Fälle möglich...“</i> – Die Möglichkeit der Anschauungen beruht auf zwei Bedingungen:
             Die Materie (Empfindungen) ist dadurch möglich, dass wir von einem Gegenstand affiziert werden.
             Die Form hingegen ist dadurch möglich, dass wir Raum und Zeit als reine Anschauungen a priori hervorbringen.
             Dies will Kant auf Erfahrung übertragen: Der Materie nach ist Erfahrung dadurch möglich, dass uns Anschauungen gegeben sind,
@@ -71,22 +73,25 @@ export default function Section_4_1({lessonData}: LessonProps) {
             Dadurch möchte Kant die transzendentale Deduktion der Kategorien erbringen.
         </LessonListEl>
         <LessonListEl paragraphId="4-1-10" pageNumber="B127f.">
-            In der zweiten Auflage folgt ein kurzer Vergleich von Kants Ansatz mit den Herangehensweisen von Locke und Hume.
+            <i>„Der berühmte <b>Locke</b>...“</i> – In der zweiten Auflage
+            folgt ein kurzer Vergleich von Kants Ansatz mit den Herangehensweisen von Locke und Hume.
             Laut Kant hat Locke alle Erkenntnisse aus Erfahrung ableiten wollen,
             hat sich dann jedoch inkonsequenterweise an Gegenstände herangewagt, die außerhalb des Bereichs der Erfahrung liegen.
             Hume hingegen hat einen Skeptizismus in Bezug auf synthetische Erkenntnis a priori vertreten,
             weshalb er den Begriff der Kausalität für lediglich der psychischen Gewohnheit entsprungen hält.
         </LessonListEl>
         <LessonListEl paragraphId="4-1-11" pageNumber="B128f.">
-            Die „Erklärung der Kategorien“ kann möglicherweise als Realdefinition verstanden werden.
+            <i>„Vorher will ich nur noch...“</i> – Die „Erklärung der Kategorien“
+            kann möglicherweise als Realdefinition verstanden werden.
             Die Erklärung ist nicht etwa so zu verstehen,
             dass Kategorien als Begriffe in den Urteilen enthalten sein müssten – vielmehr wird gezeigt,
             dass aus der Struktur eines Urteils die Zuordnung zu den Kategorien nicht ableitbar ist – sondern
             dass die Synthesis analog zur Funktion eines Urteils ist.
         </LessonListEl>
         <LessonListEl paragraphId="4-1-12" pageNumber="A94f.">
-            In der ersten Auflage folgt stattdessen die Unterscheidung zwischen drei Vermögen:
-            Sinn, Einbildungskraft und Apperzeption. Hier zeigen sich bereits Unterschiede zwischen beiden Auflagen.
+            <i>„Es sind aber nur drei ursprüngliche Quellen...“</i> – In der ersten Auflage
+            folgt stattdessen die Unterscheidung zwischen drei Vermögen: Sinn, Einbildungskraft und Apperzeption.
+            Hier zeigen sich bereits Unterschiede zwischen beiden Auflagen.
             Denn während die Einbildungskraft in der ersten Auflage als eigenständiges Vermögen benannt wird,
             gilt sie in der zweiten Auflage als eine Handlung des Verstandes, die an der Sinnlichkeit ausgeübt wird.
             Auch taucht der Begriff der „Synopsis“ in der zweiten Auflage nicht auf.

@@ -8,13 +8,14 @@ export default function Section_2({ sectionData }: SectionProps) {
                 Am Ende der Einleitung in die <i>Kritik der reinen Vernunft</i> schreibt Kant:
             </p>
             <blockquote>
-                Nur so viel scheint zur Einleitung, oder Vorerinnerung nötig zu sein, dass es zwei Stämme der menschlichen Erkenntnis gebe,
+                Nur so viel scheint zur Einleitung, oder Vorerinnerung nötig zu sein,
+                dass es zwei Stämme der menschlichen Erkenntnis gebe,
                 die vielleicht aus einer gemeinschaftlichen, uns unbekannten Wurzel entspringen, nämlich Sinnlichkeit und Verstand,
                 durch deren ersteren uns Gegenstände <b>gegeben</b>, durch den zweiten aber <b>gedacht</b> werden. (A15/B29)
             </blockquote>
             <p>
                 Während unklar bleiben muss, was Kant mit der „gemeinschaftlichen, und unbekannten Wurzel“ gemeint haben könnte,
-                ist umso klarer (und wichtiger!), was es bedeutet, dass Sinnlichkeit und Verstand zwei verschiedene Stämme der Erkenntnis seien.
+                ist umso klarer, was es bedeutet, dass Sinnlichkeit und Verstand zwei verschiedene Stämme der Erkenntnis seien.
                 Denn Sinnlichkeit ist das Vermögen, wodurch uns Gegenstände gegeben und wir gleichsam einen Kontakt zur Welt (und uns selbst) haben. Durch den Verstand aber können wir erst ein Verständnis davon entwickeln, was uns durch die Sinnlichkeit offenbart wird. Daher haben beide Erkenntnisvermögen verschiedene Aufgaben und sind zueinander komplementär.
                 Um es mit Kants eigenen Worten zu sagen:
             </p>
@@ -23,11 +24,12 @@ export default function Section_2({ sectionData }: SectionProps) {
                 Nur daraus, dass sie sich vereinigen, kann Erkenntnis entspringen. (A51/B75f.)
             </blockquote>
             <p>
-                Die Sinnlichkeit bespricht Kant in der Transzendentalen Ästhetik (wobei sich der Ausdruck „Ästhetik“ nicht auf Kunst oder das Schöne bezieht,
+                Die Sinnlichkeit bespricht Kant in der Transzendentalen Ästhetik
+                (wobei sich der Ausdruck „Ästhetik“ nicht auf Kunst oder das Schöne bezieht,
                 sondern dem griechischen Wort für Wahrnehmung entspringt).
                 Es gibt zwei Arten von Gegenständen, die auf grundlegend verschiedene Weisen angeschaut werden.
-                Von uns verschiedene Gegenstände werden durch den äußeren Sinn angeschaut,
-                wohingegen die eigene Seele durch den inneren Sinn angeschaut wird.
+                Von uns verschiedene Gegenstände werden durch den <b>äußeren Sinn</b> angeschaut,
+                wohingegen die eigene Seele durch den <b>inneren Sinn</b> angeschaut wird.
             </p>
             <p>
                 <b>Anschauung</b> ist die Vorstellung, wodurch uns Gegenstände gegeben werden.
