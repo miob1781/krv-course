@@ -1,6 +1,6 @@
 import Lesson from "../../views/Lesson";
 import LessonListEl from "../ui/LessonListEl";
-import { quiz_2_2 } from "../quizzes/quiz-2-2"
+import { quiz_2_2 } from "./quizzes/quiz-2-2"
 import { LessonProps } from "../../types";
 
 export default function Lesson_2_2({ lessonData }: LessonProps) {

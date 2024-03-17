@@ -1,4 +1,4 @@
-import { quiz_4_2 } from "../quizzes/quiz-4-2";
+import { quiz_4_2 } from "./quizzes/quiz-4-2";
 import { LessonProps } from "../../types";
 import Lesson from "../../views/Lesson";
 import LessonListEl from "../ui/LessonListEl";

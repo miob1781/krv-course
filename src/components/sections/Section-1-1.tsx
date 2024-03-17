@@ -1,7 +1,7 @@
 import Lesson from "../../views/Lesson";
 import LessonListEl from "../ui/LessonListEl";
 import { LessonProps } from "../../types";
-import { quiz_1_1 } from "../quizzes/quiz-1-1";
+import { quiz_1_1 } from "./quizzes/quiz-1-1";
 
 export default function Section_1_1({ lessonData }: LessonProps) {
     return (

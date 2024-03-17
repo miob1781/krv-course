@@ -1,5 +1,5 @@
 import Lesson from "../../views/Lesson";
-import { quiz_2_3 } from "../quizzes/quiz-2-3";
+import { quiz_2_3 } from "./quizzes/quiz-2-3";
 import LessonListEl from "../ui/LessonListEl";
 import { LessonProps } from "../../types";
 

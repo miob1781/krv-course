@@ -1,4 +1,4 @@
-import { QuizPart } from "../../types";
+import { QuizPart } from "../../../types";
 
 export const quiz_3_2: QuizPart[] = [
     {
