@@ -36,7 +36,7 @@ export const quiz_4_1: QuizPart[] = [
             },
             {
                 suggestion: <span>Schicksal</span>,
-                solution: <span>Genau! Genau! „Schicksal“ ist laut Kant ein „usurpierter“ Begriff, dem kein möglicher Gegenstand entspricht (oder den wir zumindest nicht aufzeigen können).</span>,
+                solution: <span>Genau! „Schicksal“ ist laut Kant ein „usurpierter“ Begriff, dem kein möglicher Gegenstand entspricht (oder den wir zumindest nicht aufzeigen können).</span>,
                 correct: true
             },
             {
